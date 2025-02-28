@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 1</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="https://kit.fontawesome.com/acdc2463b2.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <header class = "header">
+        <nav id="header-nav">
+            <h1>CMS</h1>
+            <ul class="header-ul">
+                <li><i class="fa-solid fa-bell"></i></li>
+                <li><img src ='Students.jpeg' alt='students'id="profile-picture" height="50" title="NULP students"/></li>
+                <li><p>James Bond</p></li>
+            </ul>
+        </nav>
+        <div class="burger">
+            <span></span>
+        </div>
+    </header>
+    <section class = "main-body">
+        <aside>
+            <nav id="side-nav">
+                <ul>
+                    <li><a href="main.html">Dashbord</a></li>
+                    <li><a href="students.html">Student</a></li>
+                    <li><a href="main.html">Tasks</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <div class = "table">
+            <table>
+                <tr>
+                    <th colspan="7"><h2>Students</h2></th>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="rules"></td>
+                    <td>Group</td>
+                    <td>name</td>
+                    <td>Gender</td>
+                    <td>Birthday</td>
+                    <td>Status</td>
+                    <td>Options</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="rules"></td>
+                    <td>PZ-24</td>
+                    <td>Milchenko Yaroslav</td>
+                    <td>M</td>
+                    <td>11.07.2006</td>
+                    <td></td>
+                    <td><button id = "edit"><i class="fa-solid fa-pen"></i></button id = "edit"><button id = "delete"><i class="fa-solid fa-x"></i></button id = "delete"></td>
+                </tr>
+            </table>
+        </div>
+    </section>
+</body>
+</html>
