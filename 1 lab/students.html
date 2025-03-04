@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lab 1</title>
+    <title>Students</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
     <script src="https://kit.fontawesome.com/acdc2463b2.js" crossorigin="anonymous"></script>
     <script defer src="main.js"></script>
@@ -11,11 +11,25 @@
 <body>
     <header class="header">
         <nav id="header-nav">
-            <h1>CMS</h1>
+            <h1><a href="students.html" class="logo-link">CMS</a></h1>
             <div class="user-info">
-                <i class="fa-solid fa-bell notification-icon"></i>
-                <img src="Students.jpeg" alt="students" id="profile-picture" title="NULP students"/>
-                <p class="user-name">James Bond</p>
+                <div class="notification-container">
+                    <i class="fa-solid fa-bell notification-icon"></i>
+                    <span class="notification-indicator"></span>
+                    <div class="notification-dropdown">
+                        <p><strong>New Messages:</strong></p>
+                        <p><img src="avatar1.jpg" alt="Avatar" class="notif-avatar"> John Doe: "Hey!"</p>
+                        <p><img src="avatar2.jpg" alt="Avatar" class="notif-avatar"> Jane Smith: "Meeting at 3?"</p>
+                    </div>
+                </div>
+                <div class="profile-container">
+                    <img src="Students.jpeg" alt="students" id="profile-picture"/>
+                    <p class="user-name">James Bond</p>
+                    <div class="profile-dropdown">
+                        <p>Profile</p>
+                        <p>Log Out</p>
+                    </div>
+                </div>
             </div>
             <div class="burger" onclick="toggleMenu()">
                 <span></span>
@@ -25,52 +39,63 @@
         </nav>
     </header>
 
-    <nav id="mobile-menu" class="hidden">
-        <ul>
-            <li><a href="main.html">Dashboard</a></li>
-            <li><a href="students.html">Students</a></li>
-            <li><a href="tasks.html">Tasks</a></li>
-        </ul>
-    </nav>
-
     <section class="main-body">
         <aside>
             <nav id="side-nav">
                 <ul>
                     <li><a href="main.html">Dashboard</a></li>
-                    <li><a href="students.html">Students</a></li>
+                    <li><a href="students.html" class="active">Students</a></li>
                     <li><a href="tasks.html">Tasks</a></li>
                 </ul>
             </nav>
         </aside>
         <div class="table">
-            <table>
+            <button class="add-student-btn" onclick="openModal()">Add Student</button>
+            <table id="student-table">
                 <tr>
-                    <th colspan="7"><h2>Students</h2></th>
+                    <th><input type="checkbox" id="select-all"></th>
+                    <th>Group</th>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Birthday</th>
+                    <th>Status</th>
+                    <th>Options</th>
                 </tr>
                 <tr>
-                    <td><input type="checkbox" name="rules"></td>
-                    <td>Group</td>
-                    <td>Name</td>
-                    <td>Gender</td>
-                    <td>Birthday</td>
-                    <td>Status</td>
-                    <td>Options</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="rules"></td>
+                    <td><input type="checkbox"></td>
                     <td>PZ-24</td>
-                    <td>Milchenko Yaroslav</td>
+                    <td>James Bond</td>
                     <td>M</td>
                     <td>11.07.2006</td>
-                    <td></td>
+                    <td><span class="status online">Online</span></td>
                     <td>
-                        <button id="edit"><i class="fa-solid fa-pen"></i></button>
-                        <button id="delete"><i class="fa-solid fa-x"></i></button>
+                        <button class="edit"><i class="fa-solid fa-pen"></i></button>
+                        <button class="delete"><i class="fa-solid fa-x"></i></button>
                     </td>
                 </tr>
             </table>
         </div>
     </section>
+
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add Student</h2>
+            <form id="student-form">
+                <label>Name:</label>
+                <input type="text" id="student-name" required>
+                <label>Group:</label>
+                <input type="text" id="student-group" required>
+                <label>Gender:</label>
+                <select id="student-gender">
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                </select>
+                <label>Birthday:</label>
+                <input type="date" id="student-birthday" required>
+                <button type="submit" class="create">Create</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

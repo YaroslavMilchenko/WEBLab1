@@ -5,7 +5,8 @@
 }
 
 body {
-  background-color: white; 
+  background-color: white;
+  font-family: Arial, sans-serif;
   width: 100%;
   display: grid;
   overflow-x: hidden;
@@ -49,6 +50,7 @@ tr:hover {
   transition: 0.3s;
 }
 
+/* Стили для бокового меню */
 #side-nav {
   flex: 1;
   margin-left: 20px;
@@ -59,6 +61,19 @@ tr:hover {
   padding: 0;
 }
 
+#side-nav li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+#side-nav li a:hover {
+  background-color: #555;
+  color: white;
+}
+
+/* Верхнее меню */
 header {
   width: 100%;
   background-color: lightgray;
@@ -69,38 +84,31 @@ header {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  background-color: lightgray; 
+  background-color: lightgray;
   align-items: center;
   padding: 20px 0;
 }
 
 h1 {
-  margin-right: 900px;
+  margin-right: auto;
 }
 
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-li a {
-  display: block;
-  color: #000;
-  padding: 8px 16px;
+.logo-link {
   text-decoration: none;
+  color: black;
 }
 
-li a:hover {
-  background-color: #555;
-  color: white;
-}
-
-/* Улучшенный блок с аватаркой и именем */
+/* Иконка уведомлений и профиль */
 .user-info {
   display: flex;
   align-items: center;
   gap: 15px;
+}
+
+.notification-container,
+.profile-container {
+  position: relative;
+  cursor: pointer;
 }
 
 .notification-icon {
@@ -117,6 +125,38 @@ li a:hover {
 .user-name {
   font-size: 16px;
   font-weight: bold;
+}
+
+/* Всплывающие окна */
+.notification-dropdown,
+.profile-dropdown {
+  display: none;
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 10px;
+  box-shadow: 0 2px 5px gray;
+  border-radius: 5px;
+  width: 150px;
+  text-align: center;
+  z-index: 10;
+}
+
+.notification-container:hover .notification-dropdown,
+.profile-container:hover .profile-dropdown {
+  display: block;
+}
+
+.notification-indicator {
+  background: red;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
 
 /* Бургер-меню */
@@ -162,18 +202,8 @@ li a:hover {
   html, body {
       overflow-x: hidden;
   }
-  body {
-      position: relative;
-  }
-  section, header, aside, #side-nav {
-      max-width: 100vw;
-      margin: 0;
-  }
   section {
       flex-direction: column;
-  }
-  header h1 {
-      margin: 0;
   }
   .burger {
       display: flex;
@@ -181,13 +211,111 @@ li a:hover {
   .user-info {
       display: none;
   }
-  #side-nav ul {
-      width: auto;
-      display: flex;
-      justify-content: space-between;
-      padding: 5px;
-  }
   #mobile-menu.show {
       display: block;
   }
+}
+
+/* Модальное окно */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  width: 400px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.modal-content h2 {
+  margin-bottom: 15px;
+}
+
+.modal-content label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+.modal-content input,
+.modal-content select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button.create {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+button.create:hover {
+  background: #0056b3;
+}
+
+.close {
+  float: right;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Стили кнопки "Add Student" */
+.add-student-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.add-student-btn:hover {
+  background-color: #218838;
+}
+
+/* Стили для таблицы */
+.status {
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+}
+
+.status.online {
+  background: green;
+}
+
+.status.offline {
+  background: gray;
+}
+
+button.edit,
+button.delete {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+button.edit:hover i,
+button.delete:hover i {
+  opacity: 0.7;
 }
