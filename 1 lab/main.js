@@ -1,12 +1,28 @@
 document.addEventListener("DOMContentLoaded", function () {
     const burger = document.querySelector(".burger");
-    const mobileMenu = document.getElementById("mobile-menu");
+    const mobileMenu = document.createElement("nav");
+    mobileMenu.id = "mobile-menu";
+    mobileMenu.innerHTML = `
+        <ul>
+            <li><a href="main.html">Dashboard</a></li>
+            <li><a href="students.html" class="active">Students</a></li>
+            <li><a href="tasks.html">Tasks</a></li>
+        </ul>
+    `;
+    document.body.appendChild(mobileMenu);
+    
     const modal = document.getElementById("modal");
     const closeModal = document.querySelector(".close");
     const createBtn = document.querySelector(".create");
-
+    const userInfo = document.querySelector(".user-info");
+    
     burger.addEventListener("click", function () {
         mobileMenu.classList.toggle("show");
+        if (mobileMenu.classList.contains("show")) {
+            mobileMenu.prepend(userInfo);
+        } else {
+            document.querySelector("#header-nav").appendChild(userInfo);
+        }
     });
 
     document.querySelector(".notification-icon").addEventListener("click", function () {
@@ -23,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     createBtn.addEventListener("click", function (event) {
-        event.preventDefault(); // 🛑 Остановка перезагрузки страницы
+        event.preventDefault(); // 🛑 Prevent page refresh
 
         let name = document.getElementById("student-name").value;
         let group = document.getElementById("student-group").value;
@@ -32,15 +48,15 @@ document.addEventListener("DOMContentLoaded", function () {
         if (name === "" || group === "" || birthday === "") {
             alert("Fill all fields!");
         } else {
-            // Преобразование даты в формат ДД.ММ.ГГГГ
+            // Convert date to DD.MM.YYYY format
             let dateObj = new Date(birthday);
             let day = String(dateObj.getDate()).padStart(2, '0');
-            let month = String(dateObj.getMonth() + 1).padStart(2, '0'); // +1, так как месяцы начинаются с 0
+            let month = String(dateObj.getMonth() + 1).padStart(2, '0');
             let year = dateObj.getFullYear();
             let formattedBirthday = `${day}.${month}.${year}`;
 
             const table = document.querySelector("table");
-            const newRow = table.insertRow(-1); // Добавляем строку в конец таблицы
+            const newRow = table.insertRow(-1);
 
             newRow.innerHTML = `
                 <td><input type="checkbox"></td>
@@ -55,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 </td>
             `;
 
-            // Очистка полей ввода
+            // Clear input fields
             document.getElementById("student-name").value = "";
             document.getElementById("student-group").value = "";
             document.getElementById("student-birthday").value = "";
