@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="https://kit.fontawesome.com/acdc2463b2.js" crossorigin="anonymous"></script>
+    <script defer src="main.js"></script>
+</head>
+<body>
+    <header class="header">
+        <nav id="header-nav">
+            <h1><a href="main.html" class="logo-link">CMS</a></h1>
+            <div class="user-info">
+                <div class="notification-container">
+                    <i class="fa-solid fa-bell notification-icon"></i>
+                    <span class="notification-indicator"></span>
+                    <div class="notification-dropdown">
+                        <p><strong>New Messages:</strong></p>
+                        <p><img src="avatar1.jpg" alt="Avatar" class="notif-avatar"> John Doe: "Hey!"</p>
+                        <p><img src="avatar2.jpg" alt="Avatar" class="notif-avatar"> Jane Smith: "Meeting at 3?"</p>
+                    </div>
+                </div>
+                <div class="profile-container">
+                    <img src="Students.jpeg" alt="students" id="profile-picture"/>
+                    <p class="user-name">James Bond</p>
+                    <div class="profile-dropdown">
+                        <p>Profile</p>
+                        <p>Log Out</p>
+                    </div>
+                </div>
+            </div>
+            <div class="burger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+</body>
+</html>
