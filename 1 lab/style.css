@@ -319,3 +319,36 @@ button.edit:hover i,
 button.delete:hover i {
   opacity: 0.7;
 }
+
+#pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  gap: 5px;
+}
+
+.page-btn {
+  padding: 8px 12px;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.page-btn:hover {
+  background: #0056b3;
+}
+
+.page-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.page-btn.active {
+  background: #0056b3;
+  font-weight: bold;
+}
+
+
