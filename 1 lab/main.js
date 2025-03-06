@@ -4,20 +4,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const modal = document.getElementById("modal");
     const closeModal = document.querySelector(".close");
     const createBtn = document.querySelector(".create");
-    const userInfo = document.querySelector(".user-info");
-    const notificationIcon = document.querySelector(".notification-icon");
-    const notificationIndicator = document.querySelector(".notification-indicator");
     const table = document.querySelector("table tbody");
     const rowsPerPage = 10;
     let currentPage = 1;
 
     burger.addEventListener("click", function () {
         mobileMenu.classList.toggle("show");
-    });
-
-    notificationIcon.addEventListener("click", function () {
-        notificationIndicator.style.display = "none";
-        window.location.href = "messages.html";
     });
 
     function openModal() {
@@ -28,8 +20,39 @@ document.addEventListener("DOMContentLoaded", function () {
         modal.style.display = "none";
     });
 
+    function loadStudents() {
+        fetch("load_students.php")
+            .then(response => response.json())
+            .then(data => {
+                table.innerHTML = "";
+                data.forEach(student => {
+                    addStudentToTable(student);
+                });
+                paginateTable();
+            })
+            .catch(error => console.error("Error loading students:", error));
+    }
+
+    function addStudentToTable(student) {
+        const newRow = document.createElement("tr");
+        newRow.innerHTML = `
+            <td><input type="checkbox"></td>
+            <td>${student.group}</td>
+            <td>${student.name}</td>
+            <td>${student.gender}</td>
+            <td>${student.birthday}</td>
+            <td><span class="status ${student.status === 'Online' ? 'online' : 'offline'}">${student.status}</span></td>
+            <td>
+                <button class="edit"><i class="fa-solid fa-pen"></i></button>
+                <button class="delete"><i class="fa-solid fa-x"></i></button>
+            </td>
+        `;
+        table.appendChild(newRow);
+        attachRowEvents(newRow);
+    }
+
     createBtn.addEventListener("click", function (event) {
-        event.preventDefault(); // 🛑 Prevent page reload
+        event.preventDefault();
 
         let name = document.getElementById("student-name").value;
         let group = document.getElementById("student-group").value;
@@ -37,55 +60,54 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (name === "" || group === "" || birthday === "") {
             alert("Fill all fields!");
-        } else {
-            let dateObj = new Date(birthday);
-            let day = String(dateObj.getDate()).padStart(2, '0');
-            let month = String(dateObj.getMonth() + 1).padStart(2, '0');
-            let year = dateObj.getFullYear();
-            let formattedBirthday = `${day}.${month}.${year}`;
-
-            const newRow = document.createElement("tr");
-            newRow.innerHTML = `
-                <td><input type="checkbox"></td>
-                <td>${group}</td>
-                <td>${name}</td>
-                <td>M</td> 
-                <td>${formattedBirthday}</td> 
-                <td><span class="status online">Online</span></td>
-                <td>
-                    <button class="edit"><i class="fa-solid fa-pen"></i></button>
-                    <button class="delete"><i class="fa-solid fa-x"></i></button>
-                </td>
-            `;
-
-            table.appendChild(newRow);
-            paginateTable();
-
-            document.getElementById("student-name").value = "";
-            document.getElementById("student-group").value = "";
-            document.getElementById("student-birthday").value = "";
-
-            modal.style.display = "none";
+            return;
         }
+
+        let formData = new FormData();
+        formData.append("name", name);
+        formData.append("group", group);
+        formData.append("birthday", birthday);
+
+        fetch("add_student.php", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                loadStudents(); // Reload students after adding
+            } else {
+                console.error("Error adding student:", data.error);
+            }
+        });
+
+        modal.style.display = "none";
     });
 
-    window.openModal = openModal;
+    function attachRowEvents(row) {
+        row.querySelector(".delete").addEventListener("click", function () {
+            row.remove();
+            paginateTable();
+        });
 
-    mobileMenu.innerHTML = `
-        <div class="mobile-user-info">
-            <img src="user-avatar.jpg" alt="User Avatar" class="mobile-avatar">
-            <span class="mobile-username">Username</span>
-            <div class="notification-container">
-                <i class="fa-solid fa-bell notification-icon"></i>
-                <span class="notification-indicator"></span>
-            </div>
-        </div>
-        <ul>
-            <li><a href="main.html">Dashboard</a></li>
-            <li><a href="students.html" class="active">Students</a></li>
-            <li><a href="tasks.html">Tasks</a></li>
-        </ul>
-    `;
+        row.querySelector(".edit").addEventListener("click", function () {
+            const cells = row.children;
+            document.getElementById("student-name").value = cells[2].textContent;
+            document.getElementById("student-group").value = cells[1].textContent;
+            document.getElementById("student-birthday").value = cells[4].textContent.split(".").reverse().join("-");
+            modal.style.display = "block";
+
+            createBtn.onclick = function (event) {
+                event.preventDefault();
+                cells[2].textContent = document.getElementById("student-name").value;
+                cells[1].textContent = document.getElementById("student-group").value;
+                let newBirthday = document.getElementById("student-birthday").value.split("-").reverse().join(".");
+                cells[4].textContent = newBirthday;
+                modal.style.display = "none";
+                createBtn.onclick = createStudent;
+            };
+        });
+    }
 
     function paginateTable() {
         const rows = Array.from(table.children);
@@ -98,10 +120,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const paginationContainer = document.getElementById("pagination") || document.createElement("div");
         paginationContainer.id = "pagination";
         paginationContainer.innerHTML = "";
+        paginationContainer.style.textAlign = "center";
+        paginationContainer.style.marginTop = "10px";
 
         if (totalPages > 1) {
             const prevButton = document.createElement("button");
-            prevButton.textContent = "<";
+            prevButton.textContent = "←";
             prevButton.classList.add("page-btn");
             prevButton.disabled = currentPage === 1;
             prevButton.addEventListener("click", function () {
@@ -125,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             const nextButton = document.createElement("button");
-            nextButton.textContent = ">";
+            nextButton.textContent = "→";
             nextButton.classList.add("page-btn");
             nextButton.disabled = currentPage === totalPages;
             nextButton.addEventListener("click", function () {
@@ -135,10 +159,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             });
             paginationContainer.appendChild(nextButton);
-
-            document.body.appendChild(paginationContainer);
         }
+
+        document.body.appendChild(paginationContainer);
     }
 
-    paginateTable();
+    loadStudents();
 });
