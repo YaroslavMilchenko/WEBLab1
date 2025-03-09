@@ -400,3 +400,93 @@ button.delete:hover i {
   background: #0056b3;
   font-weight: bold;
 }
+
+.notif-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.profile-container img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.notif-avatar, .profile-container img {
+  object-fit: cover;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+/* Стили для сообщения */
+.notification-dropdown p {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.notification-dropdown p:hover {
+  background-color: #f0f0f0;
+}
+
+/* Стили для аватарки */
+.notif-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+/* Стиль для текста сообщения */
+.message {
+  font-size: 14px;
+  color: #333;
+}
+
+/* Индикатор непрочитанного сообщения */
+.unread-indicator {
+  width: 8px;
+  height: 8px;
+  background-color: red;
+  border-radius: 50%;
+  margin-left: auto;
+  display: inline-block;
+}
+
+/* Скрыть индикатор при прочтении */
+.message.read .unread-indicator {
+  display: none;
+}
+
+/* Стили для шапки уведомлений */
+.notification-container {
+  position: relative;
+}
+
+.notification-icon {
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+}
+
+.notification-indicator {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+  display: none;
+}
+
+.notification-container .notification-indicator.active {
+  display: inline-block;
+}
+
