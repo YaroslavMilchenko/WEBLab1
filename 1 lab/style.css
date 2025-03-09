@@ -112,8 +112,75 @@ h1 {
 }
 
 .notification-icon {
-  font-size: 20px;
+  font-size: 22px;
   cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.notification-container:hover .notification-icon {
+  color: #007bff;
+}
+
+/* Индикатор уведомлений */
+.notification-indicator {
+  display: none;
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  background: #ff3b3b;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+/* Показывать индикатор только при наличии уведомлений */
+.notification-container.has-notifications .notification-indicator {
+  display: block;
+}
+
+/* Всплывающие окна */
+.notification-dropdown,
+.profile-dropdown {
+  display: none;
+  position: absolute;
+  top: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  width: 200px;
+  text-align: left;
+  z-index: 10;
+}
+
+/* Стили списка уведомлений */
+.notification-dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notification-dropdown li {
+  padding: 8px 10px;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.notification-dropdown li:last-child {
+  border-bottom: none;
+}
+
+.notification-dropdown li:hover {
+  background: #f1f1f1;
+}
+
+.notification-container:hover .notification-dropdown,
+.profile-container:hover .profile-dropdown {
+  display: block;
 }
 
 #profile-picture {
@@ -125,38 +192,6 @@ h1 {
 .user-name {
   font-size: 16px;
   font-weight: bold;
-}
-
-/* Всплывающие окна */
-.notification-dropdown,
-.profile-dropdown {
-  display: none;
-  position: absolute;
-  top: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: white;
-  padding: 10px;
-  box-shadow: 0 2px 5px gray;
-  border-radius: 5px;
-  width: 150px;
-  text-align: center;
-  z-index: 10;
-}
-
-.notification-container:hover .notification-dropdown,
-.profile-container:hover .profile-dropdown {
-  display: block;
-}
-
-.notification-indicator {
-  background: red;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  position: absolute;
-  top: 5px;
-  right: 5px;
 }
 
 /* Бургер-меню */
@@ -232,10 +267,11 @@ h1 {
 
 .modal-content {
   background: white;
-  padding: 20px;
-  width: 400px;
-  border-radius: 10px;
-  text-align: center;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
 }
 
 .modal-content h2 {
@@ -320,6 +356,20 @@ button.delete:hover i {
   opacity: 0.7;
 }
 
+button.edit i, button.delete i {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+button.edit:hover i {
+  transform: rotate(-10deg);
+  color: #007bff;
+}
+
+button.delete:hover i {
+  transform: rotate(360deg);
+  color: red;
+}
+
 #pagination {
   display: flex;
   justify-content: center;
@@ -350,5 +400,3 @@ button.delete:hover i {
   background: #0056b3;
   font-weight: bold;
 }
-
-
