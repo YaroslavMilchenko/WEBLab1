@@ -26,10 +26,10 @@
                     <img src="Students.jpeg" alt="students" id="profile-picture"/>
                     <p class="user-name">James Bond</p>
                     <div class="profile-dropdown">
-                        <p>Profile</p>
-                        <p>Log Out</p>
+                        <a href="profile.html" class="dropdown-link"><i class="fa-solid fa-user"></i> Profile</a>
+                        <a href="logout.html" class="dropdown-link"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
                     </div>
-                </div>
+                </div>                
             </div>
             <div class="burger" onclick="toggleMenu()">
                 <span></span>
@@ -97,6 +97,35 @@
             </form>
         </div>
     </div>
+    <div id="delete-confirm" class="modal hidden">
+        <div class="modal-content">
+            <p>Are you sure you want to delete this student?</p>
+            <button onclick="deleteStudent()">Yes</button>
+            <button onclick="closeDeleteModal()">No</button>
+        </div>
+    </div>
+<div id="add-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="close-add">&times;</span>
+        <h2>Add Student</h2>
+        <input type="text" id="add-name" placeholder="Name">
+        <input type="text" id="add-group" placeholder="Group">
+        <input type="date" id="add-birthday">
+        <button id="create-btn">Create</button>
+    </div>
+</div>
+
+<div id="edit-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="close-edit">&times;</span>
+        <h2>Edit Student</h2>
+        <input type="text" id="edit-name">
+        <input type="text" id="edit-group">
+        <input type="date" id="edit-birthday">
+        <button id="change-btn">Change</button>
+    </div>
+</div>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {

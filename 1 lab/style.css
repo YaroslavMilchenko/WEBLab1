@@ -366,7 +366,7 @@ button.edit:hover i {
 }
 
 button.delete:hover i {
-  transform: rotate(360deg);
+  transform: scale(1.5);
   color: red;
 }
 
@@ -490,3 +490,40 @@ button.delete:hover i {
   display: inline-block;
 }
 
+.profile-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-dropdown {
+  display: none;
+  position: absolute;
+  top: 50px; /* Отступ вниз */
+  right: 0;
+  background: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  width: 180px;
+  padding: 10px 0;
+  z-index: 10;
+}
+
+.profile-dropdown a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  color: #333;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+.profile-dropdown a:hover {
+  background: #f0f0f0;
+}
+
+.profile-container:hover .profile-dropdown {
+  display: block;
+}

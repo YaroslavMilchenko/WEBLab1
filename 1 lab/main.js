@@ -4,22 +4,48 @@ document.addEventListener("DOMContentLoaded", function () {
     const modal = document.getElementById("modal");
     const closeModal = document.querySelector(".close");
     const createBtn = document.querySelector(".create");
-    const table = document.querySelector("table");
     const tableBody = document.querySelector("table tbody");
     const rowsPerPage = 10;
     let currentPage = 1;
     let students = [];
+    let editingIndex = null;
 
     burger.addEventListener("click", function () {
         mobileMenu.classList.toggle("show");
     });
 
-    function openModal() {
-        modal.style.display = "block";
+    function formatDate(dateStr) {
+        const [year, month, day] = dateStr.split("-");
+        return `${day}-${month}-${year}`;
     }
 
+    function unformatDate(dateStr) {
+        const [day, month, year] = dateStr.split("-");
+        return `${year}-${month}-${day}`;
+    }
+
+    function openModal(editIndex = null) {
+    modal.style.display = "block";
+    editingIndex = editIndex;
+
+    const nameField = document.getElementById("student-name");
+    const groupField = document.getElementById("student-group");
+    const birthdayField = document.getElementById("student-birthday");
+
+    if (editIndex !== null) {
+        document.getElementById("modal-title").textContent = "Edit Student";
+        nameField.value = students[editIndex].name;
+        groupField.value = students[editIndex].group;
+        birthdayField.value = unformatDate(students[editIndex].birthday);
+        createBtn.textContent = "Save";
+    } else {
+        document.getElementById("modal-title").textContent = "Add Student";
+        createBtn.textContent = "Create";
+    }
+}
     closeModal.addEventListener("click", function () {
         modal.style.display = "none";
+        editingIndex = null;
     });
 
     createBtn.addEventListener("click", function (event) {
@@ -31,27 +57,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (name === "" || group === "" || birthday === "") {
             alert("Fill all fields!");
-        } else {
-            let dateObj = new Date(birthday);
-            let day = String(dateObj.getDate()).padStart(2, '0');
-            let month = String(dateObj.getMonth() + 1).padStart(2, '0');
-            let year = dateObj.getFullYear();
-            let formattedBirthday = `${day}.${month}.${year}`;
+            return;
+        }
 
+        const formattedBirthday = formatDate(birthday);
+
+        if (editingIndex !== null) {
+            students[editingIndex].name = name;
+            students[editingIndex].group = group;
+            students[editingIndex].birthday = formattedBirthday;
+        } else {
             students.push({
                 group,
                 name,
-                gender: "M", 
+                gender: "M",
                 birthday: formattedBirthday,
                 status: "Online"
             });
-
-            paginateTable();
-            document.getElementById("student-name").value = "";
-            document.getElementById("student-group").value = "";
-            document.getElementById("student-birthday").value = "";
-            modal.style.display = "none";
         }
+
+        paginateTable();
+        modal.style.display = "none";
+        editingIndex = null;
     });
 
     function paginateTable() {
@@ -64,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const start = (currentPage - 1) * rowsPerPage;
         const end = start + rowsPerPage;
 
-        students.slice(start, end).forEach(student => {
+        students.slice(start, end).forEach((student, index) => {
             const newRow = document.createElement("tr");
             newRow.innerHTML = `
                 <td><input type="checkbox"></td>
@@ -74,14 +101,33 @@ document.addEventListener("DOMContentLoaded", function () {
                 <td>${student.birthday}</td>
                 <td><span class="status online">${student.status}</span></td>
                 <td>
-                    <button class="edit"><i class="fa-solid fa-pen"></i></button>
-                    <button class="delete"><i class="fa-solid fa-x"></i></button>
+                    <button class="edit" data-index="${start + index}"><i class="fa-solid fa-pen"></i></button>
+                    <button class="delete" data-index="${start + index}"><i class="fa-solid fa-x"></i></button>
                 </td>
             `;
             tableBody.appendChild(newRow);
         });
 
+        addEventListeners();
         renderPaginationControls(totalPages);
+    }
+
+    function addEventListeners() {
+        document.querySelectorAll(".edit").forEach(button => {
+            button.addEventListener("click", function () {
+                openModal(this.dataset.index);
+            });
+        });
+
+        document.querySelectorAll(".delete").forEach(button => {
+            button.addEventListener("click", function () {
+                const index = this.dataset.index;
+                if (confirm("Are you sure you want to delete this student?")) {
+                    students.splice(index, 1);
+                    paginateTable();
+                }
+            });
+        });
     }
 
     function renderTableHeader() {
