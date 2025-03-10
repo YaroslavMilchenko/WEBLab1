@@ -28,8 +28,8 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px; /* Adjusted padding for edge alignment */
-  max-width: 100%; /* Full width for edge-to-edge alignment */
+  padding: 15px 20px;
+  max-width: 100%;
   margin: 0;
 }
 
@@ -39,7 +39,7 @@ h1 {
   font-weight: 700;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  margin-left: 10px; /* Closer to the left edge */
+  margin-left: 10px;
 }
 
 .logo-link {
@@ -53,12 +53,12 @@ h1 {
   transform: scale(1.05);
 }
 
-/* User info (computer version: notification left, avatar and name right) */
+/* User info */
 .user-info {
   display: flex;
   align-items: center;
-  gap: 15px; /* Reduced gap for closer alignment */
-  margin-right: 10px; /* Closer to the right edge */
+  gap: 15px;
+  margin-right: 10px;
 }
 
 .notification-container {
@@ -127,33 +127,38 @@ h1 {
   transform: scale(1.1);
 }
 
-/* Dropdowns (Persistent on hover) */
+/* Dropdowns (Hover-based with animation) */
 .notification-container:hover .notification-dropdown,
 .profile-container:hover .profile-dropdown {
   display: block;
-  position: fixed; /* Fixed position to prevent scrolling issues */
+  opacity: 1;
 }
 
 .notification-dropdown,
 .profile-dropdown {
   display: none;
+  position: absolute;
   background: white;
   padding: 12px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   width: 220px;
   text-align: left;
-  z-index: 1000; /* Higher z-index */
+  z-index: 1001;
+  max-height: 300px;
+  overflow-y: auto;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .notification-dropdown {
-  top: 60px; /* Adjusted for header height */
-  left: 20px; /* Aligned closer to the left edge */
+  top: 100%;
+  left: 0;
 }
 
 .profile-dropdown {
-  top: 60px;
-  right: 20px; /* Aligned closer to the right edge */
+  top: 100%;
+  right: 0;
   width: 180px;
 }
 
@@ -210,7 +215,7 @@ h1 {
   color: white;
 }
 
-/* Burger menu (Vertical orientation for mobile) */
+/* Burger menu */
 .burger {
   display: none;
   flex-direction: column;
@@ -240,28 +245,47 @@ h1 {
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* Mobile menu */
+/* Mobile menu with animations */
 #mobile-menu {
   display: none;
   position: fixed;
   top: 0;
-  right: -250px; /* Hidden off-screen to the right */
-  width: 250px; /* Fixed width for vertical menu */
-  height: 100%; /* Full height for vertical orientation */
+  right: -250px;
+  width: 250px;
+  height: 100%;
   background: white;
   box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
-  transition: right 0.3s ease;
-  z-index: 999; /* Below header but above content */
+  transition: right 0.4s ease, opacity 0.3s ease, transform 0.3s ease; /* Added opacity and transform for slide effect */
+  z-index: 999;
+  opacity: 0;
+  transform: translateX(20px); /* Initial offset for slide-in */
 }
 
 #mobile-menu.show {
   display: block;
-  right: 0; /* Slide in from the right */
+  right: 0;
+  opacity: 1;
+  transform: translateX(0); /* Slide in */
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+  transition: transform 0.3s ease, color 0.3s ease; /* Animation for close button */
+}
+
+.close-btn:hover {
+  color: red;
+  transform: rotate(90deg); /* Rotate on hover */
 }
 
 .mobile-profile {
   display: flex;
-  justify-content: space-between; /* Adjusted for spacing */
+  justify-content: space-between;
   align-items: center;
   gap: 10px;
   padding: 15px;
@@ -284,7 +308,7 @@ h1 {
   color: #333;
   font-size: 16px;
   font-weight: 500;
-  flex-grow: 1; /* Takes available space */
+  flex-grow: 1;
 }
 
 #mobile-menu ul {
@@ -296,7 +320,7 @@ h1 {
 #mobile-menu li a {
   display: block;
   padding: 15px;
-  text-align: left; /* Changed to left for vertical menu */
+  text-align: left;
   border-bottom: 1px solid #ddd;
   color: #000;
   text-decoration: none;
@@ -538,11 +562,6 @@ button.delete i {
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
-button.edit:hover i,
-button.delete:hover i {
-  opacity: 0.7;
-}
-
 button.edit:hover i {
   transform: rotate(-10deg);
   color: #007bff;
@@ -555,7 +574,8 @@ button.delete:hover i {
 
 /* Media queries */
 @media (max-width: 1000px) {
-  html, body {
+  html,
+  body {
     overflow-x: hidden;
   }
   .main-body {
@@ -569,5 +589,35 @@ button.delete:hover i {
   }
   aside {
     display: none;
+  }
+
+  /* Full vertical layout */
+  .table {
+    width: 100%;
+    padding: 10px;
+  }
+
+  table {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  th,
+  td {
+    padding: 8px;
+  }
+
+  .add-student-btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  #pagination {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .page-btn {
+    margin: 5px;
   }
 }

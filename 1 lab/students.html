@@ -38,6 +38,7 @@
             </div>
         </div>
         <div id="mobile-menu">
+            <span class="close-btn" onclick="toggleMenu()">×</span>
             <div class="mobile-profile">
               <div class="notification-container">
                 <i class="fa-solid fa-bell notification-icon"></i>
@@ -104,24 +105,24 @@
 
     <div id="modal" class="modal hidden">
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Add Student</h2>
-            <form id="student-form">
-                <label>Name:</label>
-                <input type="text" id="student-name" required>
-                <label>Group:</label>
-                <input type="text" id="student-group" required>
-                <label>Gender:</label>
-                <select id="student-gender">
-                    <option value="M">Male</option>
-                    <option value="F">Female</option>
-                </select>
-                <label>Birthday:</label>
-                <input type="date" id="student-birthday" required>
-                <button type="submit" class="create">Create</button>
-            </form>
+          <span class="close">×</span>
+          <h2 id="modal-title">Add Student</h2>
+          <form id="student-form">
+            <label>Name:</label>
+            <input type="text" id="student-name" required>
+            <label>Group:</label>
+            <input type="text" id="student-group" required>
+            <label>Gender:</label>
+            <select id="student-gender">
+              <option value="M">Male</option>
+              <option value="F">Female</option>
+            </select>
+            <label>Birthday:</label>
+            <input type="date" id="student-birthday" required>
+            <button type="submit" class="create">Create</button>
+          </form>
         </div>
-    </div>
+      </div>
     <div id="delete-confirm" class="modal hidden">
         <div class="modal-content">
             <p>Are you sure you want to delete this student?</p>
