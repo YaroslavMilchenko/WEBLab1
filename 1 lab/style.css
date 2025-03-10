@@ -12,8 +12,349 @@ body {
   overflow-x: hidden;
 }
 
-section {
+/* Header */
+header {
+  width: 100%;
+  background-color: #e0e0e0;
+  padding: 0;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 2px solid #ccc;
+}
+
+.header-container {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px; /* Adjusted padding for edge alignment */
+  max-width: 100%; /* Full width for edge-to-edge alignment */
+  margin: 0;
+}
+
+h1 {
+  color: #333;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-left: 10px; /* Closer to the left edge */
+}
+
+.logo-link {
+  text-decoration: none;
+  color: #333;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.logo-link:hover {
+  color: #007bff;
+  transform: scale(1.05);
+}
+
+/* User info (computer version: notification left, avatar and name right) */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Reduced gap for closer alignment */
+  margin-right: 10px; /* Closer to the right edge */
+}
+
+.notification-container {
+  order: -1;
+  position: relative;
+  cursor: pointer;
+}
+
+.notification-icon {
+  font-size: 26px;
+  color: #444;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.notification-container:hover .notification-icon {
+  color: #007bff;
+  transform: rotate(15deg);
+}
+
+.notification-indicator {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 12px;
+  height: 12px;
+  background: #ff3b3b;
+  border-radius: 50%;
+  border: 2px solid #e0e0e0;
+  display: none;
+}
+
+.notification-container.has-notifications .notification-indicator,
+.notification-container .notification-indicator.active {
+  display: block;
+}
+
+.profile-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  order: 2;
+  position: relative;
+}
+
+.user-name {
+  color: #333;
+  font-size: 16px;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.profile-container:hover .user-name {
+  color: #007bff;
+}
+
+.profile-container img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+  transition: transform 0.3s ease;
+}
+
+.profile-container:hover img {
+  transform: scale(1.1);
+}
+
+/* Dropdowns (Persistent on hover) */
+.notification-container:hover .notification-dropdown,
+.profile-container:hover .profile-dropdown {
+  display: block;
+  position: fixed; /* Fixed position to prevent scrolling issues */
+}
+
+.notification-dropdown,
+.profile-dropdown {
+  display: none;
+  background: white;
+  padding: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  width: 220px;
+  text-align: left;
+  z-index: 1000; /* Higher z-index */
+}
+
+.notification-dropdown {
+  top: 60px; /* Adjusted for header height */
+  left: 20px; /* Aligned closer to the left edge */
+}
+
+.profile-dropdown {
+  top: 60px;
+  right: 20px; /* Aligned closer to the right edge */
+  width: 180px;
+}
+
+.notification-dropdown p {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.3s ease;
+}
+
+.notification-dropdown p:hover {
+  background-color: #f0f0f0;
+}
+
+.notif-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.message {
+  font-size: 14px;
+  color: #333;
+}
+
+.unread-indicator {
+  width: 8px;
+  height: 8px;
+  background-color: red;
+  border-radius: 50%;
+  margin-left: auto;
+}
+
+.message.read .unread-indicator {
+  display: none;
+}
+
+.profile-dropdown a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  color: #333;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.profile-dropdown a:hover {
+  background: #007bff;
+  color: white;
+}
+
+/* Burger menu (Vertical orientation for mobile) */
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  order: 3;
+}
+
+.burger span {
+  width: 30px;
+  height: 4px;
+  background: #333;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.burger.open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.burger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Mobile menu */
+#mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: -250px; /* Hidden off-screen to the right */
+  width: 250px; /* Fixed width for vertical menu */
+  height: 100%; /* Full height for vertical orientation */
+  background: white;
+  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
+  transition: right 0.3s ease;
+  z-index: 999; /* Below header but above content */
+}
+
+#mobile-menu.show {
+  display: block;
+  right: 0; /* Slide in from the right */
+}
+
+.mobile-profile {
+  display: flex;
+  justify-content: space-between; /* Adjusted for spacing */
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+  background: #f9f9f9;
+}
+
+.mobile-profile .notification-container {
+  order: 0;
+}
+
+.mobile-profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.mobile-profile .user-name {
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+  flex-grow: 1; /* Takes available space */
+}
+
+#mobile-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#mobile-menu li a {
+  display: block;
+  padding: 15px;
+  text-align: left; /* Changed to left for vertical menu */
+  border-bottom: 1px solid #ddd;
+  color: #000;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+#mobile-menu li a:hover {
+  background-color: #555;
+  color: white;
+}
+
+.mobile-profile-dropdown {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid #ddd;
+}
+
+.mobile-profile-dropdown li a {
+  display: block;
+  padding: 15px;
+  text-align: left;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.mobile-profile-dropdown li a:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Main content */
+.main-body {
+  display: flex;
+}
+
+aside {
+  flex: 0 0 200px;
+  margin-left: 20px;
+}
+
+#side-nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#side-nav li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+#side-nav li a:hover,
+#side-nav li a.active {
+  background-color: #555;
+  color: white;
 }
 
 .table {
@@ -25,12 +366,13 @@ table {
   width: 100%;
   border-collapse: collapse;
   background: #fff;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   overflow: hidden;
 }
 
-th, td {
+th,
+td {
   border: 1px solid #ddd;
   padding: 12px;
   text-align: center;
@@ -50,326 +392,7 @@ tr:hover {
   transition: 0.3s;
 }
 
-/* Стили для бокового меню */
-#side-nav {
-  flex: 1;
-  margin-left: 20px;
-}
-
-#side-nav ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-#side-nav li a {
-  display: block;
-  color: #000;
-  padding: 8px 16px;
-  text-decoration: none;
-}
-
-#side-nav li a:hover {
-  background-color: #555;
-  color: white;
-}
-
-/* Верхнее меню */
-header {
-  width: 100%;
-  background-color: lightgray;
-  padding: 0 10%;
-}
-
-#header-nav {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  background-color: lightgray;
-  align-items: center;
-  padding: 20px 0;
-}
-
-h1 {
-  margin-right: auto;
-}
-
-.logo-link {
-  text-decoration: none;
-  color: black;
-}
-
-/* Иконка уведомлений и профиль */
-.user-info {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.notification-container,
-.profile-container {
-  position: relative;
-  cursor: pointer;
-}
-
-.notification-icon {
-  font-size: 22px;
-  cursor: pointer;
-  position: relative;
-  transition: color 0.3s ease;
-}
-
-.notification-container:hover .notification-icon {
-  color: #007bff;
-}
-
-/* Индикатор уведомлений */
-.notification-indicator {
-  display: none;
-  position: absolute;
-  top: -3px;
-  right: -3px;
-  background: #ff3b3b;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  border: 2px solid white;
-}
-
-/* Показывать индикатор только при наличии уведомлений */
-.notification-container.has-notifications .notification-indicator {
-  display: block;
-}
-
-/* Всплывающие окна */
-.notification-dropdown,
-.profile-dropdown {
-  display: none;
-  position: absolute;
-  top: 35px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: white;
-  padding: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  width: 200px;
-  text-align: left;
-  z-index: 10;
-}
-
-/* Стили списка уведомлений */
-.notification-dropdown ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.notification-dropdown li {
-  padding: 8px 10px;
-  border-bottom: 1px solid #ddd;
-  font-size: 14px;
-}
-
-.notification-dropdown li:last-child {
-  border-bottom: none;
-}
-
-.notification-dropdown li:hover {
-  background: #f1f1f1;
-}
-
-.notification-container:hover .notification-dropdown,
-.profile-container:hover .profile-dropdown {
-  display: block;
-}
-
-#profile-picture {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
-
-.user-name {
-  font-size: 16px;
-  font-weight: bold;
-}
-
-/* Бургер-меню */
-.burger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-}
-
-.burger span {
-  width: 30px;
-  height: 4px;
-  background: black;
-  display: block;
-  border-radius: 2px;
-}
-
-/* Мобильное меню */
-#mobile-menu {
-  display: none;
-  position: absolute;
-  top: 60px;
-  left: 0;
-  width: 100%;
-  background: white;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-#mobile-menu ul {
-  list-style: none;
-  padding: 0;
-}
-
-#mobile-menu li {
-  padding: 15px;
-  text-align: center;
-  border-bottom: 1px solid #ddd;
-}
-
-/* Отображение бургера при малом экране */
-@media (max-width: 1000px) {
-  html, body {
-      overflow-x: hidden;
-  }
-  section {
-      flex-direction: column;
-  }
-  .burger {
-      display: flex;
-  }
-  .user-info {
-      display: none;
-  }
-  #mobile-menu.show {
-      display: block;
-  }
-}
-
-/* Модальное окно */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 2;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  align-items: center;
-  justify-content: center;
-}
-
-.modal-content {
-  background: white;
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 50%;
-}
-
-.modal-content h2 {
-  margin-bottom: 15px;
-}
-
-.modal-content label {
-  display: block;
-  margin: 10px 0 5px;
-  font-weight: bold;
-}
-
-.modal-content input,
-.modal-content select {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-button.create {
-  background: #007bff;
-  color: white;
-  border: none;
-  padding: 10px;
-  width: 100%;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: 0.3s;
-}
-
-button.create:hover {
-  background: #0056b3;
-}
-
-.close {
-  float: right;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-/* Стили кнопки "Add Student" */
-.add-student-btn {
-  background-color: #28a745;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  margin-bottom: 15px;
-}
-
-.add-student-btn:hover {
-  background-color: #218838;
-}
-
-/* Стили для таблицы */
-.status {
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: white;
-}
-
-.status.online {
-  background: green;
-}
-
-.status.offline {
-  background: gray;
-}
-
-button.edit,
-button.delete {
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-button.edit:hover i,
-button.delete:hover i {
-  opacity: 0.7;
-}
-
-button.edit i, button.delete i {
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-button.edit:hover i {
-  transform: rotate(-10deg);
-  color: #007bff;
-}
-
-button.delete:hover i {
-  transform: scale(1.5);
-  color: red;
-}
-
+/* Pagination */
 #pagination {
   display: flex;
   justify-content: center;
@@ -401,129 +424,150 @@ button.delete:hover i {
   font-weight: bold;
 }
 
-.notif-avatar {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-}
-
-.profile-container img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
-
-.notif-avatar, .profile-container img {
-  object-fit: cover;
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
 }
 
 .modal.hidden {
   display: none;
 }
 
-/* Стили для сообщения */
-.notification-dropdown p {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.notification-dropdown p:hover {
-  background-color: #f0f0f0;
-}
-
-/* Стили для аватарки */
-.notif-avatar {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  margin-right: 10px;
-}
-
-/* Стиль для текста сообщения */
-.message {
-  font-size: 14px;
-  color: #333;
-}
-
-/* Индикатор непрочитанного сообщения */
-.unread-indicator {
-  width: 8px;
-  height: 8px;
-  background-color: red;
-  border-radius: 50%;
-  margin-left: auto;
-  display: inline-block;
-}
-
-/* Скрыть индикатор при прочтении */
-.message.read .unread-indicator {
-  display: none;
-}
-
-/* Стили для шапки уведомлений */
-.notification-container {
-  position: relative;
-}
-
-.notification-icon {
-  font-size: 24px;
-  cursor: pointer;
-  color: #333;
-}
-
-.notification-indicator {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 10px;
-  height: 10px;
-  background-color: red;
-  border-radius: 50%;
-  display: none;
-}
-
-.notification-container .notification-indicator.active {
-  display: inline-block;
-}
-
-.profile-container {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.profile-dropdown {
-  display: none;
-  position: absolute;
-  top: 50px; /* Отступ вниз */
-  right: 0;
+.modal-content {
   background: white;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  padding: 20px;
   border-radius: 8px;
-  width: 180px;
-  padding: 10px 0;
-  z-index: 10;
 }
 
-.profile-dropdown a {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 15px;
-  color: #333;
-  text-decoration: none;
-  font-size: 16px;
-  transition: background 0.3s;
+.modal-content h2 {
+  margin-bottom: 15px;
 }
 
-.profile-dropdown a:hover {
-  background: #f0f0f0;
-}
-
-.profile-container:hover .profile-dropdown {
+.modal-content label {
   display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+.modal-content input,
+.modal-content select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button.create,
+#create-btn,
+#change-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+button.create:hover,
+#create-btn:hover,
+#change-btn:hover {
+  background: #0056b3;
+}
+
+.close {
+  float: right;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Buttons */
+.add-student-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.add-student-btn:hover {
+  background-color: #218838;
+}
+
+.status {
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+}
+
+.status.online {
+  background: green;
+}
+
+.status.offline {
+  background: gray;
+}
+
+button.edit,
+button.delete {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+button.edit i,
+button.delete i {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+button.edit:hover i,
+button.delete:hover i {
+  opacity: 0.7;
+}
+
+button.edit:hover i {
+  transform: rotate(-10deg);
+  color: #007bff;
+}
+
+button.delete:hover i {
+  transform: scale(1.5);
+  color: red;
+}
+
+/* Media queries */
+@media (max-width: 1000px) {
+  html, body {
+    overflow-x: hidden;
+  }
+  .main-body {
+    flex-direction: column;
+  }
+  .burger {
+    display: flex;
+  }
+  .user-info {
+    display: none;
+  }
+  aside {
+    display: none;
+  }
 }

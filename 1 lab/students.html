@@ -10,7 +10,7 @@
 </head>
 <body>
     <header class="header">
-        <nav id="header-nav">
+        <div class="header-container">
             <h1><a href="main.html" class="logo-link">CMS</a></h1>
             <div class="user-info">
                 <div class="notification-container">
@@ -18,8 +18,8 @@
                     <span class="notification-indicator"></span>
                     <div class="notification-dropdown">
                         <p><strong>New Messages:</strong></p>
-                        <p class="message unread"><img src="avatar1.jpg" alt="Avatar" class="notif-avatar" onError="this.onerror=null;this.src='default-avatar.png';"> John Doe: "Hey!" <span class="unread-indicator"></span></p>
-                        <p class="message unread"><img src="avatar2.jpg" alt="Avatar" class="notif-avatar" onError="this.onerror=null;this.src='default-avatar.png';"> Jane Smith: "Meeting at 3?" <span class="unread-indicator"></span></p>
+                        <p class="message unread"><img src="avatar1.jpg" alt="Avatar" class="notif-avatar"> John Doe: "Hey!" <span class="unread-indicator"></span></p>
+                        <p class="message unread"><img src="avatar2.jpg" alt="Avatar" class="notif-avatar"> Jane Smith: "Meeting at 3?" <span class="unread-indicator"></span></p>
                     </div>
                 </div>
                 <div class="profile-container">
@@ -36,8 +36,33 @@
                 <span></span>
                 <span></span>
             </div>
-        </nav>
+        </div>
+        <div id="mobile-menu">
+            <div class="mobile-profile">
+              <div class="notification-container">
+                <i class="fa-solid fa-bell notification-icon"></i>
+                <span class="notification-indicator"></span>
+                <div class="notification-dropdown">
+                  <p><strong>New Messages:</strong></p>
+                  <p class="message unread"><img src="avatar1.jpg" alt="Avatar" class="notif-avatar"> John Doe: "Hey!" <span class="unread-indicator"></span></p>
+                  <p class="message unread"><img src="avatar2.jpg" alt="Avatar" class="notif-avatar"> Jane Smith: "Meeting at 3?" <span class="unread-indicator"></span></p>
+                </div>
+              </div>
+              <img src="Students.jpeg" alt="students" />
+              <p class="user-name">James Bond</p>
+            </div>
+            <ul>
+              <li><a href="main.html">Dashboard</a></li>
+              <li><a href="students.html">Students</a></li>
+              <li><a href="tasks.html">Tasks</a></li>
+            </ul>
+            <ul class="mobile-profile-dropdown">
+              <li><a href="profile.html">Profile</a></li>
+              <li><a href="logout.html">Log Out</a></li>
+            </ul>
+          </div>
     </header>
+    
 
     <section class="main-body">
         <aside>
