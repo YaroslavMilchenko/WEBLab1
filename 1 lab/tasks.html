@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Students</title>
+    <title>Tasks</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="tasks.css" />
     <script src="https://kit.fontawesome.com/acdc2463b2.js" crossorigin="anonymous"></script>
-    <script defer src="main.js"></script>
+    <script defer src="tasks.js"></script>
 </head>
 <body>
     <header class="header">
@@ -55,26 +56,91 @@
             <ul>
               <li><a href="main.html">Dashboard</a></li>
               <li><a href="students.html">Students</a></li>
-              <li><a href="tasks.html">Tasks</a></li>
+              <li><a href="tasks.html" class="active">Tasks</a></li>
             </ul>
             <ul class="mobile-profile-dropdown">
               <li><a href="profile.html">Profile</a></li>
               <li><a href="logout.html">Log Out</a></li>
             </ul>
-          </div>
+        </div>
     </header>
-    
 
     <section class="main-body">
         <aside>
             <nav id="side-nav">
                 <ul>
                     <li><a href="main.html">Dashboard</a></li>
-                    <li><a href="students.html" class="active">Students</a></li>
-                    <li><a href="tasks.html">Tasks</a></li>
+                    <li><a href="students.html">Students</a></li>
+                    <li><a href="tasks.html" class="active">Tasks</a></li>
                 </ul>
             </nav>
         </aside>
+        <div class="tasks-container">
+            <button class="add-task-btn" onclick="openAddTaskModal()">Add Task</button>
+            <div class="task-columns">
+                <div class="task-column" id="todo">
+                    <h2>ToDo</h2>
+                    <div class="tasks-list" data-status="todo"></div>
+                </div>
+                <div class="task-column" id="in-progress">
+                    <h2>In Progress</h2>
+                    <div class="tasks-list" data-status="in-progress"></div>
+                </div>
+                <div class="task-column" id="done">
+                    <h2>Done</h2>
+                    <div class="tasks-list" data-status="done"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for adding a task -->
+        <div id="add-task-modal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close" onclick="closeAddTaskModal()">×</span>
+                <h2 id="modal-title">Add Task</h2>
+                <form id="task-form">
+                    <label>Status:</label>
+                    <select id="task-status">
+                        <option value="todo">ToDo</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="done">Done</option>
+                    </select>
+                    <label>Name:</label>
+                    <input type="text" id="task-name" required>
+                    <label>Date:</label>
+                    <input type="date" id="task-date" required>
+                    <label>Description:</label>
+                    <textarea id="task-description"></textarea>
+                    <button type="submit" class="add-task">Add</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Modal for viewing/editing a task -->
+        <div id="view-task-modal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close" onclick="closeViewTaskModal()">×</span>
+                <h2 id="view-modal-title">Task View</h2>
+                <div id="task-details">
+                    <div class="task-detail-item">
+                        <i class="fa-solid fa-heading"></i>
+                        <p><strong>Name:</strong> <span id="view-task-name"></span></p>
+                    </div>
+                    <div class="task-detail-item">
+                        <i class="fa-solid fa-calendar"></i>
+                        <p><strong>Date:</strong> <span id="view-task-date"></span></p>
+                    </div>
+                    <div class="task-detail-item">
+                        <i class="fa-solid fa-align-left"></i>
+                        <p><strong>Description:</strong> <span id="view-task-description"></span></p>
+                    </div>
+                </div>
+                <button class="edit-task" onclick="editTask()">Edit</button>
+                <button class="save-task" onclick="saveTaskChanges()">Save</button>
+                <button class="delete-task" onclick="deleteTask()">Delete</button>
+                <button class="cancel-task" onclick="closeViewTaskModal()">Cancel</button>
+            </div>
+        </div>
     </section>
 </body>
 </html>

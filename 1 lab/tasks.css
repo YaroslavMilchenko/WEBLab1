@@ -1,0 +1,288 @@
+/* Tasks Container */
+.tasks-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    flex: 3;
+    overflow-x: auto;
+  }
+  
+  .add-task-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 200px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-task-btn:hover {
+    background-color: #218838;
+  }
+  
+  .task-columns {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+  }
+  
+  .task-column {
+    flex: 1;
+    min-width: 300px;
+    background: #f4f4f4;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .task-column h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #333;
+    text-align: center;
+  }
+  
+  .tasks-list {
+    min-height: 100px;
+    background: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  
+  .task-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .task-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .task-card h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .task-card p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 8px;
+  }
+  
+  .status-select {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #f8f9fa;
+    cursor: pointer;
+  }
+  
+  /* Modal Styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .modal-content {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    width: 400px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  #task-description {
+    width: 100%;
+    height: 80px;
+    resize: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 8px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+  }
+  
+  .add-task {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background 0.3s;
+  }
+  
+  .add-task:hover {
+    background: #0056b3;
+  }
+  
+  /* Modal Buttons for View/Edit */
+  .edit-task,
+  .save-task,
+  .cancel-task,
+  .delete-task {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background 0.3s;
+  }
+  
+  .edit-task:hover,
+  .save-task:hover {
+    background: #0056b3;
+  }
+  
+  .cancel-task,
+  .delete-task {
+    background: #ccc;
+  }
+  
+  .cancel-task:hover {
+    background: #bbb;
+  }
+  
+  .delete-task {
+    background: #dc3545;
+  }
+  
+  .delete-task:hover {
+    background: #c82333;
+  }
+  
+  .edit-task {
+    background: #17a2b8;
+  }
+  
+  .edit-task:hover {
+    background: #138496;
+  }
+  
+  /* Enhanced Task View Modal */
+  #view-task-modal .modal-content {
+    background: linear-gradient(135deg, #ffffff, #f8f9fa);
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 400px;
+    animation: slideIn 0.3s ease-out;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translate(-50%, -70%);
+      opacity: 0;
+    }
+    to {
+      transform: translate(-50%, -50%);
+      opacity: 1;
+    }
+  }
+  
+  #view-task-modal .close {
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.3s ease;
+  }
+  
+  #view-task-modal .close:hover {
+    color: #dc3545;
+  }
+  
+  #view-task-modal h2 {
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+  
+  #task-details {
+    margin-bottom: 20px;
+  }
+  
+  .task-detail-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .task-detail-item i {
+    color: #007bff;
+    font-size: 18px;
+  }
+  
+  .task-detail-item p {
+    margin: 0;
+    font-size: 16px;
+    color: #444;
+  }
+  
+  .task-detail-item strong {
+    color: #333;
+  }
+  
+  /* Media Queries for Mobile */
+  @media (max-width: 1000px) {
+    .task-columns {
+      flex-direction: column;
+    }
+  
+    .task-column {
+      min-width: 100%;
+    }
+  
+    .add-task-btn {
+      width: 100%;
+    }
+  
+    #view-task-modal .modal-content {
+      width: 90%;
+    }
+  
+    .tasks-list {
+      min-height: 150px;
+    }
+  }
