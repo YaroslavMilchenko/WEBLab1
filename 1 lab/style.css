@@ -12,7 +12,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Header */
 header {
   width: 100%;
   background-color: #e0e0e0;
@@ -53,7 +52,6 @@ h1 {
   transform: scale(1.05);
 }
 
-/* User info */
 .user-info {
   display: flex;
   align-items: center;
@@ -127,7 +125,6 @@ h1 {
   transform: scale(1.1);
 }
 
-/* Dropdowns (Hover-based with animation) */
 .notification-container:hover .notification-dropdown,
 .profile-container:hover .profile-dropdown {
   display: block;
@@ -215,7 +212,6 @@ h1 {
   color: white;
 }
 
-/* Burger menu */
 .burger {
   display: none;
   flex-direction: column;
@@ -245,7 +241,6 @@ h1 {
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* Mobile menu with animations */
 #mobile-menu {
   display: none;
   position: fixed;
@@ -255,17 +250,17 @@ h1 {
   height: 100%;
   background: white;
   box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
-  transition: right 0.4s ease, opacity 0.3s ease, transform 0.3s ease; /* Added opacity and transform for slide effect */
+  transition: right 0.4s ease, opacity 0.3s ease, transform 0.3s ease;
   z-index: 999;
   opacity: 0;
-  transform: translateX(20px); /* Initial offset for slide-in */
+  transform: translateX(20px);
 }
 
 #mobile-menu.show {
   display: block;
   right: 0;
   opacity: 1;
-  transform: translateX(0); /* Slide in */
+  transform: translateX(0);
 }
 
 .close-btn {
@@ -275,12 +270,12 @@ h1 {
   font-size: 24px;
   cursor: pointer;
   color: #333;
-  transition: transform 0.3s ease, color 0.3s ease; /* Animation for close button */
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .close-btn:hover {
   color: red;
-  transform: rotate(90deg); /* Rotate on hover */
+  transform: rotate(90deg);
 }
 
 .mobile-profile {
@@ -353,7 +348,6 @@ h1 {
   color: white;
 }
 
-/* Main content */
 .main-body {
   display: flex;
 }
@@ -386,6 +380,13 @@ aside {
   padding: 20px;
 }
 
+.table-title {
+    font-size: 36px;
+    color: #000;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -395,28 +396,31 @@ table {
   overflow: hidden;
 }
 
-th,
+th {
+  background: #d0d0d0;
+  color: #000;
+  font-weight: bold;
+  padding: 15px;
+  border-bottom: 2px solid #ccc;
+  background: #f9f9f9;
+}
+
 td {
   border: 1px solid #ddd;
   padding: 12px;
   text-align: center;
-}
-
-th {
-  background: #f4f4f4;
-  font-weight: bold;
+  color: #000;
 }
 
 tr:nth-child(even) {
-  background: #f9f9f9;
+  background: #f0f0f0;
 }
 
 tr:hover {
-  background: #f1f1f1;
+  background: #e0e0e0;
   transition: 0.3s;
 }
 
-/* Pagination */
 #pagination {
   display: flex;
   justify-content: center;
@@ -427,19 +431,20 @@ tr:hover {
 .page-btn {
   padding: 8px 12px;
   border: none;
-  background: #007bff;
-  color: white;
+  background: #0056b3;
+  color: #fff;
   border-radius: 5px;
   cursor: pointer;
   transition: 0.3s;
 }
 
 .page-btn:hover {
-  background: #0056b3;
+  background: #003d82;
 }
 
 .page-btn:disabled {
-  background: #ccc;
+  background: #999;
+  color: #fff;
   cursor: not-allowed;
 }
 
@@ -448,7 +453,6 @@ tr:hover {
   font-weight: bold;
 }
 
-/* Modal */
 .modal {
   display: none;
   position: fixed;
@@ -467,7 +471,8 @@ tr:hover {
 }
 
 .modal-content {
-  background: white;
+  background: #fff;
+  color: #000;
   position: relative;
   top: 50%;
   left: 50%;
@@ -521,10 +526,9 @@ button.create:hover,
   cursor: pointer;
 }
 
-/* Buttons */
 .add-student-btn {
-  background-color: #28a745;
-  color: white;
+  background-color: #1e7e34;
+  color: #fff;
   padding: 10px 20px;
   border: none;
   cursor: pointer;
@@ -533,7 +537,7 @@ button.create:hover,
 }
 
 .add-student-btn:hover {
-  background-color: #218838;
+  background-color: #155724;
 }
 
 .status {
@@ -572,14 +576,70 @@ button.delete:hover i {
   color: red;
 }
 
-/* Media queries */
+#delete-confirm .modal-content {
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 90%;
+}
+
+#delete-confirm p {
+    font-size: 18px;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+#confirm-delete,
+#cancel-delete {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin: 0 10px;
+}
+
+#confirm-delete {
+    background-color: #dc3545;
+    color: white;
+}
+
+#confirm-delete:hover {
+    background-color: #c82333;
+}
+
+#cancel-delete {
+    background-color: #6c757d;
+    color: white;
+}
+
+#cancel-delete:hover {
+    background-color: #5a6268;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
 @media (max-width: 1000px) {
   html,
   body {
-    overflow-x: hidden;
+    overflow-x: auto;
+    min-width: 1000px;
   }
   .main-body {
-    flex-direction: column;
+    flex-direction: row;
+    min-width: 1000px;
+    overflow-x: auto;
   }
   .burger {
     display: flex;
@@ -590,34 +650,41 @@ button.delete:hover i {
   aside {
     display: none;
   }
-
-  /* Full vertical layout */
   .table {
-    width: 100%;
+    flex: 3;
     padding: 10px;
+    min-width: 700px;
   }
-
   table {
     width: 100%;
     font-size: 14px;
   }
-
   th,
   td {
     padding: 8px;
   }
-
   .add-student-btn {
     width: 100%;
     margin-bottom: 10px;
   }
-
   #pagination {
     flex-wrap: wrap;
     justify-content: center;
   }
-
   .page-btn {
     margin: 5px;
+  }
+  body::-webkit-scrollbar {
+    height: 8px;
+  }
+  body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  body::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+  }
+  body::-webkit-scrollbar-thumb:hover {
+    background: #555;
   }
 }
