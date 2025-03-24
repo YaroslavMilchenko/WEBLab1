@@ -14,16 +14,22 @@
             <h1><a href="main.html" class="logo-link">CMS</a></h1>
             <div class="user-info">
                 <div class="notification-container">
-                    <i class="fa-solid fa-bell notification-icon"></i>
+                    <i class="fa-solid fa-bell notification-icon" aria-label="Notifications"></i>
                     <span class="notification-indicator"></span>
                     <div class="notification-dropdown">
                         <p><strong>New Messages:</strong></p>
-                        <p class="message unread"><img src="avatar1.jpg" alt="Avatar" class="notif-avatar"> John Doe: "Hey!" <span class="unread-indicator"></span></p>
-                        <p class="message unread"><img src="avatar2.jpg" alt="Avatar" class="notif-avatar"> Jane Smith: "Meeting at 3?" <span class="unread-indicator"></span></p>
+                        <p class="message unread">
+                            <img src="avatar1.jpg" alt="Avatar of John Doe" class="notif-avatar"> 
+                            John Doe: "Hey!" <span class="unread-indicator"></span>
+                        </p>
+                        <p class="message unread">
+                            <img src="avatar2.jpg" alt="Avatar of Jane Smith" class="notif-avatar"> 
+                            Jane Smith: "Meeting at 3?" <span class="unread-indicator"></span>
+                        </p>
                     </div>
                 </div>
                 <div class="profile-container">
-                    <img src="Students.jpeg" alt="students" id="profile-picture"/>
+                    <img src="Students.jpeg" alt="Profile picture of James Bond" id="profile-picture"/>
                     <p class="user-name">James Bond</p>
                     <div class="profile-dropdown">
                         <a href="profile.html" class="dropdown-link"><i class="fa-solid fa-user"></i> Profile</a>
@@ -31,25 +37,31 @@
                     </div>
                 </div>                
             </div>
-            <div class="burger" onclick="toggleMenu()">
+            <div class="burger" tabindex="0" onclick="toggleMenu()" onkeydown="if(event.key === 'Enter') toggleMenu()">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
         </div>
-        <div id="mobile-menu">
-            <span class="close-btn" onclick="toggleMenu()">×</span>
+        <div id="mobile-menu" aria-hidden="true">
+            <span class="close-btn" onclick="toggleMenu()" aria-label="Close mobile menu">×</span>
             <div class="mobile-profile">
               <div class="notification-container">
-                <i class="fa-solid fa-bell notification-icon"></i>
+                <i class="fa-solid fa-bell notification-icon" aria-label="Notifications"></i>
                 <span class="notification-indicator"></span>
                 <div class="notification-dropdown">
                   <p><strong>New Messages:</strong></p>
-                  <p class="message unread"><img src="avatar1.jpg" alt="Avatar" class="notif-avatar"> John Doe: "Hey!" <span class="unread-indicator"></span></p>
-                  <p class="message unread"><img src="avatar2.jpg" alt="Avatar" class="notif-avatar"> Jane Smith: "Meeting at 3?" <span class="unread-indicator"></span></p>
+                  <p class="message unread">
+                      <img src="avatar1.jpg" alt="Avatar of John Doe" class="notif-avatar"> 
+                      John Doe: "Hey!" <span class="unread-indicator"></span>
+                  </p>
+                  <p class="message unread">
+                      <img src="avatar2.jpg" alt="Avatar of Jane Smith" class="notif-avatar"> 
+                      Jane Smith: "Meeting at 3?" <span class="unread-indicator"></span>
+                  </p>
                 </div>
               </div>
-              <img src="Students.jpeg" alt="students" />
+              <img src="Students.jpeg" alt="Profile picture of James Bond" />
               <p class="user-name">James Bond</p>
             </div>
             <ul>
@@ -61,11 +73,10 @@
               <li><a href="profile.html">Profile</a></li>
               <li><a href="logout.html">Log Out</a></li>
             </ul>
-          </div>
+        </div>
     </header>
     
-
-    <section class="main-body">
+    <main class="main-body">
         <aside>
             <nav id="side-nav">
                 <ul>
@@ -75,6 +86,26 @@
                 </ul>
             </nav>
         </aside>
-    </section>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const messages = document.querySelectorAll('.message');
+            const notificationIndicator = document.querySelector('.notification-indicator');
+            
+            messages.forEach((message) => {
+                message.addEventListener('click', () => {
+                    if (message.classList.contains('unread')) {
+                        message.classList.remove('unread');
+                        message.classList.add('read');
+                        notificationIndicator.classList.remove('active');
+                    }
+                });
+            });
+            
+            if (document.querySelector('.unread')) {
+                notificationIndicator.classList.add('active');
+            }
+        });
+    </script>
 </body>
 </html>
