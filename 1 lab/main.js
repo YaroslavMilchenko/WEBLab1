@@ -299,7 +299,6 @@ document.addEventListener("DOMContentLoaded", function () {
   paginateTable();
   window.openModal = openModal;
 
-  // Добавляем обработчики для дополнительных модальных окон
   if (closeAddModal) {
     closeAddModal.addEventListener("click", function () {
       addModal.style.display = "none";
