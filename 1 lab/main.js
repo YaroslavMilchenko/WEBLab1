@@ -13,10 +13,15 @@ document.addEventListener("DOMContentLoaded", function () {
   const deleteMessage = document.getElementById("delete-message");
   const confirmDelete = document.getElementById("confirm-delete");
   const cancelDelete = document.getElementById("cancel-delete");
+  const addModal = document.getElementById("add-modal");
+  const editModal = document.getElementById("edit-modal");
+  const closeAddModal = document.getElementById("close-add");
+  const closeEditModal = document.getElementById("close-edit");
 
   function toggleMenu() {
-    mobileMenu.classList.toggle("show");
+    const isOpen = mobileMenu.classList.toggle("show");
     burger.classList.toggle("open");
+    mobileMenu.setAttribute("aria-hidden", !isOpen);
   }
 
   const closeBtn = document.querySelector(".close-btn");
@@ -38,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function openModal(editIndex = null) {
     modal.style.display = "block";
+    modal.setAttribute("aria-hidden", "false");
     editingIndex = editIndex;
 
     const nameField = document.getElementById("student-name");
@@ -64,6 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   closeModal.addEventListener("click", function () {
     modal.style.display = "none";
+    modal.setAttribute("aria-hidden", "true");
     editingIndex = null;
   });
 
@@ -99,6 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     paginateTable();
     modal.style.display = "none";
+    modal.setAttribute("aria-hidden", "true");
     editingIndex = null;
   });
 
@@ -115,15 +123,15 @@ document.addEventListener("DOMContentLoaded", function () {
     students.slice(start, end).forEach((student, index) => {
       const newRow = document.createElement("tr");
       newRow.innerHTML = `
-        <td><input type="checkbox" class="student-checkbox" data-index="${start + index}"></td>
+        <td><input type="checkbox" class="student-checkbox" data-index="${start + index}" aria-label="Select student ${student.name}"></td>
         <td>${student.group}</td>
         <td>${student.name}</td>
         <td>${student.gender}</td>
         <td>${student.birthday}</td>
         <td><span class="status online">${student.status}</span></td>
         <td>
-          <button class="edit" data-index="${start + index}"><i class="fa-solid fa-pen"></i></button>
-          <button class="delete" data-index="${start + index}"><i class="fa-solid fa-x"></i></button>
+          <button class="edit" data-index="${start + index}" aria-label="Edit student ${student.name}"><i class="fa-solid fa-pen"></i></button>
+          <button class="delete" data-index="${start + index}" aria-label="Delete student ${student.name}"><i class="fa-solid fa-x"></i></button>
         </td>
       `;
       tableBody.appendChild(newRow);
@@ -148,29 +156,35 @@ document.addEventListener("DOMContentLoaded", function () {
         if (checkedBoxes.length > 0) {
           deleteMessage.textContent = `Are you sure you want to delete ${checkedBoxes.length} student${checkedBoxes.length > 1 ? "s" : ""}?`;
           deleteModal.style.display = "block";
+          deleteModal.setAttribute("aria-hidden", "false");
           
           confirmDelete.onclick = () => {
             const indices = Array.from(checkedBoxes).map(cb => parseInt(cb.dataset.index)).sort((a, b) => b - a);
             indices.forEach(idx => students.splice(idx, 1));
             paginateTable();
             deleteModal.style.display = "none";
+            deleteModal.setAttribute("aria-hidden", "true");
           };
           
           cancelDelete.onclick = () => {
             deleteModal.style.display = "none";
+            deleteModal.setAttribute("aria-hidden", "true");
           };
         } else {
           deleteMessage.textContent = `Are you sure you want to delete ${students[index].name}?`;
           deleteModal.style.display = "block";
+          deleteModal.setAttribute("aria-hidden", "false");
           
           confirmDelete.onclick = () => {
             students.splice(index, 1);
             paginateTable();
             deleteModal.style.display = "none";
+            deleteModal.setAttribute("aria-hidden", "true");
           };
           
           cancelDelete.onclick = () => {
             deleteModal.style.display = "none";
+            deleteModal.setAttribute("aria-hidden", "true");
           };
         }
       });
@@ -201,7 +215,7 @@ document.addEventListener("DOMContentLoaded", function () {
     headerRow.innerHTML = `
       <th>
         <label for="select-all" class="sr-only">Select all students</label>
-        <input type="checkbox" id="select-all">
+        <input type="checkbox" id="select-all" aria-label="Select all students">
       </th>
       <th>Group</th>
       <th>Name</th>
@@ -228,6 +242,7 @@ document.addEventListener("DOMContentLoaded", function () {
       prevButton.textContent = "<";
       prevButton.classList.add("page-btn");
       prevButton.disabled = currentPage === 1;
+      prevButton.setAttribute("aria-label", "Previous page");
       prevButton.addEventListener("click", function () {
         if (currentPage > 1) {
           currentPage--;
@@ -240,6 +255,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const pageButton = document.createElement("button");
         pageButton.textContent = i;
         pageButton.classList.add("page-btn");
+        pageButton.setAttribute("aria-label", `Page ${i}`);
         if (i === currentPage) pageButton.classList.add("active");
         pageButton.addEventListener("click", function () {
           currentPage = i;
@@ -251,6 +267,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const nextButton = document.createElement("button");
       nextButton.textContent = ">";
       nextButton.classList.add("page-btn");
+      nextButton.setAttribute("aria-label", "Next page");
       nextButton.disabled = currentPage === totalPages;
       nextButton.addEventListener("click", function () {
         if (currentPage < totalPages) {
@@ -281,4 +298,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
   paginateTable();
   window.openModal = openModal;
+
+  // Добавляем обработчики для дополнительных модальных окон
+  if (closeAddModal) {
+    closeAddModal.addEventListener("click", function () {
+      addModal.style.display = "none";
+      addModal.setAttribute("aria-hidden", "true");
+    });
+  }
+
+  if (closeEditModal) {
+    closeEditModal.addEventListener("click", function () {
+      editModal.style.display = "none";
+      editModal.setAttribute("aria-hidden", "true");
+    });
+  }
 });
