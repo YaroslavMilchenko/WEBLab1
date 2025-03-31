@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Students</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="manifest" href="manifest.json">
     <script src="https://kit.fontawesome.com/acdc2463b2.js" crossorigin="anonymous"></script>
     <script defer src="main.js"></script>
 </head>
@@ -103,28 +104,32 @@
         </div>
     </main>
 
-    <div id="modal" class="modal hidden" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+    <div id="modal" class="modal hidden" role="dialog" aria-labelledby="modal-title">
         <div class="modal-content">
             <span class="close" aria-label="Close modal">×</span>
             <h2 id="modal-title">Add Student</h2>
             <form id="student-form">
+                <input type="hidden" id="student-id">
                 <label for="student-name">Name:</label>
-                <input type="text" id="student-name" required>
+                <input type="text" id="student-name" required pattern="[A-Za-z\s]{2,}" title="Only letters and spaces, min 2 characters">
+                <span class="error-message" id="student-name-error"></span>
                 <label for="student-group">Group:</label>
-                <input type="text" id="student-group" required>
+                <input type="text" id="student-group" required title="Letters, numbers, and hyphens, min 2 characters">
+                <span class="error-message" id="student-group-error"></span>
                 <label for="student-gender">Gender:</label>
                 <select id="student-gender">
                     <option value="M">Male</option>
                     <option value="F">Female</option>
                 </select>
                 <label for="student-birthday">Birthday:</label>
-                <input type="date" id="student-birthday" required>
+                <input type="date" id="student-birthday" required max="2025-03-31">
+                <span class="error-message" id="student-birthday-error"></span>
                 <button type="submit" class="create">Create</button>
             </form>
         </div>
     </div>
     
-    <div id="delete-confirm" class="modal hidden" role="dialog" aria-labelledby="delete-message" aria-hidden="true">
+    <div id="delete-confirm" class="modal hidden" role="dialog" aria-labelledby="delete-message">
         <div class="modal-content">
             <p id="delete-message"></p>
             <button id="confirm-delete">Yes</button>
@@ -132,31 +137,53 @@
         </div>
     </div>
 
-    <div id="add-modal" class="modal" role="dialog" aria-labelledby="add-modal-title" aria-hidden="true">
+    <div id="add-modal" class="modal hidden" role="dialog" aria-labelledby="add-modal-title">
         <div class="modal-content">
             <span class="close" id="close-add" aria-label="Close modal">×</span>
             <h2 id="add-modal-title">Add Student</h2>
-            <label for="add-name">Name:</label>
-            <input type="text" id="add-name" placeholder="Name">
-            <label for="add-group">Group:</label>
-            <input type="text" id="add-group" placeholder="Group">
-            <label for="add-birthday">Birthday:</label>
-            <input type="date" id="add-birthday">
-            <button id="create-btn">Create</button>
+            <form id="add-student-form">
+                <input type="hidden" id="add-student-id">
+                <label for="add-name">Name:</label>
+                <input type="text" id="add-name" required pattern="[A-Za-z\s]{2,}" title="Only letters and spaces, min 2 characters">
+                <span class="error-message" id="add-name-error"></span>
+                <label for="add-group">Group:</label>
+                <input type="text" id="add-group" required title="Letters, numbers, and hyphens, min 2 characters">
+                <span class="error-message" id="add-group-error"></span>
+                <label for="add-gender">Gender:</label>
+                <select id="add-gender" required>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                </select>
+                <label for="add-birthday">Birthday:</label>
+                <input type="date" id="add-birthday" required max="2025-03-31">
+                <span class="error-message" id="add-birthday-error"></span>
+                <button type="submit" id="create-btn">Create</button>
+            </form>
         </div>
     </div>
 
-    <div id="edit-modal" class="modal" role="dialog" aria-labelledby="edit-modal-title" aria-hidden="true">
+    <div id="edit-modal" class="modal hidden" role="dialog" aria-labelledby="edit-modal-title">
         <div class="modal-content">
             <span class="close" id="close-edit" aria-label="Close modal">×</span>
             <h2 id="edit-modal-title">Edit Student</h2>
-            <label for="edit-name">Name:</label>
-            <input type="text" id="edit-name">
-            <label for="edit-group">Group:</label>
-            <input type="text" id="edit-group">
-            <label for="edit-birthday">Birthday:</label>
-            <input type="date" id="edit-birthday">
-            <button id="change-btn">Change</button>
+            <form id="edit-student-form">
+                <input type="hidden" id="edit-student-id">
+                <label for="edit-name">Name:</label>
+                <input type="text" id="edit-name" required pattern="[A-Za-z\s]{2,}" title="Only letters and spaces, min 2 characters">
+                <span class="error-message" id="edit-name-error"></span>
+                <label for="edit-group">Group:</label>
+                <input type="text" id="edit-group" required title="Letters, numbers, and hyphens, min 2 characters">
+                <span class="error-message" id="edit-group-error"></span>
+                <label for="edit-gender">Gender:</label>
+                <select id="edit-gender" required>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                </select>
+                <label for="edit-birthday">Birthday:</label>
+                <input type="date" id="edit-birthday" required max="2025-03-31">
+                <span class="error-message" id="edit-birthday-error"></span>
+                <button type="submit" id="change-btn">Change</button>
+            </form>
         </div>
     </div>
 

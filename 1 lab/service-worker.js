@@ -4,13 +4,18 @@ const urlsToCache = [
     "/students.html",
     "/style.css",
     "/main.js",
-    "/Students.jpeg"
+    "/Students.jpeg",
+    "/icon-192x192.png",
+    "/icon-512x512.png",
+    "/avatar1.jpg",
+    "/avatar2.jpg"
 ];
 
 self.addEventListener("install", event => {
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then(cache => cache.addAll(urlsToCache))
+            .catch(err => console.log("Cache addAll failed:", err))
     );
 });
 
@@ -18,6 +23,7 @@ self.addEventListener("fetch", event => {
     event.respondWith(
         caches.match(event.request)
             .then(response => response || fetch(event.request))
+            .catch(err => console.log("Fetch failed:", err))
     );
 });
 

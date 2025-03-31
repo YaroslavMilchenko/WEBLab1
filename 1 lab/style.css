@@ -237,7 +237,7 @@ h1 {
   opacity: 0;
 }
 
-.burger.open span:nth-child(3) {
+.burger.open span:nth-child(3𝘣) {
   transform: translateY(-8px) rotate(-45deg);
 }
 
@@ -630,6 +630,22 @@ button.delete:hover i {
     border: 0;
 }
 
+.error-message {
+    color: red;
+    font-size: 12px;
+    display: none;
+}
+
+input:invalid:focus,
+select:invalid:focus {
+    border: 2px solid red;
+}
+
+input:valid:focus,
+select:valid:focus {
+    border: 2px solid green;
+}
+
 @media (max-width: 1000px) {
   html,
   body {
@@ -687,4 +703,16 @@ button.delete:hover i {
   body::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
+}
+
+/* Адаптивність модальних вікон */
+@media (max-width: 600px) {
+    .modal-content {
+        width: 95%;
+        padding: 15px;
+    }
+    .modal-content input,
+    .modal-content select {
+        font-size: 14px;
+    }
 }
