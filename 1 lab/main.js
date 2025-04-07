@@ -344,9 +344,13 @@ document.addEventListener("DOMContentLoaded", function () {
   window.openModal = openModal;
 
   // Реєстрація сервіс-воркера для PWA
-  if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("/service-worker.js")
-          .then(() => console.log("Service Worker Registered"))
-          .catch(err => console.log("Service Worker Registration Failed:", err));
-  }
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/service-worker.js")
+      .then(registration => {
+          console.log("Service Worker Registered:", registration);
+      })
+      .catch(err => {
+          console.error("Service Worker Registration Failed:", err);
+      });
+}
 });

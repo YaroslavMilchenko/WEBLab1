@@ -5,8 +5,8 @@ const urlsToCache = [
     "/style.css",
     "/main.js",
     "/Students.jpeg",
-    "/icon-192x192.png",
-    "/icon-512x512.png",
+    "/avatar192.jpg",
+    "/avatar512.jpg",
     "/avatar1.jpg",
     "/avatar2.jpg"
 ];
