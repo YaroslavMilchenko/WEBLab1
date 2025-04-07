@@ -1,12 +1,14 @@
 const CACHE_NAME = "student-cms-v1";
 const urlsToCache = [
-    "/",
     "/students.html",
     "/style.css",
     "/main.js",
+    "/manifest.json",
     "/Students.jpeg",
-    "/avatar192.jpg",
-    "/avatar512.jpg",
+    "/avatar192.png",
+    "/avatar512.png",
+    "/screenshot-wide.png",
+    "/screenshot-narrow.png",
     "/avatar1.jpg",
     "/avatar2.jpg",
     "/tasks.html",
@@ -20,29 +22,44 @@ self.addEventListener("install", event => {
         caches.open(CACHE_NAME)
             .then(cache => {
                 console.log("Service Worker: Caching files:", urlsToCache);
-                return cache.addAll(urlsToCache);
+                const cachePromises = urlsToCache.map(url => {
+                    return fetch(url, { cache: "no-store" }) // Додаємо cache: "no-store" для уникнення кешу браузера
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error(`Failed to fetch ${url}: ${response.statusText}`);
+                            }
+                            console.log(`Service Worker: Successfully cached ${url}`);
+                            return cache.put(url, response);
+                        })
+                        .catch(err => {
+                            console.error(`Service Worker: Failed to cache ${url}:`, err);
+                            return null; // Продовжуємо кешування інших файлів
+                        });
+                });
+                return Promise.all(cachePromises);
             })
             .catch(err => {
-                console.error("Service Worker: Cache addAll failed:", err);
-                throw err; // Кидаємо помилку, щоб легше діагностувати
+                console.error("Service Worker: Cache failed:", err);
             })
     );
 });
 
 self.addEventListener("fetch", event => {
+    // Пропускаємо WebSocket-запити
+    if (event.request.url.startsWith("ws://") || event.request.url.startsWith("wss://")) {
+        return;
+    }
+
     event.respondWith(
         caches.match(event.request)
             .then(response => {
-                // Якщо ресурс є в кеші, повертаємо його
                 if (response) {
                     console.log("Service Worker: Found in cache:", event.request.url);
                     return response;
                 }
-                // Якщо ресурсу немає в кеші, робимо запит до мережі
                 console.log("Service Worker: Fetching from network:", event.request.url);
                 return fetch(event.request)
                     .then(networkResponse => {
-                        // Кешуємо новий ресурс для майбутнього використання
                         if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== "basic") {
                             return networkResponse;
                         }
@@ -55,9 +72,8 @@ self.addEventListener("fetch", event => {
                     })
                     .catch(err => {
                         console.error("Service Worker: Fetch failed:", err);
-                        // Якщо запит не вдався (наприклад, офлайн), можна повернути запасний ресурс
                         if (event.request.url.endsWith(".html")) {
-                            return caches.match("/index.html");
+                            return caches.match("/students.html");
                         }
                         throw err;
                     });
