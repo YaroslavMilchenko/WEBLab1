@@ -162,27 +162,35 @@
         </div>
     </div>
 
-    <div id="edit-modal" class="modal hidden" role="dialog" aria-labelledby="edit-modal-title">
+    <div id="edit-modal" class="modal hidden">
         <div class="modal-content">
-            <span class="close" id="close-edit" aria-label="Close modal">×</span>
-            <h2 id="edit-modal-title">Edit Student</h2>
+            <span id="close-edit" class="close">×</span>
+            <h2>Edit Student</h2>
             <form id="edit-student-form">
                 <input type="hidden" id="edit-student-id">
-                <label for="edit-name">Name:</label>
-                <input type="text" id="edit-name" required pattern="[A-Za-z\s]{2,}" title="Only letters and spaces, min 2 characters">
-                <span class="error-message" id="edit-name-error"></span>
-                <label for="edit-group">Group:</label>
-                <input type="text" id="edit-group" required title="Letters, numbers, and hyphens, min 2 characters">
-                <span class="error-message" id="edit-group-error"></span>
-                <label for="edit-gender">Gender:</label>
-                <select id="edit-gender" required>
-                    <option value="M">Male</option>
-                    <option value="F">Female</option>
-                </select>
-                <label for="edit-birthday">Birthday:</label>
-                <input type="date" id="edit-birthday" required max="2025-03-31">
-                <span class="error-message" id="edit-birthday-error"></span>
-                <button type="submit" id="change-btn">Change</button>
+                <div>
+                    <label for="edit-name">Name:</label>
+                    <input type="text" id="edit-name" required>
+                    <span id="edit-name-error" class="error"></span>
+                </div>
+                <div>
+                    <label for="edit-group">Group:</label>
+                    <input type="text" id="edit-group" required>
+                    <span id="edit-group-error" class="error"></span>
+                </div>
+                <div>
+                    <label for="edit-gender">Gender:</label>
+                    <select id="edit-gender">
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="edit-birthday">Birthday:</label>
+                    <input type="date" id="edit-birthday" required>
+                    <span id="edit-birthday-error" class="error"></span>
+                </div>
+                <button type="submit">Save</button>
             </form>
         </div>
     </div>
