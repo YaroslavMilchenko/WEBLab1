@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
+    console.log("main.js loaded successfully"); // Додаємо лог для перевірки
+
     const burger = document.querySelector(".burger");
     const mobileMenu = document.getElementById("mobile-menu");
     const modal = document.getElementById("modal");
@@ -95,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const group = document.getElementById(`${prefix}-group`).value;
         const birthday = document.getElementById(`${prefix}-birthday`).value;
 
-        const nameRegex = /^[A-Za-z\s'-]{2,}$/; // Дозволяємо літери, пробіли, апостроф і дефіс
+        const nameRegex = /^[A-Za-z\s'-]{2,}$/;
         const groupRegex = /^[A-Za-z0-9-]{2,}$/;
 
         let isValid = true;
@@ -130,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Обробка форми додавання (старе modal)
     studentForm.addEventListener("submit", function (event) {
         event.preventDefault();
-        addForm.dispatchEvent(new Event("submit")); // Перенаправляємо на нову логіку
+        addForm.dispatchEvent(new Event("submit"));
     });
 
     // Додавання студента
