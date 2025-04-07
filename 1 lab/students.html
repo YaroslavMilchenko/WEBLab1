@@ -47,32 +47,32 @@
         <div id="mobile-menu" aria-hidden="true">
             <span class="close-btn" onclick="toggleMenu()" aria-label="Close mobile menu">×</span>
             <div class="mobile-profile">
-              <div class="notification-container">
-                <i class="fa-solid fa-bell notification-icon" aria-label="Notifications"></i>
-                <span class="notification-indicator"></span>
-                <div class="notification-dropdown">
-                  <p><strong>New Messages:</strong></p>
-                  <p class="message unread">
-                      <img src="avatar1.jpg" alt="Avatar of John Doe" class="notif-avatar"> 
-                      John Doe: "Hey!" <span class="unread-indicator"></span>
-                  </p>
-                  <p class="message unread">
-                      <img src="avatar2.jpg" alt="Avatar of Jane Smith" class="notif-avatar"> 
-                      Jane Smith: "Meeting at 3?" <span class="unread-indicator"></span>
-                  </p>
+                <div class="notification-container">
+                    <i class="fa-solid fa-bell notification-icon" aria-label="Notifications"></i>
+                    <span class="notification-indicator"></span>
+                    <div class="notification-dropdown">
+                        <p><strong>New Messages:</strong></p>
+                        <p class="message unread">
+                            <img src="avatar1.jpg" alt="Avatar of John Doe" class="notif-avatar"> 
+                            John Doe: "Hey!" <span class="unread-indicator"></span>
+                        </p>
+                        <p class="message unread">
+                            <img src="avatar2.jpg" alt="Avatar of Jane Smith" class="notif-avatar"> 
+                            Jane Smith: "Meeting at 3?" <span class="unread-indicator"></span>
+                        </p>
+                    </div>
                 </div>
-              </div>
-              <img src="Students.jpeg" alt="Profile picture of James Bond" />
-              <p class="user-name">James Bond</p>
+                <img src="Students.jpeg" alt="Profile picture of James Bond" />
+                <p class="user-name">James Bond</p>
             </div>
             <ul>
-              <li><a href="main.html">Dashboard</a></li>
-              <li><a href="students.html">Students</a></li>
-              <li><a href="tasks.html">Tasks</a></li>
+                <li><a href="main.html">Dashboard</a></li>
+                <li><a href="students.html">Students</a></li>
+                <li><a href="tasks.html">Tasks</a></li>
             </ul>
             <ul class="mobile-profile-dropdown">
-              <li><a href="profile.html">Profile</a></li>
-              <li><a href="logout.html">Log Out</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="logout.html">Log Out</a></li>
             </ul>
         </div>
     </header>
@@ -111,7 +111,7 @@
             <form id="student-form">
                 <input type="hidden" id="student-id">
                 <label for="student-name">Name:</label>
-                <input type="text" id="student-name" required pattern="[A-Za-z\s]{2,}" title="Only letters and spaces, min 2 characters">
+                <input type="text" id="student-name" required pattern="[A-Za-z\s'-]{2,}" title="Only letters, spaces, apostrophes, and hyphens, min 2 characters">
                 <span class="error-message" id="student-name-error"></span>
                 <label for="student-group">Group:</label>
                 <input type="text" id="student-group" required title="Letters, numbers, and hyphens, min 2 characters">
@@ -144,7 +144,7 @@
             <form id="add-student-form">
                 <input type="hidden" id="add-student-id">
                 <label for="add-name">Name:</label>
-                <input type="text" id="add-name" required pattern="[A-Za-z\s]{2,}" title="Only letters and spaces, min 2 characters">
+                <input type="text" id="add-name" required pattern="[A-Za-z\s'-]{2,}" title="Only letters, spaces, apostrophes, and hyphens, min 2 characters">
                 <span class="error-message" id="add-name-error"></span>
                 <label for="add-group">Group:</label>
                 <input type="text" id="add-group" required title="Letters, numbers, and hyphens, min 2 characters">
@@ -170,7 +170,7 @@
                 <input type="hidden" id="edit-student-id">
                 <div>
                     <label for="edit-name">Name:</label>
-                    <input type="text" id="edit-name" required>
+                    <input type="text" id="edit-name" required pattern="[A-Za-z\s'-]{2,}" title="Only letters, spaces, apostrophes, and hyphens, min 2 characters">
                     <span id="edit-name-error" class="error"></span>
                 </div>
                 <div>
@@ -194,7 +194,6 @@
             </form>
         </div>
     </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const messages = document.querySelectorAll('.message');
