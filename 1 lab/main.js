@@ -1,15 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("main.js loaded successfully"); // Додаємо лог для перевірки
+    console.log("main.js loaded successfully");
 
     const burger = document.querySelector(".burger");
     const mobileMenu = document.getElementById("mobile-menu");
-    const modal = document.getElementById("modal");
-    const closeModal = document.querySelector("#modal .close");
     const addModal = document.getElementById("add-modal");
     const editModal = document.getElementById("edit-modal");
     const closeAddModal = document.getElementById("close-add");
     const closeEditModal = document.getElementById("close-edit");
-    const studentForm = document.getElementById("student-form");
     const addForm = document.getElementById("add-student-form");
     const editForm = document.getElementById("edit-student-form");
     const tableBody = document.querySelector("#student-table");
@@ -50,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Відкриття модального вікна для додавання
     function openModal() {
+        console.log("Opening add modal");
         addModal.style.display = "block";
         addModal.classList.remove("hidden");
         document.getElementById("add-student-id").value = "";
@@ -62,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Відкриття модального вікна для редагування
     function openEditModal(id) {
         console.log("Opening edit modal for student ID:", id);
+        console.log("Current students array:", students);
         const student = students.find(s => s.id === id);
         if (!student) {
             console.error("Student not found with ID:", id);
@@ -78,10 +77,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Закриття модальних вікон
-    closeModal.addEventListener("click", function () {
-        modal.style.display = "none";
-    });
-
     closeAddModal.addEventListener("click", function () {
         addModal.style.display = "none";
     });
@@ -93,6 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Валідація форми
     function validateForm(prefix) {
+        console.log(`Validating form with prefix: ${prefix}`);
         const name = document.getElementById(`${prefix}-name`).value;
         const group = document.getElementById(`${prefix}-group`).value;
         const birthday = document.getElementById(`${prefix}-birthday`).value;
@@ -102,14 +98,49 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let isValid = true;
 
-        if (!nameRegex.test(name)) {
-            document.getElementById(`${prefix}-name-error`).textContent = "Only letters, spaces, apostrophes, and hyphens, min 2 characters";
+        // Перевірка на наявність слова "select" у імені (регістронезалежна)
+        if (name.toLowerCase().includes("select")) {
+            document.getElementById(`${prefix}-name-error`).textContent = "Name cannot contain the word 'select'";
             document.getElementById(`${prefix}-name-error`).style.display = "block";
             isValid = false;
-        } else {
-            document.getElementById(`${prefix}-name-error`).style.display = "none";
+            return isValid; // Зупиняємо валідацію, якщо знайдено "select"
         }
 
+        // Перевірка на кількість символів @
+        const atSymbolCount = (name.match(/@/g) || []).length;
+        if (atSymbolCount > 1) {
+            document.getElementById(`${prefix}-name-error`).textContent = "Name cannot contain more than one @ symbol";
+            document.getElementById(`${prefix}-name-error`).style.display = "block";
+            isValid = false;
+            return isValid; // Зупиняємо валідацію, якщо більше одного @
+        }
+
+        // Перевірка на email (наявність @)
+        if (name.includes("@")) {
+            if (name.endsWith("@lpnu.ua")) {
+                // Якщо email закінчується на @lpnu.ua, показуємо повідомлення і дозволяємо валідацію
+                alert("Привіт політехнік!");
+                document.getElementById(`${prefix}-name-error`).style.display = "none";
+                isValid = true; // Явно дозволяємо валідацію
+            } else {
+                // Якщо це інший email, валідація не проходить
+                alert("You can't use any email, exept @lpnu.ua");
+                document.getElementById(`${prefix}-name-error`).style.display = "block";
+                isValid = false;
+            }
+        } else {
+            // Якщо це не email, перевіряємо за базовим регулярним виразом
+            console.log(`Name: ${name}, Regex test: ${nameRegex.test(name)}`);
+            if (!nameRegex.test(name)) {
+                document.getElementById(`${prefix}-name-error`).textContent = "Only letters, spaces, apostrophes, and hyphens, min 2 characters";
+                document.getElementById(`${prefix}-name-error`).style.display = "block";
+                isValid = false;
+            } else {
+                document.getElementById(`${prefix}-name-error`).style.display = "none";
+            }
+        }
+
+        // Перевірка групи
         if (!groupRegex.test(group)) {
             document.getElementById(`${prefix}-group-error`).textContent = "none";
             document.getElementById(`${prefix}-group-error`).style.display = "block";
@@ -118,26 +149,23 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById(`${prefix}-group-error`).style.display = "none";
         }
 
+        // Перевірка дати народження
         if (!birthday) {
             document.getElementById(`${prefix}-birthday-error`).textContent = "Please select a valid date";
             document.getElementById(`${prefix}-birthday-error`).style.display = "block";
             isValid = false;
         } else {
-            document.getElementById(`${prefix}-birthday-error`).style.display = "none";
+            document.getElementById(`${prefix}-name-error`).style.display = "none";
         }
 
+        console.log(`Form validation result: ${isValid}`);
         return isValid;
     }
-
-    // Обробка форми додавання (старе modal)
-    studentForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-        addForm.dispatchEvent(new Event("submit"));
-    });
 
     // Додавання студента
     addForm.addEventListener("submit", function (event) {
         event.preventDefault();
+        console.log("Submitting add-student-form");
 
         if (!validateForm("add")) return;
 
@@ -172,7 +200,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const group = document.getElementById("edit-group").value;
         const gender = document.getElementById("edit-gender").value;
         const birthday = formatDate(document.getElementById("edit-birthday").value);
-
         const studentData = { id, name, group, gender, birthday, status: "Online" };
         const index = students.findIndex(s => s.id === id);
         if (index === -1) {
@@ -215,6 +242,7 @@ document.addEventListener("DOMContentLoaded", function () {
             tableBody.appendChild(newRow);
         });
 
+        console.log("Table updated, adding event listeners");
         addEventListeners();
         renderPaginationControls(totalPages);
     }
@@ -258,9 +286,13 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
 
-        document.querySelectorAll(".edit").forEach(button => {
+        const editButtons = document.querySelectorAll(".edit");
+        console.log(`Found ${editButtons.length} edit buttons`);
+        editButtons.forEach(button => {
+            console.log("Adding event listener to edit button with ID:", button.dataset.id);
             button.addEventListener("click", function () {
                 const id = this.dataset.id;
+                console.log("Edit button clicked for ID:", id);
                 openEditModal(id);
             });
         });

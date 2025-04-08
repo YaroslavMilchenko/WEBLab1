@@ -137,63 +137,65 @@
         </div>
     </div>
 
-    <div id="add-modal" class="modal hidden" role="dialog" aria-labelledby="add-modal-title">
-        <div class="modal-content">
-            <span class="close" id="close-add" aria-label="Close modal">×</span>
-            <h2 id="add-modal-title">Add Student</h2>
-            <form id="add-student-form">
-                <input type="hidden" id="add-student-id">
-                <label for="add-name">Name:</label>
-                <input type="text" id="add-name" required pattern="[A-Za-z\s'-]{2,}" title="Only letters, spaces, apostrophes, and hyphens, min 2 characters">
-                <span class="error-message" id="add-name-error"></span>
-                <label for="add-group">Group:</label>
-                <input type="text" id="add-group" required title="Letters, numbers, and hyphens, min 2 characters">
-                <span class="error-message" id="add-group-error"></span>
-                <label for="add-gender">Gender:</label>
-                <select id="add-gender" required>
+ <!-- Форма додавання студента -->
+<div id="add-modal" class="modal hidden" role="dialog" aria-labelledby="add-modal-title">
+    <div class="modal-content">
+        <span class="close" id="close-add" aria-label="Close modal">×</span>
+        <h2 id="add-modal-title">Add Student</h2>
+        <form id="add-student-form">
+            <input type="hidden" id="add-student-id">
+            <label for="add-name">Name:</label>
+            <input type="text" id="add-name" required pattern="([A-Za-z\s'-]{2,})|([^@]+@lpnu\.ua)" title="Only letters, spaces, apostrophes, and hyphens (min 2 characters), or email ending with @lpnu.ua (only one @ allowed)">
+            <span class="error-message" id="add-name-error"></span>
+            <label for="add-group">Group:</label>
+            <input type="text" id="add-group" required title="Letters, numbers, and hyphens, min 2 characters">
+            <span class="error-message" id="add-group-error"></span>
+            <label for="add-gender">Gender:</label>
+            <select id="add-gender" required>
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+            </select>
+            <label for="add-birthday">Birthday:</label>
+            <input type="date" id="add-birthday" required max="2025-03-31">
+            <span class="error-message" id="add-birthday-error"></span>
+            <button type="submit" id="create-btn">Create</button>
+        </form>
+    </div>
+</div>
+
+<!-- Форма редагування студента -->
+<div id="edit-modal" class="modal hidden">
+    <div class="modal-content">
+        <span id="close-edit" class="close">×</span>
+        <h2>Edit Student</h2>
+        <form id="edit-student-form">
+            <input type="hidden" id="edit-student-id">
+            <div>
+                <label for="edit-name">Name:</label>
+                <input type="text" id="edit-name" required pattern="([A-Za-z\s'-]{2,})|([^@]+@lpnu\.ua)" title="Only letters, spaces, apostrophes, and hyphens (min 2 characters), or email ending with @lpnu.ua (only one @ allowed)">
+                <span id="edit-name-error" class="error"></span>
+            </div>
+            <div>
+                <label for="edit-group">Group:</label>
+                <input type="text" id="edit-group" required>
+                <span id="edit-group-error" class="error"></span>
+            </div>
+            <div>
+                <label for="edit-gender">Gender:</label>
+                <select id="edit-gender">
                     <option value="M">Male</option>
                     <option value="F">Female</option>
                 </select>
-                <label for="add-birthday">Birthday:</label>
-                <input type="date" id="add-birthday" required max="2025-03-31">
-                <span class="error-message" id="add-birthday-error"></span>
-                <button type="submit" id="create-btn">Create</button>
-            </form>
-        </div>
+            </div>
+            <div>
+                <label for="edit-birthday">Birthday:</label>
+                <input type="date" id="edit-birthday" required>
+                <span id="edit-birthday-error" class="error"></span>
+            </div>
+            <button type="submit" class="save-btn">Save</button>
+        </form>
     </div>
-
-    <div id="edit-modal" class="modal hidden">
-        <div class="modal-content">
-            <span id="close-edit" class="close">×</span>
-            <h2>Edit Student</h2>
-            <form id="edit-student-form">
-                <input type="hidden" id="edit-student-id">
-                <div>
-                    <label for="edit-name">Name:</label>
-                    <input type="text" id="edit-name" required pattern="[A-Za-z\s'-]{2,}" title="Only letters, spaces, apostrophes, and hyphens, min 2 characters">
-                    <span id="edit-name-error" class="error"></span>
-                </div>
-                <div>
-                    <label for="edit-group">Group:</label>
-                    <input type="text" id="edit-group" required>
-                    <span id="edit-group-error" class="error"></span>
-                </div>
-                <div>
-                    <label for="edit-gender">Gender:</label>
-                    <select id="edit-gender">
-                        <option value="M">Male</option>
-                        <option value="F">Female</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="edit-birthday">Birthday:</label>
-                    <input type="date" id="edit-birthday" required>
-                    <span id="edit-birthday-error" class="error"></span>
-                </div>
-                <button type="submit">Save</button>
-            </form>
-        </div>
-    </div>
+</div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const messages = document.querySelectorAll('.message');
