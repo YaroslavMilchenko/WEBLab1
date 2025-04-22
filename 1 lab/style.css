@@ -731,3 +731,127 @@ select:valid:focus {
 .save-btn:hover {
   background: #0056b3;
 }
+
+/* Стилі для index.php */
+.index-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.index-container h1 {
+  color: #333;
+  font-size: 36px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.index-container p {
+  margin: 15px 0;
+}
+
+.index-container a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.index-container a:hover {
+  background-color: #e0e0e0;
+  color: #0056b3;
+}
+
+/* Стилі для login.php */
+.login-modal {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.login-modal h2 {
+  color: #333;
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.login-modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login-modal label {
+  font-size: 16px;
+  color: #333;
+  text-align: left;
+  font-weight: 600;
+}
+
+.login-modal input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.login-modal input:focus {
+  border-color: #007bff;
+}
+
+.login-modal button {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-modal button:hover {
+  background-color: #0056b3;
+}
+
+.login-modal .error-message {
+  color: #dc3545;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* Адаптивність для index.php та login.php */
+@media (max-width: 600px) {
+  .index-container,
+  .login-modal {
+      width: 90%;
+      margin: 20px auto;
+      padding: 15px;
+  }
+
+  .index-container h1,
+  .login-modal h2 {
+      font-size: 24px;
+  }
+
+  .index-container a,
+  .login-modal input,
+  .login-modal button {
+      font-size: 14px;
+  }
+}

@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,11 +38,11 @@
                     </div>
                 </div>
                 <div class="profile-container">
-                    <img src="Students.jpeg" alt="Profile picture of James Bond" id="profile-picture"/>
-                    <p class="user-name">James Bond</p>
+                    <img src="Students.jpeg" alt="Profile picture" id="profile-picture"/>
+                    <p class="user-name"><?php echo htmlspecialchars($_SESSION['username']); ?></p>
                     <div class="profile-dropdown">
                         <a href="profile.html" class="dropdown-link"><i class="fa-solid fa-user"></i> Profile</a>
-                        <a href="logout.html" class="dropdown-link"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
+                        <a href="javascript:void(0)" onclick="logout()" class="dropdown-link"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
                     </div>
                 </div>                
             </div>
@@ -62,8 +70,8 @@
                         </p>
                     </div>
                 </div>
-                <img src="Students.jpeg" alt="Profile picture of James Bond" />
-                <p class="user-name">James Bond</p>
+                <img src="Students.jpeg" alt="Profile picture" />
+                <p class="user-name"><?php echo htmlspecialchars($_SESSION['username']); ?></p>
             </div>
             <ul>
                 <li><a href="main.html">Dashboard</a></li>
@@ -72,7 +80,7 @@
             </ul>
             <ul class="mobile-profile-dropdown">
                 <li><a href="profile.html">Profile</a></li>
-                <li><a href="logout.html">Log Out</a></li>
+                <li><a href="javascript:void(0)" onclick="logout()">Log Out</a></li>
             </ul>
         </div>
     </header>
@@ -93,7 +101,7 @@
             <table id="student-table">
                 <tr>
                     <th><input type="checkbox" id="select-all" aria-label="Select all students"></th>
-                    <th>Group</th>
+                    <th>Party</th>
                     <th>Name</th>
                     <th>Gender</th>
                     <th>Birthday</th>
@@ -101,34 +109,71 @@
                     <th>Options</th>
                 </tr>
             </table>
+            <div id="pagination"></div>
         </div>
     </main>
 
-    <div id="modal" class="modal hidden" role="dialog" aria-labelledby="modal-title">
+    <!-- Форма додавання студента -->
+    <div id="add-modal" class="modal hidden" role="dialog" aria-labelledby="add-modal-title">
         <div class="modal-content">
-            <span class="close" aria-label="Close modal">×</span>
-            <h2 id="modal-title">Add Student</h2>
-            <form id="student-form">
-                <input type="hidden" id="student-id">
-                <label for="student-name">Name:</label>
-                <input type="text" id="student-name" required pattern="[A-Za-z\s'-]{2,}" title="Only letters, spaces, apostrophes, and hyphens, min 2 characters">
-                <span class="error-message" id="student-name-error"></span>
-                <label for="student-group">Group:</label>
-                <input type="text" id="student-group" required title="Letters, numbers, and hyphens, min 2 characters">
-                <span class="error-message" id="student-group-error"></span>
-                <label for="student-gender">Gender:</label>
-                <select id="student-gender">
+            <span class="close" id="close-add" aria-label="Close modal">×</span>
+            <h2 id="add-modal-title">Add Student</h2>
+            <form id="add-student-form">
+                <input type="hidden" id="add-student-id">
+                <label for="add-party">Party:</label>
+                <input type="text" id="add-party" required>
+                <span class="error-message" id="add-party-error"></span>
+                <label for="add-name">Name:</label>
+                <input type="text" id="add-name" required>
+                <span class="error-message" id="add-name-error"></span>
+                <label for="add-gender">Gender:</label>
+                <select id="add-gender" required>
                     <option value="M">Male</option>
                     <option value="F">Female</option>
                 </select>
-                <label for="student-birthday">Birthday:</label>
-                <input type="date" id="student-birthday" required max="9999-01-01">
-                <span class="error-message" id="student-birthday-error"></span>
-                <button type="submit" class="create">Create</button>
+                <label for="add-birthday">Birthday:</label>
+                <input type="date" id="add-birthday" required max="2025-03-31">
+                <span class="error-message" id="add-birthday-error"></span>
+                <button type="submit" id="create-btn">Create</button>
             </form>
         </div>
     </div>
-    
+
+    <!-- Форма редагування студента -->
+    <div id="edit-modal" class="modal hidden">
+        <div class="modal-content">
+            <span id="close-edit" class="close">×</span>
+            <h2>Edit Student</h2>
+            <form id="edit-student-form">
+                <input type="hidden" id="edit-student-id">
+                <div>
+                    <label for="edit-party">Party:</label>
+                    <input type="text" id="edit-party" required>
+                    <span id="edit-party-error" class="error"></span>
+                </div>
+                <div>
+                    <label for="edit-name">Name:</label>
+                    <input type="text" id="edit-name" required>
+                    <span id="edit-name-error" class="error"></span>
+                </div>
+                <div>
+                    <label for="edit-gender">Gender:</label>
+                    <select id="edit-gender">
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="edit-birthday">Birthday:</label>
+                    <input type="date" id="edit-birthday" required>
+                    <span id="edit-birthday-error" class="error"></span>
+                </div>
+                <button type="submit" class="save-btn">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальне вікно для видалення -->
     <div id="delete-confirm" class="modal hidden" role="dialog" aria-labelledby="delete-message">
         <div class="modal-content">
             <p id="delete-message"></p>
@@ -137,84 +182,14 @@
         </div>
     </div>
 
- <!-- Форма додавання студента -->
-<div id="add-modal" class="modal hidden" role="dialog" aria-labelledby="add-modal-title">
-    <div class="modal-content">
-        <span class="close" id="close-add" aria-label="Close modal">×</span>
-        <h2 id="add-modal-title">Add Student</h2>
-        <form id="add-student-form">
-            <input type="hidden" id="add-student-id">
-            <label for="add-name">Name:</label>
-            <input type="text" id="add-name" required pattern="([A-Za-z\s'-]{2,})|([^@]+@lpnu\.ua)" title="Only letters, spaces, apostrophes, and hyphens (min 2 characters), or email ending with @lpnu.ua (only one @ allowed)">
-            <span class="error-message" id="add-name-error"></span>
-            <label for="add-group">Group:</label>
-            <input type="text" id="add-group" required title="Letters, numbers, and hyphens, min 2 characters">
-            <span class="error-message" id="add-group-error"></span>
-            <label for="add-gender">Gender:</label>
-            <select id="add-gender" required>
-                <option value="M">Male</option>
-                <option value="F">Female</option>
-            </select>
-            <label for="add-birthday">Birthday:</label>
-            <input type="date" id="add-birthday" required max="2025-03-31">
-            <span class="error-message" id="add-birthday-error"></span>
-            <button type="submit" id="create-btn">Create</button>
-        </form>
-    </div>
-</div>
-
-<!-- Форма редагування студента -->
-<div id="edit-modal" class="modal hidden">
-    <div class="modal-content">
-        <span id="close-edit" class="close">×</span>
-        <h2>Edit Student</h2>
-        <form id="edit-student-form">
-            <input type="hidden" id="edit-student-id">
-            <div>
-                <label for="edit-name">Name:</label>
-                <input type="text" id="edit-name" required pattern="([A-Za-z\s'-]{2,})|([^@]+@lpnu\.ua)" title="Only letters, spaces, apostrophes, and hyphens (min 2 characters), or email ending with @lpnu.ua (only one @ allowed)">
-                <span id="edit-name-error" class="error"></span>
-            </div>
-            <div>
-                <label for="edit-group">Group:</label>
-                <input type="text" id="edit-group" required>
-                <span id="edit-group-error" class="error"></span>
-            </div>
-            <div>
-                <label for="edit-gender">Gender:</label>
-                <select id="edit-gender">
-                    <option value="M">Male</option>
-                    <option value="F">Female</option>
-                </select>
-            </div>
-            <div>
-                <label for="edit-birthday">Birthday:</label>
-                <input type="date" id="edit-birthday" required>
-                <span id="edit-birthday-error" class="error"></span>
-            </div>
-            <button type="submit" class="save-btn">Save</button>
-        </form>
-    </div>
-</div>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const messages = document.querySelectorAll('.message');
-            const notificationIndicator = document.querySelector('.notification-indicator');
-            
-            messages.forEach((message) => {
-                message.addEventListener('click', () => {
-                    if (message.classList.contains('unread')) {
-                        message.classList.remove('unread');
-                        message.classList.add('read');
-                        notificationIndicator.classList.remove('active');
-                    }
-                });
-            });
-            
-            if (document.querySelector('.unread')) {
-                notificationIndicator.classList.add('active');
+        async function logout() {
+            const response = await fetch('api.php?action=logout', { method: 'POST' });
+            const result = await response.json();
+            if (result.success) {
+                window.location.href = 'login.php';
             }
-        });
+        }
     </script>
 </body>
 </html>
