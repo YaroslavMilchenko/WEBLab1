@@ -1,11 +1,10 @@
 <?php
 session_start();
 if (isset($_SESSION['user_id'])) {
-    header('Location: students.php');
+    header('Location: students.html');
     exit;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,40 +12,35 @@ if (isset($_SESSION['user_id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="data:,">
 </head>
 <body>
     <div class="login-modal">
         <h2>Login</h2>
         <form id="login-form">
             <label for="username">Username:</label>
-            <input type="text" id="username" required>
-            <span class="error-message" id="username-error"></span>
+            <input type="text" id="username" name="username" required>
             <label for="password">Password:</label>
-            <input type="password" id="password" required>
-            <span class="error-message" id="password-error"></span>
+            <input type="text" id="password" name="password" required>
             <button type="submit">Login</button>
+            <span class="error-message" id="login-error"></span>
         </form>
     </div>
-
     <script>
         document.getElementById('login-form').addEventListener('submit', async (e) => {
             e.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
+            const formData = new FormData();
+            formData.append('username', document.getElementById('username').value);
+            formData.append('password', document.getElementById('password').value);
             const response = await fetch('api.php?action=login', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`
+                body: formData
             });
-
             const result = await response.json();
             if (result.success) {
-                window.location.href = 'students.php';
+                window.location.href = 'students.html';
             } else {
-                document.getElementById('username-error').textContent = result.error;
-                document.getElementById('username-error').style.display = 'block';
+                document.getElementById('login-error').textContent = result.message;
+                document.getElementById('login-error').style.display = 'block';
             }
         });
     </script>

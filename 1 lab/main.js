@@ -9,13 +9,20 @@ document.addEventListener("DOMContentLoaded", function () {
     const closeEditModal = document.getElementById("close-edit");
     const addForm = document.getElementById("add-student-form");
     const editForm = document.getElementById("edit-student-form");
-    const tableBody = document.querySelector("#student-table");
+    const table = document.querySelector("#student-table");
+    const tableBody = table.querySelector("tbody") || document.createElement("tbody"); // Використовуємо tbody
     const rowsPerPage = 10;
     let currentPage = 1;
     const deleteModal = document.getElementById("delete-confirm");
     const deleteMessage = document.getElementById("delete-message");
     const confirmDelete = document.getElementById("confirm-delete");
     const cancelDelete = document.getElementById("cancel-delete");
+    let isLoading = false; // Захист від повторних запитів
+
+    // Додаємо tbody, якщо його немає
+    if (!table.querySelector("tbody")) {
+        table.appendChild(tableBody);
+    }
 
     function toggleMenu() {
         const isOpen = mobileMenu.classList.toggle("show");
@@ -28,10 +35,14 @@ document.addEventListener("DOMContentLoaded", function () {
         closeBtn.addEventListener("click", toggleMenu);
     }
 
-    burger.addEventListener("click", toggleMenu);
+    if (burger) {
+        burger.addEventListener("click", toggleMenu);
+    }
 
     function formatDate(dateStr) {
-        const date = new Date(dateStr);
+        if (!dateStr || dateStr === '0000-00-00') return 'N/A';
+        const date = new Date(dateStr.replace(/-/g, '/')); // Коректний парсинг дати
+        if (isNaN(date.getTime())) return 'N/A';
         const day = String(date.getDate()).padStart(2, '0');
         const month = String(date.getMonth() + 1).padStart(2, '0');
         const year = date.getFullYear();
@@ -40,33 +51,41 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function openModal() {
         console.log("Opening add modal");
-        addModal.style.display = "block";
-        addModal.classList.remove("hidden");
-        document.getElementById("add-student-id").value = "";
-        document.getElementById("add-party").value = "";
-        document.getElementById("add-name").value = "";
-        document.getElementById("add-gender").value = "M";
-        document.getElementById("add-birthday").value = "";
+        if (addModal) {
+            addModal.style.display = "block";
+            addModal.classList.remove("hidden");
+            document.getElementById("add-student-id").value = "";
+            document.getElementById("add-party").value = "";
+            document.getElementById("add-name").value = "";
+            document.getElementById("add-gender").value = "M";
+            document.getElementById("add-birthday").value = "";
+        }
     }
 
     function openEditModal(id, student) {
         console.log("Opening edit modal for student ID:", id);
-        editModal.style.display = "block";
-        editModal.classList.remove("hidden");
-        document.getElementById("edit-student-id").value = student.StudentId;
-        document.getElementById("edit-party").value = student.Party;
-        document.getElementById("edit-name").value = student.Name;
-        document.getElementById("edit-gender").value = student.Gender;
-        document.getElementById("edit-birthday").value = student.Birthday.split('T')[0];
+        if (editModal) {
+            editModal.style.display = "block";
+            editModal.classList.remove("hidden");
+            document.getElementById("edit-student-id").value = id;
+            document.getElementById("edit-party").value = student.party || '';
+            document.getElementById("edit-name").value = student.name || '';
+            document.getElementById("edit-gender").value = student.gender || 'M';
+            document.getElementById("edit-birthday").value = student.birthday && student.birthday !== 'N/A' ? student.birthday.split('-').reverse().join('-') : '';
+        }
     }
 
-    closeAddModal.addEventListener("click", function () {
-        addModal.style.display = "none";
-    });
+    if (closeAddModal) {
+        closeAddModal.addEventListener("click", function () {
+            if (addModal) addModal.style.display = "none";
+        });
+    }
 
-    closeEditModal.addEventListener("click", function () {
-        editModal.style.display = "none";
-    });
+    if (closeEditModal) {
+        closeEditModal.addEventListener("click", function () {
+            if (editModal) editModal.style.display = "none";
+        });
+    }
 
     function validateForm(prefix) {
         const party = document.getElementById(`${prefix}-party`).value;
@@ -106,92 +125,112 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     async function fetchStudents(page = 1) {
-        const response = await fetch(`api.php?action=getStudents&page=${page}`);
-        const data = await response.json();
-        if (!data.success) {
-            if (data.error === 'Unauthorized') {
-                window.location.href = 'login.php';
+        if (isLoading) return { success: false, students: [], totalPages: 1 }; // Уникаємо повторних запитів
+        isLoading = true;
+        try {
+            const response = await fetch(`students.php?action=getStudents&page=${page}`);
+            const data = await response.json();
+            console.log("Fetched students:", data); // Логування для дебагінгу
+            if (!data.success) {
+                if (data.error === 'Unauthorized') {
+                    window.location.href = 'login.php';
+                    return { success: false, students: [], totalPages: 1 };
+                }
+                throw new Error(data.error || 'Unknown error');
             }
-            throw new Error(data.error);
+            isLoading = false;
+            return data;
+        } catch (error) {
+            console.error("Fetch students error:", error);
+            isLoading = false;
+            return { success: false, students: [], totalPages: 1 };
         }
-        return data;
     }
 
-    addForm.addEventListener("submit", async function (event) {
-        event.preventDefault();
-        if (!validateForm("add")) return;
+    if (addForm) {
+        addForm.addEventListener("submit", async function (event) {
+            event.preventDefault();
+            if (!validateForm("add")) return;
 
-        const formData = new FormData();
-        formData.append("party", document.getElementById("add-party").value);
-        formData.append("name", document.getElementById("add-name").value);
-        formData.append("gender", document.getElementById("add-gender").value);
-        formData.append("birthday", document.getElementById("add-birthday").value);
+            const formData = new FormData();
+            formData.append("party", document.getElementById("add-party").value);
+            formData.append("name", document.getElementById("add-name").value);
+            formData.append("gender", document.getElementById("add-gender").value);
+            formData.append("birthday", document.getElementById("add-birthday").value);
 
-        const response = await fetch("api.php?action=createStudent", {
-            method: "POST",
-            body: formData
+            const response = await fetch("students.php?action=createStudent", {
+                method: "POST",
+                body: formData
+            });
+            const result = await response.json();
+
+            if (result.success) {
+                paginateTable();
+                if (addModal) addModal.style.display = "none";
+            } else {
+                document.getElementById("add-name-error").textContent = result.error || (result.errors ? result.errors.join(", ") : 'Unknown error');
+                document.getElementById("add-name-error").style.display = "block";
+            }
         });
-        const result = await response.json();
+    }
 
-        if (result.success) {
-            paginateTable();
-            addModal.style.display = "none";
-        } else {
-            document.getElementById("add-name-error").textContent = result.errors.join(", ");
-            document.getElementById("add-name-error").style.display = "block";
-        }
-    });
+    if (editForm) {
+        editForm.addEventListener("submit", async function (event) {
+            event.preventDefault();
+            if (!validateForm("edit")) return;
 
-    editForm.addEventListener("submit", async function (event) {
-        event.preventDefault();
-        if (!validateForm("edit")) return;
+            const formData = new FormData();
+            formData.append("id", document.getElementById("edit-student-id").value);
+            formData.append("party", document.getElementById("edit-party").value);
+            formData.append("name", document.getElementById("edit-name").value);
+            formData.append("gender", document.getElementById("edit-gender").value);
+            formData.append("birthday", document.getElementById("edit-birthday").value);
 
-        const formData = new FormData();
-        formData.append("id", document.getElementById("edit-student-id").value);
-        formData.append("party", document.getElementById("edit-party").value);
-        formData.append("name", document.getElementById("edit-name").value);
-        formData.append("gender", document.getElementById("edit-gender").value);
-        formData.append("birthday", document.getElementById("edit-birthday").value);
+            const response = await fetch("students.php?action=updateStudent", {
+                method: "POST",
+                body: formData
+            });
+            const result = await response.json();
 
-        const response = await fetch("api.php?action=updateStudent", {
-            method: "POST",
-            body: formData
+            if (result.success) {
+                paginateTable();
+                if (editModal) editModal.style.display = "none";
+            } else {
+                document.getElementById("edit-name-error").textContent = result.error || (result.errors ? result.errors.join(", ") : 'Unknown error');
+                document.getElementById("edit-name-error").style.display = "block";
+            }
         });
-        const result = await response.json();
-
-        if (result.success) {
-            paginateTable();
-            editModal.style.display = "none";
-        } else {
-            document.getElementById("edit-name-error").textContent = result.errors.join(", ");
-            document.getElementById("edit-name-error").style.display = "block";
-        }
-    });
+    }
 
     async function paginateTable() {
         const data = await fetchStudents(currentPage);
-        const students = data.students;
-        const totalPages = data.totalPages;
+        const students = data.students || [];
+        const totalPages = data.totalPages || 1;
 
-        tableBody.innerHTML = "";
-        renderTableHeader();
+        tableBody.innerHTML = ""; // Очищаємо лише tbody
 
-        students.forEach((student) => {
-            const newRow = document.createElement("tr");
-            newRow.innerHTML = `
-                <td><input type="checkbox" class="student-checkbox" data-id="${student.StudentId}" aria-label="Select student ${student.Name}"></td>
-                <td>${student.Party}</td>
-                <td>${student.Name}</td>
-                <td>${student.Gender}</td>
-                <td>${formatDate(student.Birthday)}</td>
-                <td><span class="status ${student.Status === 1 ? 'online' : 'offline'}">${student.Status === 1 ? 'Online' : 'Offline'}</span></td>
-                <td>
-                    <button class="edit" data-id="${student.StudentId}" aria-label="Edit student ${student.Name}"><i class="fa-solid fa-pen"></i></button>
-                    <button class="delete" data-id="${student.StudentId}" aria-label="Delete student ${student.Name}"><i class="fa-solid fa-x"></i></button>
-                </td>
-            `;
-            tableBody.appendChild(newRow);
-        });
+        if (students.length === 0) {
+            const row = document.createElement("tr");
+            row.innerHTML = `<td colspan="7">No students found</td>`;
+            tableBody.appendChild(row);
+        } else {
+            students.forEach((student) => {
+                const newRow = document.createElement("tr");
+                newRow.innerHTML = `
+                    <td><input type="checkbox" class="student-checkbox" data-id="${student.id || ''}" aria-label="Select student ${student.name || 'Unknown'}"></td>
+                    <td>${student.party || 'N/A'}</td>
+                    <td>${student.name || 'N/A'}</td>
+                    <td>${student.gender || 'N/A'}</td>
+                    <td>${formatDate(student.birthday)}</td>
+                    <td><span class="status ${student.status === 1 ? 'online' : 'offline'}">${student.status === 1 ? 'Online' : 'Offline'}</span></td>
+                    <td>
+                        <button class="edit" data-id="${student.id || ''}" aria-label="Edit student ${student.name || 'Unknown'}"><i class="fa-solid fa-pen"></i></button>
+                        <button class="delete" data-id="${student.id || ''}" aria-label="Delete student ${student.name || 'Unknown'}"><i class="fa-solid fa-x"></i></button>
+                    </td>
+                `;
+                tableBody.appendChild(newRow);
+            });
+        }
 
         addEventListeners();
         renderPaginationControls(totalPages);
@@ -201,89 +240,85 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll(".delete").forEach(button => {
             button.addEventListener("click", async function () {
                 const id = this.dataset.id;
-                deleteMessage.textContent = `Are you sure you want to delete this student?`;
-                deleteModal.style.display = "block";
+                if (deleteModal && deleteMessage) {
+                    deleteMessage.textContent = `Are you sure you want to delete this student?`;
+                    deleteModal.style.display = "block";
 
-                confirmDelete.onclick = async () => {
-                    const formData = new FormData();
-                    formData.append("id", id);
-                    const response = await fetch("api.php?action=deleteStudent", {
-                        method: "POST",
-                        body: formData
-                    });
-                    const result = await response.json();
+                    if (confirmDelete) {
+                        confirmDelete.onclick = async () => {
+                            const formData = new FormData();
+                            formData.append("id", id);
+                            const response = await fetch("students.php?action=deleteStudent", {
+                                method: "POST",
+                                body: formData
+                            });
+                            const result = await response.json();
 
-                    if (result.success) {
-                        paginateTable();
-                    } else {
-                        alert(result.error);
+                            if (result.success) {
+                                paginateTable();
+                            } else {
+                                alert(result.error || 'Failed to delete student');
+                            }
+                            if (deleteModal) deleteModal.style.display = "none";
+                        };
                     }
-                    deleteModal.style.display = "none";
-                };
 
-                cancelDelete.onclick = () => {
-                    deleteModal.style.display = "none";
-                };
+                    if (cancelDelete) {
+                        cancelDelete.onclick = () => {
+                            if (deleteModal) deleteModal.style.display = "none";
+                        };
+                    }
+                }
             });
         });
 
         document.querySelectorAll(".edit").forEach(button => {
             button.addEventListener("click", function () {
                 const id = this.dataset.id;
-                const student = Array.from(tableBody.querySelectorAll('tr')).slice(1).find(row => {
+                const student = Array.from(tableBody.querySelectorAll('tr')).find(row => {
                     return row.querySelector('.edit').dataset.id === id;
                 });
-                const studentData = {
-                    StudentId: id,
-                    Party: student.cells[1].textContent,
-                    Name: student.cells[2].textContent,
-                    Gender: student.cells[3].textContent,
-                    Birthday: student.cells[4].textContent.split('-').reverse().join('-'),
-                    Status: student.cells[5].textContent === 'Online' ? 1 : 0
-                };
-                openEditModal(id, studentData);
+                if (student) {
+                    const studentData = {
+                        id: id,
+                        party: student.cells[1].textContent === 'N/A' ? '' : student.cells[1].textContent,
+                        name: student.cells[2].textContent === 'N/A' ? '' : student.cells[2].textContent,
+                        gender: student.cells[3].textContent === 'N/A' ? '' : student.cells[3].textContent,
+                        birthday: student.cells[4].textContent === 'N/A' ? '' : student.cells[4].textContent,
+                        status: student.cells[5].textContent === 'Online' ? 1 : 0
+                    };
+                    openEditModal(id, studentData);
+                }
             });
         });
 
         const selectAllCheckbox = document.querySelector("#select-all");
         const checkboxes = document.querySelectorAll(".student-checkbox");
 
-        selectAllCheckbox.addEventListener("change", function () {
-            checkboxes.forEach(checkbox => {
-                checkbox.checked = this.checked;
+        if (selectAllCheckbox) {
+            selectAllCheckbox.addEventListener("change", function () {
+                checkboxes.forEach(checkbox => {
+                    if (checkbox) checkbox.checked = this.checked;
+                });
             });
-        });
+        }
 
         checkboxes.forEach(checkbox => {
-            checkbox.addEventListener("change", () => {
-                if (!checkbox.checked) {
-                    selectAllCheckbox.checked = false;
-                } else if (document.querySelectorAll(".student-checkbox:checked").length === checkboxes.length) {
-                    selectAllCheckbox.checked = true;
-                }
-            });
+            if (checkbox) {
+                checkbox.addEventListener("change", () => {
+                    if (!checkbox.checked) {
+                        if (selectAllCheckbox) selectAllCheckbox.checked = false;
+                    } else if (document.querySelectorAll(".student-checkbox:checked").length === checkboxes.length) {
+                        if (selectAllCheckbox) selectAllCheckbox.checked = true;
+                    }
+                });
+            }
         });
-    }
-
-    function renderTableHeader() {
-        const headerRow = document.createElement("tr");
-        headerRow.innerHTML = `
-            <th>
-                <label for="select-all" class="sr-only">Select all students</label>
-                <input type="checkbox" id="select-all" aria-label="Select all students">
-            </th>
-            <th>Party</th>
-            <th>Name</th>
-            <th>Gender</th>
-            <th>Birthday</th>
-            <th>Status</th>
-            <th>Option</th>
-        `;
-        tableBody.appendChild(headerRow);
     }
 
     function renderPaginationControls(totalPages) {
         let paginationContainer = document.getElementById("pagination");
+        if (!paginationContainer) return;
         paginationContainer.innerHTML = "";
 
         if (totalPages > 1) {
@@ -325,24 +360,28 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             });
             paginationContainer.appendChild(nextButton);
+        } else {
+            paginationContainer.innerHTML = `Page ${currentPage} of ${totalPages}`;
         }
     }
 
     const messages = document.querySelectorAll(".message");
     const notificationIndicator = document.querySelector(".notification-indicator");
 
-    messages.forEach((message) => {
-        message.addEventListener("click", () => {
-            if (message.classList.contains("unread")) {
-                message.classList.remove("unread");
-                message.classList.add("read");
-                notificationIndicator.classList.remove("active");
-            }
+    if (messages && notificationIndicator) {
+        messages.forEach((message) => {
+            message.addEventListener("click", () => {
+                if (message.classList.contains("unread")) {
+                    message.classList.remove("unread");
+                    message.classList.add("read");
+                    notificationIndicator.classList.remove("active");
+                }
+            });
         });
-    });
 
-    if (document.querySelector(".unread")) {
-        notificationIndicator.classList.add("active");
+        if (document.querySelector(".unread")) {
+            notificationIndicator.classList.add("active");
+        }
     }
 
     paginateTable();
