@@ -1,5 +1,10 @@
 <?php
 session_start();
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
+error_reporting(E_ALL);
+ini_set('log_errors', 1);
+ini_set('error_log', 'error_log.txt'); // Укажите путь к файлу логов
 header('Content-Type: application/json');
 
 function respond($success, $data = [], $error = '') {
@@ -78,10 +83,6 @@ switch ($action) {
         break;
 
     case 'getStudents':
-        if (!isset($_SESSION['user_id'])) {
-            respond(false, [], 'Unauthorized');
-            exit;
-        }
         $page = isset($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
         $rowsPerPage = 10;
         $offset = ($page - 1) * $rowsPerPage;
@@ -144,6 +145,16 @@ switch ($action) {
         $birthday = $_POST['birthday'] ?? null;
 
         try {
+            // Проверка на существование студента с таким же именем
+            $stmt = $pdo->prepare("SELECT COUNT(*) FROM students WHERE name = ? AND birthday = ?");
+            $stmt->execute([$name, $birthday]);
+            $existingCount = $stmt->fetchColumn();
+
+            if ($existingCount > 0) {
+                respond(false, [], 'A student with the same name and birthday already exists.');
+            }
+
+            // Добавление нового студента
             $stmt = $pdo->prepare("INSERT INTO students (party, name, gender, birthday, status) VALUES (?, ?, ?, ?, 0)");
             $stmt->execute([$party, $name, $gender, $birthday]);
             $newStudentId = $pdo->lastInsertId();
@@ -156,38 +167,12 @@ switch ($action) {
                 'birthday' => $birthday,
                 'status' => 0
             ];
+
+            error_log("New student added: " . json_encode($newStudent, JSON_PRETTY_PRINT));
             respond(true, $newStudent);
         } catch (PDOException $e) {
             error_log("Failed to create student: " . $e->getMessage());
             respond(false, [], 'Failed to create student: ' . $e->getMessage());
-        }
-        break;
-
-    case 'updateStudent':
-        if (!isset($_SESSION['user_id'])) {
-            respond(false, [], 'Unauthorized');
-            exit;
-        }
-        $id = $_POST['id'] ?? 0;
-        $party = $_POST['party'] ?? '';
-        $name = $_POST['name'] ?? '';
-        $gender = $_POST['gender'] ?? '';
-        $birthday = $_POST['birthday'] ?? null;
-
-        try {
-            $stmt = $pdo->prepare("UPDATE students SET party = ?, name = ?, gender = ?, birthday = ? WHERE id = ?");
-            $stmt->execute([$party, $name, $gender, $birthday, $id]);
-            respond(true, [
-                'id' => $id,
-                'party' => $party,
-                'name' => $name,
-                'gender' => $gender,
-                'birthday' => $birthday,
-                'status' => 0
-            ]);
-        } catch (PDOException $e) {
-            error_log("Failed to update student: " . $e->getMessage());
-            respond(false, [], 'Failed to update student: ' . $e->getMessage());
         }
         break;
 
@@ -212,3 +197,38 @@ switch ($action) {
         respond(false, [], 'Invalid action');
 }
 ?>
+
+<script>
+addForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
+    if (!validateForm("add")) return;
+
+    const formData = new FormData();
+    formData.append("party", document.getElementById("add-party").value);
+    formData.append("name", document.getElementById("add-name").value);
+    formData.append("gender", document.getElementById("add-gender").value);
+    formData.append("birthday", document.getElementById("add-birthday").value);
+
+    console.log("Submitting new student data:", {
+        party: document.getElementById("add-party").value,
+        name: document.getElementById("add-name").value,
+        gender: document.getElementById("add-gender").value,
+        birthday: document.getElementById("add-birthday").value
+    });
+
+    const response = await fetch("students.php?action=createStudent", {
+        method: "POST",
+        body: formData,
+        credentials: 'same-origin'
+    });
+    const result = await response.json();
+
+    if (result.success) {
+        paginateTable();
+        if (addModal) addModal.style.display = "none";
+    } else {
+        document.getElementById("add-name-error").textContent = result.error || (result.errors ? result.errors.join(", ") : 'Unknown error');
+        document.getElementById("add-name-error").style.display = "block";
+    }
+});
+</script>

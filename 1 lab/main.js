@@ -39,24 +39,27 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function formatDate(dateStr) {
+        console.log("Formatting date:", dateStr);
         if (!dateStr || dateStr === '0000-00-00' || !dateStr.trim()) {
-            console.log("Invalid or missing date:", dateStr);
+            console.log("Invalid or missing date, returning N/A");
             return 'N/A';
         }
         const dateParts = dateStr.split('-');
-        if (dateParts.length !== 3 || isNaN(Date.parse(dateStr))) {
-            console.log("Date parsing failed for:", dateStr);
+        if (dateParts.length !== 3) {
+            console.log("Invalid date format, returning N/A");
             return 'N/A';
         }
         const year = parseInt(dateParts[0], 10);
-        const month = parseInt(dateParts[1], 10) - 1;
+        const month = parseInt(dateParts[1], 10) - 1; // Месяцы в JavaScript начинаются с 0
         const day = parseInt(dateParts[2], 10);
         const date = new Date(year, month, day);
         if (isNaN(date.getTime())) {
-            console.log("Date object creation failed for:", dateStr);
+            console.log("Date object creation failed, returning N/A");
             return 'N/A';
         }
-        return `${String(day).padStart(2, '0')}-${String(month + 1).padStart(2, '0')}-${year}`;
+        const formattedDate = `${String(day).padStart(2, '0')}-${String(month + 1).padStart(2, '0')}-${year}`;
+        console.log("Formatted date:", formattedDate);
+        return formattedDate;
     }
 
     function openModal() {
@@ -73,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function openEditModal(id, student) {
-        console.log("Opening edit modal for student ID:", id);
+        console.log("Opening edit modal for student ID:", id, "with data:", student);
         if (editModal) {
             editModal.style.display = "block";
             editModal.classList.remove("hidden");
@@ -139,15 +142,11 @@ document.addEventListener("DOMContentLoaded", function () {
         isLoading = true;
         try {
             const response = await fetch(`students.php?action=getStudents&page=${page}`, {
-                credentials: 'same-origin' // Передаємо куки сесії
+                credentials: 'same-origin'
             });
             const data = await response.json();
             console.log("Raw response from students.php:", JSON.stringify(data, null, 2));
             if (!data.success) {
-                if (data.error === 'Unauthorized') {
-                    window.location.href = 'login.php';
-                    return { success: false, students: [], totalPages: 1 };
-                }
                 throw new Error(data.error || 'Unknown error');
             }
             isLoading = false;
@@ -170,10 +169,17 @@ document.addEventListener("DOMContentLoaded", function () {
             formData.append("gender", document.getElementById("add-gender").value);
             formData.append("birthday", document.getElementById("add-birthday").value);
 
+            console.log("Submitting new student data:", {
+                party: document.getElementById("add-party").value,
+                name: document.getElementById("add-name").value,
+                gender: document.getElementById("add-gender").value,
+                birthday: document.getElementById("add-birthday").value
+            });
+
             const response = await fetch("students.php?action=createStudent", {
                 method: "POST",
                 body: formData,
-                credentials: 'same-origin' // Передаємо куки сесії
+                credentials: 'same-origin'
             });
             const result = await response.json();
 
@@ -202,7 +208,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const response = await fetch("students.php?action=updateStudent", {
                 method: "POST",
                 body: formData,
-                credentials: 'same-origin' // Передаємо куки сесії
+                credentials: 'same-origin'
             });
             const result = await response.json();
 
@@ -219,7 +225,7 @@ document.addEventListener("DOMContentLoaded", function () {
     async function paginateTable() {
         const data = await fetchStudents(currentPage);
         console.log("Fetched data for pagination:", JSON.stringify(data, null, 2));
-        const students = data.students || [];
+        const students = data.students || []; // Исправлено
         const totalPages = data.totalPages || 1;
 
         tableBody.innerHTML = "";
@@ -231,24 +237,26 @@ document.addEventListener("DOMContentLoaded", function () {
             tableBody.appendChild(row);
         } else {
             students.forEach((student, index) => {
-                console.log(`Processing student ${index + 1}:`, JSON.stringify(student, null, 2));
-                const party = student.party || 'N/A';
-                const name = student.name || 'N/A';
-                const gender = student.gender || 'N/A';
-                const birthday = student.birthday || null;
-                const status = student.status === 1 ? 1 : 0;
+                console.log(`Processing student ${index + 1}:`, student);
+
+                const id = student.id ?? 'N/A';
+                const party = student.party ?? 'N/A';
+                const name = student.name ?? 'N/A';
+                const gender = student.gender === 'M' ? 'Male' : student.gender === 'F' ? 'Female' : 'N/A';
+                const birthday = student.birthday ? formatDate(student.birthday) : 'N/A';
+                const status = student.status === 1 ? 'Online' : 'Offline';
 
                 const newRow = document.createElement("tr");
                 newRow.innerHTML = `
-                    <td><input type="checkbox" class="student-checkbox" data-id="${student.id || ''}" aria-label="Select student ${name}"></td>
+                    <td><input type="checkbox" class="student-checkbox" data-id="${id}" aria-label="Select student ${name}"></td>
                     <td>${party}</td>
                     <td>${name}</td>
                     <td>${gender}</td>
-                    <td>${formatDate(birthday)}</td>
-                    <td><span class="status ${status === 1 ? 'online' : 'offline'}">${status === 1 ? 'Online' : 'Offline'}</span></td>
+                    <td>${birthday}</td>
+                    <td><span class="status ${status === 'Online' ? 'online' : 'offline'}">${status}</span></td>
                     <td>
-                        <button class="edit" data-id="${student.id || ''}" aria-label="Edit student ${name}"><i class="fa-solid fa-pen"></i></button>
-                        <button class="delete" data-id="${student.id || ''}" aria-label="Delete student ${name}"><i class="fa-solid fa-x"></i></button>
+                        <button class="edit" data-id="${id}" aria-label="Edit student ${name}"><i class="fa-solid fa-pen"></i></button>
+                        <button class="delete" data-id="${id}" aria-label="Delete student ${name}"><i class="fa-solid fa-x"></i></button>
                     </td>
                 `;
                 tableBody.appendChild(newRow);
@@ -274,7 +282,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             const response = await fetch("students.php?action=deleteStudent", {
                                 method: "POST",
                                 body: formData,
-                                credentials: 'same-origin' // Передаємо куки сесії
+                                credentials: 'same-origin'
                             });
                             const result = await response.json();
 
