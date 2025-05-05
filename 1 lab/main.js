@@ -10,16 +10,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const addForm = document.getElementById("add-student-form");
     const editForm = document.getElementById("edit-student-form");
     const table = document.querySelector("#student-table");
-    const tableBody = table.querySelector("tbody") || document.createElement("tbody"); // Використовуємо tbody
+    const tableBody = table.querySelector("tbody") || document.createElement("tbody");
     const rowsPerPage = 10;
     let currentPage = 1;
     const deleteModal = document.getElementById("delete-confirm");
     const deleteMessage = document.getElementById("delete-message");
     const confirmDelete = document.getElementById("confirm-delete");
     const cancelDelete = document.getElementById("cancel-delete");
-    let isLoading = false; // Захист від повторних запитів
+    let isLoading = false;
 
-    // Додаємо tbody, якщо його немає
     if (!table.querySelector("tbody")) {
         table.appendChild(tableBody);
     }
@@ -40,13 +39,24 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function formatDate(dateStr) {
-        if (!dateStr || dateStr === '0000-00-00') return 'N/A';
-        const date = new Date(dateStr.replace(/-/g, '/')); // Коректний парсинг дати
-        if (isNaN(date.getTime())) return 'N/A';
-        const day = String(date.getDate()).padStart(2, '0');
-        const month = String(date.getMonth() + 1).padStart(2, '0');
-        const year = date.getFullYear();
-        return `${day}-${month}-${year}`;
+        if (!dateStr || dateStr === '0000-00-00' || !dateStr.trim()) {
+            console.log("Invalid or missing date:", dateStr);
+            return 'N/A';
+        }
+        const dateParts = dateStr.split('-');
+        if (dateParts.length !== 3 || isNaN(Date.parse(dateStr))) {
+            console.log("Date parsing failed for:", dateStr);
+            return 'N/A';
+        }
+        const year = parseInt(dateParts[0], 10);
+        const month = parseInt(dateParts[1], 10) - 1;
+        const day = parseInt(dateParts[2], 10);
+        const date = new Date(year, month, day);
+        if (isNaN(date.getTime())) {
+            console.log("Date object creation failed for:", dateStr);
+            return 'N/A';
+        }
+        return `${String(day).padStart(2, '0')}-${String(month + 1).padStart(2, '0')}-${year}`;
     }
 
     function openModal() {
@@ -125,12 +135,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     async function fetchStudents(page = 1) {
-        if (isLoading) return { success: false, students: [], totalPages: 1 }; // Уникаємо повторних запитів
+        if (isLoading) return { success: false, students: [], totalPages: 1 };
         isLoading = true;
         try {
-            const response = await fetch(`students.php?action=getStudents&page=${page}`);
+            const response = await fetch(`students.php?action=getStudents&page=${page}`, {
+                credentials: 'same-origin' // Передаємо куки сесії
+            });
             const data = await response.json();
-            console.log("Fetched students:", data); // Логування для дебагінгу
+            console.log("Raw response from students.php:", JSON.stringify(data, null, 2));
             if (!data.success) {
                 if (data.error === 'Unauthorized') {
                     window.location.href = 'login.php';
@@ -139,7 +151,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 throw new Error(data.error || 'Unknown error');
             }
             isLoading = false;
-            return data;
+            return { success: true, students: data.data.students || [], totalPages: data.data.totalPages || 1 };
         } catch (error) {
             console.error("Fetch students error:", error);
             isLoading = false;
@@ -160,7 +172,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const response = await fetch("students.php?action=createStudent", {
                 method: "POST",
-                body: formData
+                body: formData,
+                credentials: 'same-origin' // Передаємо куки сесії
             });
             const result = await response.json();
 
@@ -188,7 +201,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const response = await fetch("students.php?action=updateStudent", {
                 method: "POST",
-                body: formData
+                body: formData,
+                credentials: 'same-origin' // Передаємо куки сесії
             });
             const result = await response.json();
 
@@ -204,28 +218,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
     async function paginateTable() {
         const data = await fetchStudents(currentPage);
+        console.log("Fetched data for pagination:", JSON.stringify(data, null, 2));
         const students = data.students || [];
         const totalPages = data.totalPages || 1;
 
-        tableBody.innerHTML = ""; // Очищаємо лише tbody
+        tableBody.innerHTML = "";
 
         if (students.length === 0) {
+            console.log("No students found, displaying empty table message.");
             const row = document.createElement("tr");
             row.innerHTML = `<td colspan="7">No students found</td>`;
             tableBody.appendChild(row);
         } else {
-            students.forEach((student) => {
+            students.forEach((student, index) => {
+                console.log(`Processing student ${index + 1}:`, JSON.stringify(student, null, 2));
+                const party = student.party || 'N/A';
+                const name = student.name || 'N/A';
+                const gender = student.gender || 'N/A';
+                const birthday = student.birthday || null;
+                const status = student.status === 1 ? 1 : 0;
+
                 const newRow = document.createElement("tr");
                 newRow.innerHTML = `
-                    <td><input type="checkbox" class="student-checkbox" data-id="${student.id || ''}" aria-label="Select student ${student.name || 'Unknown'}"></td>
-                    <td>${student.party || 'N/A'}</td>
-                    <td>${student.name || 'N/A'}</td>
-                    <td>${student.gender || 'N/A'}</td>
-                    <td>${formatDate(student.birthday)}</td>
-                    <td><span class="status ${student.status === 1 ? 'online' : 'offline'}">${student.status === 1 ? 'Online' : 'Offline'}</span></td>
+                    <td><input type="checkbox" class="student-checkbox" data-id="${student.id || ''}" aria-label="Select student ${name}"></td>
+                    <td>${party}</td>
+                    <td>${name}</td>
+                    <td>${gender}</td>
+                    <td>${formatDate(birthday)}</td>
+                    <td><span class="status ${status === 1 ? 'online' : 'offline'}">${status === 1 ? 'Online' : 'Offline'}</span></td>
                     <td>
-                        <button class="edit" data-id="${student.id || ''}" aria-label="Edit student ${student.name || 'Unknown'}"><i class="fa-solid fa-pen"></i></button>
-                        <button class="delete" data-id="${student.id || ''}" aria-label="Delete student ${student.name || 'Unknown'}"><i class="fa-solid fa-x"></i></button>
+                        <button class="edit" data-id="${student.id || ''}" aria-label="Edit student ${name}"><i class="fa-solid fa-pen"></i></button>
+                        <button class="delete" data-id="${student.id || ''}" aria-label="Delete student ${name}"><i class="fa-solid fa-x"></i></button>
                     </td>
                 `;
                 tableBody.appendChild(newRow);
@@ -250,7 +273,8 @@ document.addEventListener("DOMContentLoaded", function () {
                             formData.append("id", id);
                             const response = await fetch("students.php?action=deleteStudent", {
                                 method: "POST",
-                                body: formData
+                                body: formData,
+                                credentials: 'same-origin' // Передаємо куки сесії
                             });
                             const result = await response.json();
 
@@ -386,14 +410,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
     paginateTable();
     window.openModal = openModal;
-
-    if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("/service-worker.js")
-            .then(registration => {
-                console.log("Service Worker Registered:", registration);
-            })
-            .catch(err => {
-                console.error("Service Worker Registration Failed:", err);
-            });
-    }
 });

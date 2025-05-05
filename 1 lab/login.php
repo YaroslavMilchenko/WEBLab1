@@ -5,6 +5,7 @@ if (isset($_SESSION['user_id'])) {
     exit;
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +21,7 @@ if (isset($_SESSION['user_id'])) {
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
             <label for="password">Password:</label>
-            <input type="text" id="password" name="password" required>
+            <input type="password" id="password" name="password" required>
             <button type="submit">Login</button>
             <span class="error-message" id="login-error"></span>
         </form>
@@ -31,15 +32,22 @@ if (isset($_SESSION['user_id'])) {
             const formData = new FormData();
             formData.append('username', document.getElementById('username').value);
             formData.append('password', document.getElementById('password').value);
-            const response = await fetch('api.php?action=login', {
-                method: 'POST',
-                body: formData
-            });
-            const result = await response.json();
-            if (result.success) {
-                window.location.href = 'students.html';
-            } else {
-                document.getElementById('login-error').textContent = result.message;
+            try {
+                const response = await fetch('students.php?action=login', {
+                    method: 'POST',
+                    body: formData,
+                    credentials: 'same-origin' // Передаємо куки сесії
+                });
+                const result = await response.json();
+                if (result.success) {
+                    window.location.href = 'students.html';
+                } else {
+                    document.getElementById('login-error').textContent = result.error || 'Невірне ім\'я користувача або пароль';
+                    document.getElementById('login-error').style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Помилка під час входу:', error);
+                document.getElementById('login-error').textContent = 'Помилка сервера. Спробуйте ще раз.';
                 document.getElementById('login-error').style.display = 'block';
             }
         });
