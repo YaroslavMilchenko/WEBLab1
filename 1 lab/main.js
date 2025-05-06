@@ -205,6 +205,14 @@ document.addEventListener("DOMContentLoaded", function () {
             formData.append("gender", document.getElementById("edit-gender").value);
             formData.append("birthday", document.getElementById("edit-birthday").value);
 
+            console.log("Submitting updated student data:", {
+                id: document.getElementById("edit-student-id").value,
+                party: document.getElementById("edit-party").value,
+                name: document.getElementById("edit-name").value,
+                gender: document.getElementById("edit-gender").value,
+                birthday: document.getElementById("edit-birthday").value
+            });
+
             const response = await fetch("students.php?action=updateStudent", {
                 method: "POST",
                 body: formData,

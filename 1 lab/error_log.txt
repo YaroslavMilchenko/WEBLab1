@@ -805,3 +805,78 @@
         "status": 0
     }
 ]
+[06-May-2025 10:56:30 Europe/Berlin] Session status: 2, Session ID: r4psli2unr16tli0alkcf3lu4c, User ID: not set
+[06-May-2025 10:56:30 Europe/Berlin] Raw students data from DB: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 10:56:30 Europe/Berlin] Mapped students data: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 12:41:26 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: 1
+[06-May-2025 12:41:26 Europe/Berlin] Raw students data from DB: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 12:41:26 Europe/Berlin] Mapped students data: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 12:41:37 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: 1
+[06-May-2025 12:41:48 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: 1
+[06-May-2025 12:41:51 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: 1
+[06-May-2025 12:41:53 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: 1
+[06-May-2025 12:46:36 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: 1
+[06-May-2025 12:46:36 Europe/Berlin] Student updated: {
+    "id": "26",
+    "party": "PZ-24",
+    "name": "Yaroslav Milchenkooo",
+    "gender": "M",
+    "birthday": "2006-07-11"
+}
+[06-May-2025 12:46:36 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: 1
+[06-May-2025 12:46:36 Europe/Berlin] Raw students data from DB: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenkooo",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 12:46:36 Europe/Berlin] Mapped students data: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenkooo",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]

@@ -145,7 +145,6 @@ switch ($action) {
         $birthday = $_POST['birthday'] ?? null;
 
         try {
-            // Проверка на существование студента с таким же именем
             $stmt = $pdo->prepare("SELECT COUNT(*) FROM students WHERE name = ? AND birthday = ?");
             $stmt->execute([$name, $birthday]);
             $existingCount = $stmt->fetchColumn();
@@ -154,7 +153,6 @@ switch ($action) {
                 respond(false, [], 'A student with the same name and birthday already exists.');
             }
 
-            // Добавление нового студента
             $stmt = $pdo->prepare("INSERT INTO students (party, name, gender, birthday, status) VALUES (?, ?, ?, ?, 0)");
             $stmt->execute([$party, $name, $gender, $birthday]);
             $newStudentId = $pdo->lastInsertId();
@@ -190,6 +188,46 @@ switch ($action) {
         } catch (PDOException $e) {
             error_log("Failed to delete student: " . $e->getMessage());
             respond(false, [], 'Failed to delete student: ' . $e->getMessage());
+        }
+        break;
+
+    case 'updateStudent':
+        if (!isset($_SESSION['user_id'])) {
+            respond(false, [], 'Unauthorized');
+            exit;
+        }
+
+        $id = $_POST['id'] ?? 0;
+        $party = $_POST['party'] ?? '';
+        $name = $_POST['name'] ?? '';
+        $gender = $_POST['gender'] ?? '';
+        $birthday = $_POST['birthday'] ?? null;
+
+        try {
+            $stmt = $pdo->prepare("SELECT COUNT(*) FROM students WHERE id = ?");
+            $stmt->execute([$id]);
+            $existingCount = $stmt->fetchColumn();
+
+            if ($existingCount === 0) {
+                respond(false, [], 'Student not found.');
+            }
+
+            $stmt = $pdo->prepare("UPDATE students SET party = ?, name = ?, gender = ?, birthday = ? WHERE id = ?");
+            $stmt->execute([$party, $name, $gender, $birthday, $id]);
+
+            $updatedStudent = [
+                'id' => $id,
+                'party' => $party,
+                'name' => $name,
+                'gender' => $gender,
+                'birthday' => $birthday
+            ];
+
+            error_log("Student updated: " . json_encode($updatedStudent, JSON_PRETTY_PRINT));
+            respond(true, $updatedStudent);
+        } catch (PDOException $e) {
+            error_log("Failed to update student: " . $e->getMessage());
+            respond(false, [], 'Failed to update student: ' . $e->getMessage());
         }
         break;
 
