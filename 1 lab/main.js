@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
     console.log("main.js loaded successfully");
 
     const burger = document.querySelector(".burger");

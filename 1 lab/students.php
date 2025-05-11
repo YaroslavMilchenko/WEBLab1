@@ -83,54 +83,18 @@ switch ($action) {
         break;
 
     case 'getStudents':
-        $page = isset($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
-        $rowsPerPage = 10;
-        $offset = ($page - 1) * $rowsPerPage;
+        if (!isset($_SESSION['user_id'])) {
+            respond(false, [], 'Unauthorized');
+            exit;
+        }
 
         try {
-            $tableCheck = $pdo->query("SHOW TABLES LIKE 'students'");
-            if ($tableCheck->rowCount() === 0) {
-                error_log("Table 'students' does not exist in the database.");
-                respond(false, [], 'Table "students" does not exist in the database.');
-            }
-
-            $stmt = $pdo->query("SELECT COUNT(*) FROM students");
-            $totalStudents = $stmt->fetchColumn();
-            $totalPages = max(1, ceil($totalStudents / $rowsPerPage));
-
-            $stmt = $pdo->prepare("SELECT * FROM students LIMIT :offset, :rowsPerPage");
-            $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
-            $stmt->bindValue(':rowsPerPage', $rowsPerPage, PDO::PARAM_INT);
-            $stmt->execute();
-            $students = $stmt->fetchAll();
-
-            error_log("Raw students data from DB: " . json_encode($students, JSON_PRETTY_PRINT));
-
-            if (empty($students)) {
-                error_log("No students found in the database.");
-                $students = [];
-            }
-
-            $students = array_map(function($student) {
-                return [
-                    'id' => isset($student['id']) ? (int)$student['id'] : 0,
-                    'party' => isset($student['party']) ? (string)$student['party'] : 'N/A',
-                    'name' => isset($student['name']) ? (string)$student['name'] : 'Unknown',
-                    'gender' => isset($student['gender']) ? (string)$student['gender'] : 'N/A',
-                    'birthday' => isset($student['birthday']) ? (string)$student['birthday'] : null,
-                    'status' => isset($student['status']) ? (int)$student['status'] : 0
-                ];
-            }, $students);
-
-            error_log("Mapped students data: " . json_encode($students, JSON_PRETTY_PRINT));
-
-            respond(true, [
-                'students' => $students,
-                'totalPages' => $totalPages
-            ]);
+            $stmt = $pdo->query("SELECT * FROM students");
+            $students = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            respond(true, ['students' => $students]);
         } catch (PDOException $e) {
             error_log("Failed to fetch students: " . $e->getMessage());
-            respond(false, [], 'Failed to fetch students: ' . $e->getMessage());
+            respond(false, [], 'Failed to fetch students');
         }
         break;
 

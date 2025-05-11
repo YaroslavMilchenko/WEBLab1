@@ -1,9 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
-    exit;
-}
+$isAuthorized = isset($_SESSION['user_id']);
 ?>
 
 <!DOCTYPE html>
@@ -21,100 +18,112 @@ if (!isset($_SESSION['user_id'])) {
     <header class="header">
         <div class="header-container">
             <h1><a href="main.html" class="logo-link">CMS</a></h1>
-            <div class="user-info">
-                <div class="notification-container">
-                    <i class="fa-solid fa-bell notification-icon" aria-label="Notifications"></i>
-                    <span class="notification-indicator"></span>
-                    <div class="notification-dropdown">
-                        <p><strong>New Messages:</strong></p>
-                        <p class="message unread">
-                            <img src="avatar1.jpg" alt="Avatar of John Doe" class="notif-avatar"> 
-                            John Doe: "Hey!" <span class="unread-indicator"></span>
-                        </p>
-                        <p class="message unread">
-                            <img src="avatar2.jpg" alt="Avatar of Jane Smith" class="notif-avatar"> 
-                            Jane Smith: "Meeting at 3?" <span class="unread-indicator"></span>
-                        </p>
+            <div class="header-right">
+                <?php if ($isAuthorized): ?>
+                    <div class="user-info">
+                        <div class="notification-container">
+                            <i class="fa-solid fa-bell notification-icon" aria-label="Notifications"></i>
+                            <span class="notification-indicator"></span>
+                            <div class="notification-dropdown">
+                                <p><strong>New Messages:</strong></p>
+                                <p class="message unread">
+                                    <img src="avatar1.jpg" alt="Avatar of John Doe" class="notif-avatar"> 
+                                    John Doe: "Hey!" <span class="unread-indicator"></span>
+                                </p>
+                                <p class="message unread">
+                                    <img src="avatar2.jpg" alt="Avatar of Jane Smith" class="notif-avatar"> 
+                                    Jane Smith: "Meeting at 3?" <span class="unread-indicator"></span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="profile-container">
+                            <img src="Students.jpeg" alt="Profile picture" id="profile-picture"/>
+                            <p class="user-name"><?php echo htmlspecialchars($_SESSION['username']); ?></p>
+                            <div class="profile-dropdown">
+                                <a href="profile.html" class="dropdown-link"><i class="fa-solid fa-user"></i> Profile</a>
+                                <a href="javascript:void(0)" onclick="logout()" class="dropdown-link"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
+                            </div>
+                        </div>
                     </div>
+                <?php else: ?>
+                    <button id="login-btn" onclick="window.location.href='login.php'">Login</button>
+                <?php endif; ?>
+            </div>
+            <?php if ($isAuthorized): ?>
+                <div class="burger" tabindex="0" onclick="toggleMenu()" onkeydown="if(event.key === 'Enter') toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
-                <div class="profile-container">
-                    <img src="Students.jpeg" alt="Profile picture" id="profile-picture"/>
+            <?php endif; ?>
+        </div>
+        <?php if ($isAuthorized): ?>
+            <div id="mobile-menu" aria-hidden="true">
+                <span class="close-btn" onclick="toggleMenu()" aria-label="Close mobile menu">×</span>
+                <div class="mobile-profile">
+                    <div class="notification-container">
+                        <i class="fa-solid fa-bell notification-icon" aria-label="Notifications"></i>
+                        <span class="notification-indicator"></span>
+                        <div class="notification-dropdown">
+                            <p><strong>New Messages:</strong></p>
+                            <p class="message unread">
+                                <img src="avatar1.jpg" alt="Avatar of John Doe" class="notif-avatar"> 
+                                John Doe: "Hey!" <span class="unread-indicator"></span>
+                            </p>
+                            <p class="message unread">
+                                <img src="avatar2.jpg" alt="Avatar of Jane Smith" class="notif-avatar"> 
+                                Jane Smith: "Meeting at 3?" <span class="unread-indicator"></span>
+                            </p>
+                        </div>
+                    </div>
+                    <img src="Students.jpeg" alt="Profile picture" />
                     <p class="user-name"><?php echo htmlspecialchars($_SESSION['username']); ?></p>
-                    <div class="profile-dropdown">
-                        <a href="profile.html" class="dropdown-link"><i class="fa-solid fa-user"></i> Profile</a>
-                        <a href="javascript:void(0)" onclick="logout()" class="dropdown-link"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
-                    </div>
-                </div>                
-            </div>
-            <div class="burger" tabindex="0" onclick="toggleMenu()" onkeydown="if(event.key === 'Enter') toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-        <div id="mobile-menu" aria-hidden="true">
-            <span class="close-btn" onclick="toggleMenu()" aria-label="Close mobile menu">×</span>
-            <div class="mobile-profile">
-                <div class="notification-container">
-                    <i class="fa-solid fa-bell notification-icon" aria-label="Notifications"></i>
-                    <span class="notification-indicator"></span>
-                    <div class="notification-dropdown">
-                        <p><strong>New Messages:</strong></p>
-                        <p class="message unread">
-                            <img src="avatar1.jpg" alt="Avatar of John Doe" class="notif-avatar"> 
-                            John Doe: "Hey!" <span class="unread-indicator"></span>
-                        </p>
-                        <p class="message unread">
-                            <img src="avatar2.jpg" alt="Avatar of Jane Smith" class="notif-avatar"> 
-                            Jane Smith: "Meeting at 3?" <span class="unread-indicator"></span>
-                        </p>
-                    </div>
                 </div>
-                <img src="Students.jpeg" alt="Profile picture" />
-                <p class="user-name"><?php echo htmlspecialchars($_SESSION['username']); ?></p>
-            </div>
-            <ul>
-                <li><a href="main.html">Dashboard</a></li>
-                <li><a href="students.html">Students</a></li>
-                <li><a href="tasks.html">Tasks</a></li>
-            </ul>
-            <ul class="mobile-profile-dropdown">
-                <li><a href="profile.html">Profile</a></li>
-                <li><a href="javascript:void(0)" onclick="logout()">Log Out</a></li>
-            </ul>
-        </div>
-    </header>
-    
-    <main class="main-body">
-        <aside>
-            <nav id="side-nav">
                 <ul>
                     <li><a href="main.html">Dashboard</a></li>
-                    <li><a href="students.html" class="active">Students</a></li>
+                    <li><a href="students.html">Students</a></li>
                     <li><a href="tasks.html">Tasks</a></li>
                 </ul>
-            </nav>
-        </aside>
-        <div class="table">
-            <h2 class="table-title">Students</h2>
-            <button class="add-student-btn" onclick="openModal()">Add Student</button>
-            <table id="student-table">
-                <thead>
-                    <tr>
-                        <th><input type="checkbox" id="select-all" aria-label="Select all students"></th>
-                        <th>Party</th>
-                        <th>Name</th>
-                        <th>Gender</th>
-                        <th>Birthday</th>
-                        <th>Status</th>
-                        <th>Options</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-            <div id="pagination"></div>
-        </div>
-    </main>
+                <ul class="mobile-profile-dropdown">
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="javascript:void(0)" onclick="logout()">Log Out</a></li>
+                </ul>
+            </div>
+        <?php endif; ?>
+    </header>
+
+    <?php if ($isAuthorized): ?>
+        <main class="main-body">
+            <aside>
+                <nav id="side-nav">
+                    <ul>
+                        <li><a href="main.html">Dashboard</a></li>
+                        <li><a href="students.html" class="active">Students</a></li>
+                        <li><a href="tasks.html">Tasks</a></li>
+                    </ul>
+                </nav>
+            </aside>
+            <div class="table">
+                <h2 class="table-title">Students</h2>
+                <button class="add-student-btn" onclick="openModal()">Add Student</button>
+                <table id="student-table">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="select-all" aria-label="Select all students"></th>
+                            <th>Party</th>
+                            <th>Name</th>
+                            <th>Gender</th>
+                            <th>Birthday</th>
+                            <th>Status</th>
+                            <th>Options</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <div id="pagination"></div>
+            </div>
+        </main>
+    <?php endif; ?>
 
     <!-- Форма додавання студента -->
     <div id="add-modal" class="modal hidden" role="dialog" aria-labelledby="add-modal-title">
