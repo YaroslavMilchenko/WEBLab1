@@ -81,7 +81,7 @@ $isAuthorized = isset($_SESSION['user_id']);
                 </div>
                 <ul>
                     <li><a href="main.html">Dashboard</a></li>
-                    <li><a href="students.html">Students</a></li>
+                    <li><a href="student.php" class="active">Students</a></li>
                     <li><a href="tasks.html">Tasks</a></li>
                 </ul>
                 <ul class="mobile-profile-dropdown">
@@ -98,7 +98,7 @@ $isAuthorized = isset($_SESSION['user_id']);
                 <nav id="side-nav">
                     <ul>
                         <li><a href="main.html">Dashboard</a></li>
-                        <li><a href="students.html" class="active">Students</a></li>
+                        <li><a href="student.php" class="active">Students</a></li>
                         <li><a href="tasks.html">Tasks</a></li>
                     </ul>
                 </nav>

@@ -40,7 +40,7 @@ if (isset($_SESSION['user_id'])) {
                 });
                 const result = await response.json();
                 if (result.success) {
-                    window.location.href = 'students.html';
+                    window.location.href = 'student.php';
                 } else {
                     document.getElementById('login-error').textContent = result.error || 'Невірне ім\'я користувача або пароль';
                     document.getElementById('login-error').style.display = 'block';

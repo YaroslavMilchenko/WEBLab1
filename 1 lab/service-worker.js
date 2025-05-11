@@ -13,7 +13,8 @@ const urlsToCache = [
     "/avatar2.jpg",
     "/tasks.html",
     "/tasks.css",
-    "/tasks.js"
+    "/tasks.js",
+    "/student.php"
 ];
 
 self.addEventListener("install", event => {

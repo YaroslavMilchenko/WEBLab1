@@ -1346,3 +1346,43 @@
 [12-May-2025 00:08:43 Europe/Berlin] Login successful, user_id set to: 1
 [12-May-2025 00:08:43 Europe/Berlin] Session status: 2, Session ID: jjii5j7br3t023uif2rknddglt, User ID: 1
 [12-May-2025 00:12:30 Europe/Berlin] Session status: 2, Session ID: jjii5j7br3t023uif2rknddglt, User ID: 1
+[12-May-2025 00:18:38 Europe/Berlin] Session status: 2, Session ID: jjii5j7br3t023uif2rknddglt, User ID: 1
+[12-May-2025 00:18:42 Europe/Berlin] Session status: 2, Session ID: jjii5j7br3t023uif2rknddglt, User ID: 1
+[12-May-2025 00:18:50 Europe/Berlin] Session status: 2, Session ID: jjii5j7br3t023uif2rknddglt, User ID: not set
+[12-May-2025 00:28:57 Europe/Berlin] Session status: 2, Session ID: 5lepb5pnpabivc2ta9e2dvt3ge, User ID: not set
+[12-May-2025 00:28:57 Europe/Berlin] Login successful, user_id set to: 1
+[12-May-2025 00:29:44 Europe/Berlin] Session status: 2, Session ID: 5lepb5pnpabivc2ta9e2dvt3ge, User ID: 1
+[12-May-2025 00:29:46 Europe/Berlin] Session status: 2, Session ID: 5lepb5pnpabivc2ta9e2dvt3ge, User ID: 1
+[12-May-2025 00:30:03 Europe/Berlin] Session status: 2, Session ID: 5lepb5pnpabivc2ta9e2dvt3ge, User ID: not set
+[12-May-2025 00:30:03 Europe/Berlin] Login successful, user_id set to: 1
+[12-May-2025 00:30:03 Europe/Berlin] Session status: 2, Session ID: 5lepb5pnpabivc2ta9e2dvt3ge, User ID: 1
+[12-May-2025 00:31:05 Europe/Berlin] Session status: 2, Session ID: 5lepb5pnpabivc2ta9e2dvt3ge, User ID: 1
+[12-May-2025 00:31:12 Europe/Berlin] Session status: 2, Session ID: 5lepb5pnpabivc2ta9e2dvt3ge, User ID: 1
+[12-May-2025 00:31:24 Europe/Berlin] Session status: 2, Session ID: 5lepb5pnpabivc2ta9e2dvt3ge, User ID: not set
+[12-May-2025 00:31:24 Europe/Berlin] Login successful, user_id set to: 1
+[12-May-2025 00:31:25 Europe/Berlin] Session status: 2, Session ID: 5lepb5pnpabivc2ta9e2dvt3ge, User ID: 1
+[12-May-2025 00:31:35 Europe/Berlin] Session status: 2, Session ID: 5lepb5pnpabivc2ta9e2dvt3ge, User ID: 1
+[12-May-2025 00:32:08 Europe/Berlin] Session status: 2, Session ID: 6toqlmh3j0jg9eeqhujkdjdbc8, User ID: not set
+[12-May-2025 00:32:08 Europe/Berlin] Login successful, user_id set to: 1
+[12-May-2025 00:32:09 Europe/Berlin] Session status: 2, Session ID: 6toqlmh3j0jg9eeqhujkdjdbc8, User ID: 1
+[12-May-2025 00:32:18 Europe/Berlin] Session status: 2, Session ID: 6toqlmh3j0jg9eeqhujkdjdbc8, User ID: 1
+[12-May-2025 00:32:18 Europe/Berlin] Student updated: {
+    "id": "29",
+    "party": "PZ-24",
+    "name": "Yaroslav Milchenko",
+    "gender": "M",
+    "birthday": "2006-07-11"
+}
+[12-May-2025 00:32:18 Europe/Berlin] Session status: 2, Session ID: 6toqlmh3j0jg9eeqhujkdjdbc8, User ID: 1
+[12-May-2025 00:32:21 Europe/Berlin] Session status: 2, Session ID: 6toqlmh3j0jg9eeqhujkdjdbc8, User ID: 1
+[12-May-2025 00:32:21 Europe/Berlin] Session status: 2, Session ID: 6toqlmh3j0jg9eeqhujkdjdbc8, User ID: 1
+[12-May-2025 00:32:29 Europe/Berlin] Session status: 2, Session ID: 6toqlmh3j0jg9eeqhujkdjdbc8, User ID: 1
+[12-May-2025 00:32:29 Europe/Berlin] New student added: {
+    "id": "30",
+    "party": "PZ-24",
+    "name": "Yaroslav Milchenko",
+    "gender": "M",
+    "birthday": "2006-07-11",
+    "status": 0
+}
+[12-May-2025 00:32:29 Europe/Berlin] Session status: 2, Session ID: 6toqlmh3j0jg9eeqhujkdjdbc8, User ID: 1
