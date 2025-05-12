@@ -12,6 +12,7 @@ if (isset($_SESSION['user_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
     <script defer src="../assets/js/main.js"></script>
 </head>
@@ -34,21 +35,21 @@ if (isset($_SESSION['user_id'])) {
             formData.append('username', document.getElementById('username').value);
             formData.append('password', document.getElementById('password').value);
             try {
-                const response = await fetch('/Control/students.php?action=login', {
+                const response = await fetch('../Control/students.php?action=login', {
                     method: 'POST',
                     body: formData,
-                    credentials: 'same-origin'
+                    credentials: 'same-origin' // Передаємо куки сесії
                 });
                 const result = await response.json();
                 if (result.success) {
                     window.location.href = 'student.php';
                 } else {
-                    document.getElementById('login-error').textContent = result.error || 'Invalid username or password';
+                    document.getElementById('login-error').textContent = result.error || 'Невірне ім\'я користувача або пароль';
                     document.getElementById('login-error').style.display = 'block';
                 }
             } catch (error) {
-                console.error('Login error:', error);
-                document.getElementById('login-error').textContent = 'Server error. Please try again.';
+                console.error('Помилка під час входу:', error);
+                document.getElementById('login-error').textContent = 'Помилка сервера. Спробуйте ще раз.';
                 document.getElementById('login-error').style.display = 'block';
             }
         });

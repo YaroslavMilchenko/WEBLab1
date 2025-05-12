@@ -1386,3 +1386,9 @@
     "status": 0
 }
 [12-May-2025 00:32:29 Europe/Berlin] Session status: 2, Session ID: 6toqlmh3j0jg9eeqhujkdjdbc8, User ID: 1
+[12-May-2025 11:06:56 Europe/Berlin] Session status: 2, Session ID: 6toqlmh3j0jg9eeqhujkdjdbc8, User ID: 1
+[12-May-2025 11:07:01 Europe/Berlin] Session status: 2, Session ID: 6toqlmh3j0jg9eeqhujkdjdbc8, User ID: 1
+[12-May-2025 11:07:14 Europe/Berlin] Session status: 2, Session ID: 6toqlmh3j0jg9eeqhujkdjdbc8, User ID: not set
+[12-May-2025 11:07:28 Europe/Berlin] Session status: 2, Session ID: 6toqlmh3j0jg9eeqhujkdjdbc8, User ID: not set
+[12-May-2025 11:07:28 Europe/Berlin] Login successful, user_id set to: 1
+[12-May-2025 11:07:28 Europe/Berlin] Session status: 2, Session ID: 6toqlmh3j0jg9eeqhujkdjdbc8, User ID: 1

@@ -1,20 +1,14 @@
 const CACHE_NAME = "student-cms-v1";
 const urlsToCache = [
-    "/students.html",
-    "/style.css",
-    "/main.js",
     "/manifest.json",
-    "/Students.jpeg",
-    "/avatar192.png",
-    "/avatar512.png",
-    "/screenshot-wide.png",
-    "/screenshot-narrow.png",
-    "/avatar1.jpg",
-    "/avatar2.jpg",
-    "/tasks.html",
-    "/tasks.css",
-    "/tasks.js",
-    "/student.php"
+    "/assets/css/style.css",
+    "/assets/js/main.js",
+    "/assets/images/avatar192.png",
+    "/assets/images/avatar512.png",
+    "/assets/images/Students.jpeg",
+    "/views/tasks.html",
+    "/assets/css/tasks.css",
+    "/models/tasks.js"
 ];
 
 self.addEventListener("install", event => {

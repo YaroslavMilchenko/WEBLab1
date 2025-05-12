@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         if (isLoading) return { success: false, students: [], totalPages: 1 };
         isLoading = true;
         try {
-            const response = await fetch(`students.php?action=getStudents&page=${page}`, {
+            const response = await fetch("../Control/students.php?action=getStudents&page=" + page, {
                 credentials: 'same-origin'
             });
             const data = await response.json();
@@ -176,7 +176,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 birthday: document.getElementById("add-birthday").value
             });
 
-            const response = await fetch("students.php?action=createStudent", {
+            const response = await fetch("../Control/students.php?action=createStudent", {
                 method: "POST",
                 body: formData,
                 credentials: 'same-origin'
@@ -213,7 +213,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 birthday: document.getElementById("edit-birthday").value
             });
 
-            const response = await fetch("students.php?action=updateStudent", {
+            const response = await fetch("../Control/students.php?action=updateStudent", {
                 method: "POST",
                 body: formData,
                 credentials: 'same-origin'
@@ -287,7 +287,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                         confirmDelete.onclick = async () => {
                             const formData = new FormData();
                             formData.append("id", id);
-                            const response = await fetch("students.php?action=deleteStudent", {
+                            const response = await fetch("../Control/students.php?action=deleteStudent", {
                                 method: "POST",
                                 body: formData,
                                 credentials: 'same-origin'

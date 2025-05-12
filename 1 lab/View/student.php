@@ -9,10 +9,10 @@ $isAuthorized = isset($_SESSION['user_id']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Students</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
+    <link rel="manifest" href="../manifest.json">
     <script src="https://kit.fontawesome.com/acdc2463b2.js" crossorigin="anonymous"></script>
-    <script defer src="main.js"></script>
+    <script defer src="../assets/js/main.js"></script>
 </head>
 <body>
     <header class="header">
@@ -27,17 +27,17 @@ $isAuthorized = isset($_SESSION['user_id']);
                             <div class="notification-dropdown">
                                 <p><strong>New Messages:</strong></p>
                                 <p class="message unread">
-                                    <img src="avatar1.jpg" alt="Avatar of John Doe" class="notif-avatar"> 
+                                    <img src="../assets/images/avatar1.jpg" alt="Avatar of John Doe" class="notif-avatar"> 
                                     John Doe: "Hey!" <span class="unread-indicator"></span>
                                 </p>
                                 <p class="message unread">
-                                    <img src="avatar2.jpg" alt="Avatar of Jane Smith" class="notif-avatar"> 
+                                    <img src="../assets/images/avatar2.jpg" alt="Avatar of Jane Smith" class="notif-avatar"> 
                                     Jane Smith: "Meeting at 3?" <span class="unread-indicator"></span>
                                 </p>
                             </div>
                         </div>
                         <div class="profile-container">
-                            <img src="Students.jpeg" alt="Profile picture" id="profile-picture"/>
+                            <img src="../assets/images/Students.jpeg" alt="Profile picture of James Bond" id="profile-picture"/>
                             <p class="user-name"><?php echo htmlspecialchars($_SESSION['username']); ?></p>
                             <div class="profile-dropdown">
                                 <a href="profile.html" class="dropdown-link"><i class="fa-solid fa-user"></i> Profile</a>
@@ -67,16 +67,16 @@ $isAuthorized = isset($_SESSION['user_id']);
                         <div class="notification-dropdown">
                             <p><strong>New Messages:</strong></p>
                             <p class="message unread">
-                                <img src="avatar1.jpg" alt="Avatar of John Doe" class="notif-avatar"> 
+                                <img src="../assets/images/avatar1.jpg" alt="Avatar of John Doe" class="notif-avatar"> 
                                 John Doe: "Hey!" <span class="unread-indicator"></span>
                             </p>
                             <p class="message unread">
-                                <img src="avatar2.jpg" alt="Avatar of Jane Smith" class="notif-avatar"> 
+                                <img src="../assets/images/avatar2.jpg" alt="Avatar of Jane Smith" class="notif-avatar"> 
                                 Jane Smith: "Meeting at 3?" <span class="unread-indicator"></span>
                             </p>
                         </div>
                     </div>
-                    <img src="Students.jpeg" alt="Profile picture" />
+                    <img src="../assets/images/Students.jpeg" alt="Profile picture of James Bond" />
                     <p class="user-name"><?php echo htmlspecialchars($_SESSION['username']); ?></p>
                 </div>
                 <ul>
@@ -195,12 +195,23 @@ $isAuthorized = isset($_SESSION['user_id']);
     </div>
 
     <script>
-        async function logout() {
-            const response = await fetch('students.php?action=logout', { method: 'POST' });
-            const result = await response.json();
-            if (result.success) {
-                window.location.href = 'login.php';
-            }
+        function logout() {
+            fetch('../Control/students.php?action=logout', {
+                method: 'POST',
+                credentials: 'same-origin'
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    window.location.href = '../View/login.php'; // Перенаправлення на сторінку входу
+                } else {
+                    alert('Failed to log out. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Logout error:', error);
+                alert('An error occurred during logout.');
+            });
         }
     </script>
 </body>

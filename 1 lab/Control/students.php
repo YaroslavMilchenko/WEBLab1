@@ -42,8 +42,18 @@ try {
 
 switch ($action) {
     case 'login':
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            respond(false, [], 'Invalid request method');
+            exit;
+        }
+
         $username = $_POST['username'] ?? '';
         $password = $_POST['password'] ?? '';
+
+        if (empty($username) || empty($password)) {
+            respond(false, [], 'Username and password are required');
+            exit;
+        }
 
         try {
             $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ? AND password = ?");
@@ -233,4 +243,28 @@ addForm.addEventListener("submit", async function (event) {
         document.getElementById("add-name-error").style.display = "block";
     }
 });
+
+try {
+    const response = await fetch('/Control/students.php?action=login', {
+        method: 'POST',
+        body: formData,
+        credentials: 'same-origin'
+    });
+
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const result = await response.json();
+    if (result.success) {
+        window.location.href = 'student.php';
+    } else {
+        document.getElementById('login-error').textContent = result.error || 'Invalid username or password';
+        document.getElementById('login-error').style.display = 'block';
+    }
+} catch (error) {
+    console.error('Login error:', error);
+    document.getElementById('login-error').textContent = 'Server error. Please try again.';
+    document.getElementById('login-error').style.display = 'block';
+}
 </script>

@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+require_once '../models/auth.php';
+
 // Встановлюємо заголовки для JSON-відповіді
 header('Content-Type: application/json');
 
