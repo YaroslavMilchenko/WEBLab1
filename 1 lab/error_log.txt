@@ -1,0 +1,1394 @@
+[05-May-2025 18:30:58 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: 1
+[05-May-2025 18:30:58 Europe/Berlin] New student added: {
+    "id": "25",
+    "party": "PZ-24",
+    "name": "Yaroslav Milchenko",
+    "gender": "M",
+    "birthday": "2006-07-11",
+    "status": 0
+}
+[05-May-2025 18:30:58 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: 1
+[05-May-2025 18:30:58 Europe/Berlin] Raw students data from DB: [
+    {
+        "id": 16,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 17,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 18,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 19,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 20,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 21,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 22,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 23,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 24,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 25,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[05-May-2025 18:30:58 Europe/Berlin] Mapped students data: [
+    {
+        "id": 16,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 17,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 18,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 19,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 20,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 21,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 22,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 23,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 24,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 25,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[05-May-2025 18:31:01 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: 1
+[05-May-2025 18:31:01 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: 1
+[05-May-2025 18:31:01 Europe/Berlin] Raw students data from DB: [
+    {
+        "id": 17,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 18,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 19,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 20,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 21,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 22,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 23,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 24,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 25,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[05-May-2025 18:31:01 Europe/Berlin] Mapped students data: [
+    {
+        "id": 17,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 18,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 19,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 20,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 21,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 22,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 23,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 24,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 25,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[05-May-2025 18:31:04 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: 1
+[05-May-2025 18:31:04 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: 1
+[05-May-2025 18:31:04 Europe/Berlin] Raw students data from DB: [
+    {
+        "id": 18,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 19,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 20,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 21,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 22,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 23,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 24,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 25,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[05-May-2025 18:31:04 Europe/Berlin] Mapped students data: [
+    {
+        "id": 18,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 19,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 20,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 21,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 22,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 23,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 24,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 25,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[05-May-2025 18:31:06 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: 1
+[05-May-2025 18:31:06 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: 1
+[05-May-2025 18:31:06 Europe/Berlin] Raw students data from DB: [
+    {
+        "id": 19,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 20,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 21,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 22,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 23,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 24,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 25,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[05-May-2025 18:31:06 Europe/Berlin] Mapped students data: [
+    {
+        "id": 19,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 20,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 21,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 22,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 23,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 24,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 25,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[05-May-2025 18:31:08 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: 1
+[05-May-2025 18:31:08 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: 1
+[05-May-2025 18:31:08 Europe/Berlin] Raw students data from DB: [
+    {
+        "id": 20,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 21,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 22,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 23,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 24,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 25,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[05-May-2025 18:31:08 Europe/Berlin] Mapped students data: [
+    {
+        "id": 20,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 21,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 22,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 23,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 24,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 25,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[05-May-2025 18:31:23 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: 1
+[05-May-2025 18:31:23 Europe/Berlin] Raw students data from DB: []
+[05-May-2025 18:31:23 Europe/Berlin] No students found in the database.
+[05-May-2025 18:31:23 Europe/Berlin] Mapped students data: []
+[05-May-2025 18:31:30 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: 1
+[05-May-2025 18:31:30 Europe/Berlin] New student added: {
+    "id": "26",
+    "party": "PZ-24",
+    "name": "Yaroslav Milchenko",
+    "gender": "M",
+    "birthday": "2006-07-11",
+    "status": 0
+}
+[05-May-2025 18:31:30 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: 1
+[05-May-2025 18:31:30 Europe/Berlin] Raw students data from DB: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[05-May-2025 18:31:30 Europe/Berlin] Mapped students data: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[05-May-2025 18:31:40 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: 1
+[05-May-2025 18:31:40 Europe/Berlin] New student added: {
+    "id": "27",
+    "party": "PZ-24",
+    "name": "Yaroslav Milchenko",
+    "gender": "M",
+    "birthday": "2006-07-11",
+    "status": 0
+}
+[05-May-2025 18:31:40 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: 1
+[05-May-2025 18:31:40 Europe/Berlin] Raw students data from DB: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 27,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[05-May-2025 18:31:40 Europe/Berlin] Mapped students data: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    },
+    {
+        "id": 27,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[05-May-2025 18:31:43 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: 1
+[05-May-2025 18:31:43 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: 1
+[05-May-2025 18:31:43 Europe/Berlin] Raw students data from DB: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[05-May-2025 18:31:43 Europe/Berlin] Mapped students data: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[05-May-2025 18:35:13 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: 1
+[05-May-2025 18:35:27 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: 1
+[05-May-2025 18:35:30 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: not set
+[05-May-2025 18:35:33 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: not set
+[05-May-2025 18:35:39 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: not set
+[05-May-2025 18:35:39 Europe/Berlin] Login successful, user_id set to: 1
+[05-May-2025 18:35:39 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: 1
+[05-May-2025 18:35:39 Europe/Berlin] Raw students data from DB: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[05-May-2025 18:35:39 Europe/Berlin] Mapped students data: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 10:56:30 Europe/Berlin] Session status: 2, Session ID: r4psli2unr16tli0alkcf3lu4c, User ID: not set
+[06-May-2025 10:56:30 Europe/Berlin] Raw students data from DB: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 10:56:30 Europe/Berlin] Mapped students data: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 12:41:26 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: 1
+[06-May-2025 12:41:26 Europe/Berlin] Raw students data from DB: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 12:41:26 Europe/Berlin] Mapped students data: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 12:41:37 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: 1
+[06-May-2025 12:41:48 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: 1
+[06-May-2025 12:41:51 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: 1
+[06-May-2025 12:41:53 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: 1
+[06-May-2025 12:46:36 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: 1
+[06-May-2025 12:46:36 Europe/Berlin] Student updated: {
+    "id": "26",
+    "party": "PZ-24",
+    "name": "Yaroslav Milchenkooo",
+    "gender": "M",
+    "birthday": "2006-07-11"
+}
+[06-May-2025 12:46:36 Europe/Berlin] Session status: 2, Session ID: 406jsu1lr7m6og8780qedk0i4n, User ID: 1
+[06-May-2025 12:46:36 Europe/Berlin] Raw students data from DB: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenkooo",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 12:46:36 Europe/Berlin] Mapped students data: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenkooo",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 13:38:50 Europe/Berlin] Session status: 2, Session ID: a5icsg0h7ren7jml6dgflofklg, User ID: not set
+[06-May-2025 13:38:50 Europe/Berlin] Raw students data from DB: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenkooo",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 13:38:50 Europe/Berlin] Mapped students data: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenkooo",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 13:38:54 Europe/Berlin] Session status: 2, Session ID: qgpte9jcu0h31pj1r6g6li8ahe, User ID: not set
+[06-May-2025 13:38:54 Europe/Berlin] Raw students data from DB: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenkooo",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 13:38:54 Europe/Berlin] Mapped students data: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenkooo",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 13:44:32 Europe/Berlin] Session status: 2, Session ID: qgpte9jcu0h31pj1r6g6li8ahe, User ID: not set
+[06-May-2025 13:44:32 Europe/Berlin] Raw students data from DB: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenkooo",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 13:44:32 Europe/Berlin] Mapped students data: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenkooo",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 13:44:35 Europe/Berlin] Session status: 2, Session ID: 4d9ar0l55usja0ksigophkdvrb, User ID: not set
+[06-May-2025 13:44:35 Europe/Berlin] Raw students data from DB: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenkooo",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 13:44:35 Europe/Berlin] Mapped students data: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenkooo",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 13:44:40 Europe/Berlin] Session status: 2, Session ID: 4d9ar0l55usja0ksigophkdvrb, User ID: not set
+[06-May-2025 13:44:42 Europe/Berlin] Session status: 2, Session ID: 4d9ar0l55usja0ksigophkdvrb, User ID: not set
+[06-May-2025 13:45:14 Europe/Berlin] Session status: 2, Session ID: p44vl5scf56ksp34nn50gs7hls, User ID: not set
+[06-May-2025 13:45:14 Europe/Berlin] Raw students data from DB: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenkooo",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 13:45:14 Europe/Berlin] Mapped students data: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenkooo",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 13:45:18 Europe/Berlin] Session status: 2, Session ID: p44vl5scf56ksp34nn50gs7hls, User ID: not set
+[06-May-2025 13:45:19 Europe/Berlin] Session status: 2, Session ID: p44vl5scf56ksp34nn50gs7hls, User ID: not set
+[06-May-2025 13:45:20 Europe/Berlin] Session status: 2, Session ID: p44vl5scf56ksp34nn50gs7hls, User ID: not set
+[06-May-2025 13:45:20 Europe/Berlin] Session status: 2, Session ID: p44vl5scf56ksp34nn50gs7hls, User ID: not set
+[06-May-2025 13:45:20 Europe/Berlin] Session status: 2, Session ID: p44vl5scf56ksp34nn50gs7hls, User ID: not set
+[06-May-2025 13:45:20 Europe/Berlin] Session status: 2, Session ID: p44vl5scf56ksp34nn50gs7hls, User ID: not set
+[06-May-2025 13:45:35 Europe/Berlin] Session status: 2, Session ID: p44vl5scf56ksp34nn50gs7hls, User ID: not set
+[06-May-2025 13:46:19 Europe/Berlin] Session status: 2, Session ID: p44vl5scf56ksp34nn50gs7hls, User ID: not set
+[06-May-2025 13:46:19 Europe/Berlin] Login successful, user_id set to: 1
+[06-May-2025 13:46:20 Europe/Berlin] Session status: 2, Session ID: p44vl5scf56ksp34nn50gs7hls, User ID: 1
+[06-May-2025 13:46:20 Europe/Berlin] Raw students data from DB: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenkooo",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 13:46:20 Europe/Berlin] Mapped students data: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenkooo",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 13:46:23 Europe/Berlin] Session status: 2, Session ID: p44vl5scf56ksp34nn50gs7hls, User ID: 1
+[06-May-2025 13:46:29 Europe/Berlin] Session status: 2, Session ID: p44vl5scf56ksp34nn50gs7hls, User ID: not set
+[06-May-2025 13:46:29 Europe/Berlin] Login successful, user_id set to: 1
+[06-May-2025 13:46:30 Europe/Berlin] Session status: 2, Session ID: p44vl5scf56ksp34nn50gs7hls, User ID: 1
+[06-May-2025 13:46:30 Europe/Berlin] Raw students data from DB: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenkooo",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 13:46:30 Europe/Berlin] Mapped students data: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenkooo",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 13:47:27 Europe/Berlin] Session status: 2, Session ID: p44vl5scf56ksp34nn50gs7hls, User ID: 1
+[06-May-2025 13:47:27 Europe/Berlin] Student updated: {
+    "id": "26",
+    "party": "PZ-24",
+    "name": "Yaroslav Milchenkoppppp",
+    "gender": "M",
+    "birthday": "2006-07-11"
+}
+[06-May-2025 13:47:27 Europe/Berlin] Session status: 2, Session ID: p44vl5scf56ksp34nn50gs7hls, User ID: 1
+[06-May-2025 13:47:27 Europe/Berlin] Raw students data from DB: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenkoppppp",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 13:47:27 Europe/Berlin] Mapped students data: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenkoppppp",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 13:47:36 Europe/Berlin] Session status: 2, Session ID: p44vl5scf56ksp34nn50gs7hls, User ID: 1
+[06-May-2025 13:47:36 Europe/Berlin] Student updated: {
+    "id": "26",
+    "party": "PZ-24",
+    "name": "Yaroslav Milchenko",
+    "gender": "M",
+    "birthday": "2006-07-11"
+}
+[06-May-2025 13:47:36 Europe/Berlin] Session status: 2, Session ID: p44vl5scf56ksp34nn50gs7hls, User ID: 1
+[06-May-2025 13:47:36 Europe/Berlin] Raw students data from DB: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 13:47:36 Europe/Berlin] Mapped students data: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 13:57:20 Europe/Berlin] Session status: 2, Session ID: p44vl5scf56ksp34nn50gs7hls, User ID: 1
+[06-May-2025 13:57:35 Europe/Berlin] Session status: 2, Session ID: p44vl5scf56ksp34nn50gs7hls, User ID: not set
+[06-May-2025 13:57:35 Europe/Berlin] Raw students data from DB: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 13:57:35 Europe/Berlin] Mapped students data: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 13:57:49 Europe/Berlin] Session status: 2, Session ID: p44vl5scf56ksp34nn50gs7hls, User ID: not set
+[06-May-2025 14:03:14 Europe/Berlin] Session status: 2, Session ID: p44vl5scf56ksp34nn50gs7hls, User ID: not set
+[06-May-2025 14:03:16 Europe/Berlin] Session status: 2, Session ID: p44vl5scf56ksp34nn50gs7hls, User ID: not set
+[06-May-2025 14:03:17 Europe/Berlin] Session status: 2, Session ID: p44vl5scf56ksp34nn50gs7hls, User ID: not set
+[06-May-2025 14:03:17 Europe/Berlin] Session status: 2, Session ID: p44vl5scf56ksp34nn50gs7hls, User ID: not set
+[06-May-2025 14:04:21 Europe/Berlin] Session status: 2, Session ID: p44vl5scf56ksp34nn50gs7hls, User ID: not set
+[06-May-2025 14:11:06 Europe/Berlin] Session status: 2, Session ID: 1fo60j8lrr3gb7oaijftl0nlt4, User ID: not set
+[06-May-2025 14:11:06 Europe/Berlin] Raw students data from DB: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 14:11:06 Europe/Berlin] Mapped students data: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 14:11:10 Europe/Berlin] Session status: 2, Session ID: 1fo60j8lrr3gb7oaijftl0nlt4, User ID: not set
+[06-May-2025 14:11:11 Europe/Berlin] Session status: 2, Session ID: 1fo60j8lrr3gb7oaijftl0nlt4, User ID: not set
+[06-May-2025 14:11:32 Europe/Berlin] Session status: 2, Session ID: 1fo60j8lrr3gb7oaijftl0nlt4, User ID: not set
+[06-May-2025 14:11:32 Europe/Berlin] Login successful, user_id set to: 1
+[06-May-2025 14:11:32 Europe/Berlin] Session status: 2, Session ID: 1fo60j8lrr3gb7oaijftl0nlt4, User ID: 1
+[06-May-2025 14:11:32 Europe/Berlin] Raw students data from DB: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 14:11:32 Europe/Berlin] Mapped students data: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 14:11:37 Europe/Berlin] Session status: 2, Session ID: 1fo60j8lrr3gb7oaijftl0nlt4, User ID: 1
+[06-May-2025 14:11:37 Europe/Berlin] Raw students data from DB: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 14:11:37 Europe/Berlin] Mapped students data: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 14:15:38 Europe/Berlin] Session status: 2, Session ID: 1fo60j8lrr3gb7oaijftl0nlt4, User ID: 1
+[06-May-2025 14:15:38 Europe/Berlin] Raw students data from DB: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 14:15:38 Europe/Berlin] Mapped students data: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 14:15:40 Europe/Berlin] Session status: 2, Session ID: 1fo60j8lrr3gb7oaijftl0nlt4, User ID: 1
+[06-May-2025 14:15:52 Europe/Berlin] Session status: 2, Session ID: 2qplv6v8075dshki9c4pkdsu0v, User ID: not set
+[06-May-2025 14:15:52 Europe/Berlin] Raw students data from DB: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 14:15:52 Europe/Berlin] Mapped students data: [
+    {
+        "id": 26,
+        "party": "PZ-24",
+        "name": "Yaroslav Milchenko",
+        "gender": "M",
+        "birthday": "2006-07-11",
+        "status": 0
+    }
+]
+[06-May-2025 14:24:25 Europe/Berlin] Session status: 2, Session ID: jdt2ru9o77g7aji4o1pdk80k47, User ID: not set
+[06-May-2025 14:24:34 Europe/Berlin] Session status: 2, Session ID: jdt2ru9o77g7aji4o1pdk80k47, User ID: not set
+[06-May-2025 14:24:41 Europe/Berlin] Session status: 2, Session ID: jdt2ru9o77g7aji4o1pdk80k47, User ID: not set
+[06-May-2025 14:24:41 Europe/Berlin] Login successful, user_id set to: 1
+[06-May-2025 14:24:42 Europe/Berlin] Session status: 2, Session ID: jdt2ru9o77g7aji4o1pdk80k47, User ID: 1
+[06-May-2025 14:24:47 Europe/Berlin] Session status: 2, Session ID: jdt2ru9o77g7aji4o1pdk80k47, User ID: 1
+[06-May-2025 14:24:50 Europe/Berlin] Session status: 2, Session ID: jdt2ru9o77g7aji4o1pdk80k47, User ID: not set
+[06-May-2025 14:25:05 Europe/Berlin] Session status: 2, Session ID: jdt2ru9o77g7aji4o1pdk80k47, User ID: not set
+[06-May-2025 14:25:05 Europe/Berlin] Login successful, user_id set to: 1
+[06-May-2025 14:25:06 Europe/Berlin] Session status: 2, Session ID: jdt2ru9o77g7aji4o1pdk80k47, User ID: 1
+[06-May-2025 14:25:16 Europe/Berlin] Session status: 2, Session ID: jdt2ru9o77g7aji4o1pdk80k47, User ID: 1
+[06-May-2025 14:25:17 Europe/Berlin] New student added: {
+    "id": "28",
+    "party": "PZ-24",
+    "name": "Mariya Tarasyuk",
+    "gender": "F",
+    "birthday": "2006-02-21",
+    "status": 0
+}
+[06-May-2025 14:25:17 Europe/Berlin] Session status: 2, Session ID: jdt2ru9o77g7aji4o1pdk80k47, User ID: 1
+[06-May-2025 14:25:27 Europe/Berlin] Session status: 2, Session ID: jdt2ru9o77g7aji4o1pdk80k47, User ID: 1
+[06-May-2025 14:25:27 Europe/Berlin] Session status: 2, Session ID: jdt2ru9o77g7aji4o1pdk80k47, User ID: 1
+[06-May-2025 14:32:08 Europe/Berlin] Session status: 2, Session ID: jdt2ru9o77g7aji4o1pdk80k47, User ID: 1
+[06-May-2025 14:32:15 Europe/Berlin] Session status: 2, Session ID: jdt2ru9o77g7aji4o1pdk80k47, User ID: 1
+[06-May-2025 14:32:17 Europe/Berlin] Session status: 2, Session ID: jdt2ru9o77g7aji4o1pdk80k47, User ID: 1
+[06-May-2025 14:32:23 Europe/Berlin] Session status: 2, Session ID: hl69t60nsru0ml3n69p9r15pdo, User ID: not set
+[06-May-2025 14:32:32 Europe/Berlin] Session status: 2, Session ID: hl69t60nsru0ml3n69p9r15pdo, User ID: not set
+[06-May-2025 14:32:32 Europe/Berlin] Login successful, user_id set to: 1
+[06-May-2025 14:32:32 Europe/Berlin] Session status: 2, Session ID: hl69t60nsru0ml3n69p9r15pdo, User ID: 1
+[07-May-2025 11:47:32 Europe/Berlin] Session status: 2, Session ID: 22a42ri357014fulvf35a7gdn3, User ID: not set
+[07-May-2025 11:47:35 Europe/Berlin] Session status: 2, Session ID: jjr2ip8su4r4kljulmf8nnc48m, User ID: not set
+[11-May-2025 23:22:30 Europe/Berlin] Session status: 2, Session ID: 22a42ri357014fulvf35a7gdn3, User ID: not set
+[11-May-2025 23:22:30 Europe/Berlin] Session status: 2, Session ID: jjr2ip8su4r4kljulmf8nnc48m, User ID: not set
+[11-May-2025 23:22:40 Europe/Berlin] Session status: 2, Session ID: 22a42ri357014fulvf35a7gdn3, User ID: not set
+[11-May-2025 23:24:33 Europe/Berlin] Session status: 2, Session ID: 22a42ri357014fulvf35a7gdn3, User ID: not set
+[11-May-2025 23:24:33 Europe/Berlin] Login successful, user_id set to: 1
+[11-May-2025 23:24:34 Europe/Berlin] Session status: 2, Session ID: 22a42ri357014fulvf35a7gdn3, User ID: 1
+[11-May-2025 23:29:53 Europe/Berlin] Session status: 2, Session ID: 22a42ri357014fulvf35a7gdn3, User ID: 1
+[11-May-2025 23:31:34 Europe/Berlin] Session status: 2, Session ID: b792m0chcl9jhvnc26nug44r94, User ID: not set
+[11-May-2025 23:31:36 Europe/Berlin] Session status: 2, Session ID: b792m0chcl9jhvnc26nug44r94, User ID: not set
+[11-May-2025 23:34:24 Europe/Berlin] Session status: 2, Session ID: oa0dghnukchlbh95gaoqa8v7l0, User ID: not set
+[11-May-2025 23:35:03 Europe/Berlin] Session status: 2, Session ID: oa0dghnukchlbh95gaoqa8v7l0, User ID: not set
+[11-May-2025 23:38:07 Europe/Berlin] Session status: 2, Session ID: 6i477b9sju26d1u4vrf36tlb7u, User ID: not set
+[11-May-2025 23:38:09 Europe/Berlin] Session status: 2, Session ID: 6i477b9sju26d1u4vrf36tlb7u, User ID: not set
+[11-May-2025 23:38:18 Europe/Berlin] Session status: 2, Session ID: 6i477b9sju26d1u4vrf36tlb7u, User ID: not set
+[11-May-2025 23:38:18 Europe/Berlin] Login successful, user_id set to: 1
+[11-May-2025 23:38:20 Europe/Berlin] Session status: 2, Session ID: 6i477b9sju26d1u4vrf36tlb7u, User ID: 1
+[11-May-2025 23:38:25 Europe/Berlin] Session status: 2, Session ID: 6i477b9sju26d1u4vrf36tlb7u, User ID: 1
+[11-May-2025 23:38:31 Europe/Berlin] Session status: 2, Session ID: 6i477b9sju26d1u4vrf36tlb7u, User ID: not set
+[11-May-2025 23:38:37 Europe/Berlin] Session status: 2, Session ID: 6i477b9sju26d1u4vrf36tlb7u, User ID: not set
+[11-May-2025 23:38:39 Europe/Berlin] Session status: 2, Session ID: 6i477b9sju26d1u4vrf36tlb7u, User ID: not set
+[11-May-2025 23:38:40 Europe/Berlin] Session status: 2, Session ID: 6i477b9sju26d1u4vrf36tlb7u, User ID: not set
+[11-May-2025 23:55:01 Europe/Berlin] Session status: 2, Session ID: 6i477b9sju26d1u4vrf36tlb7u, User ID: not set
+[11-May-2025 23:55:08 Europe/Berlin] Session status: 2, Session ID: 6i477b9sju26d1u4vrf36tlb7u, User ID: not set
+[11-May-2025 23:55:08 Europe/Berlin] Login successful, user_id set to: 1
+[11-May-2025 23:55:08 Europe/Berlin] Session status: 2, Session ID: 6i477b9sju26d1u4vrf36tlb7u, User ID: 1
+[11-May-2025 23:55:12 Europe/Berlin] Session status: 2, Session ID: 6i477b9sju26d1u4vrf36tlb7u, User ID: 1
+[11-May-2025 23:55:13 Europe/Berlin] Session status: 2, Session ID: 6i477b9sju26d1u4vrf36tlb7u, User ID: 1
+[11-May-2025 23:55:19 Europe/Berlin] Session status: 2, Session ID: 6i477b9sju26d1u4vrf36tlb7u, User ID: not set
+[11-May-2025 23:55:24 Europe/Berlin] Session status: 2, Session ID: 6i477b9sju26d1u4vrf36tlb7u, User ID: not set
+[11-May-2025 23:55:34 Europe/Berlin] Session status: 2, Session ID: 6i477b9sju26d1u4vrf36tlb7u, User ID: not set
+[11-May-2025 23:55:35 Europe/Berlin] Session status: 2, Session ID: 6i477b9sju26d1u4vrf36tlb7u, User ID: not set
+[12-May-2025 00:00:03 Europe/Berlin] Session status: 2, Session ID: 1ipkldg21snrornqrn99ups43g, User ID: not set
+[12-May-2025 00:00:09 Europe/Berlin] Session status: 2, Session ID: 1ipkldg21snrornqrn99ups43g, User ID: not set
+[12-May-2025 00:00:15 Europe/Berlin] Session status: 2, Session ID: 1ipkldg21snrornqrn99ups43g, User ID: not set
+[12-May-2025 00:00:21 Europe/Berlin] Session status: 2, Session ID: 1ipkldg21snrornqrn99ups43g, User ID: not set
+[12-May-2025 00:00:21 Europe/Berlin] Login successful, user_id set to: 1
+[12-May-2025 00:00:21 Europe/Berlin] Session status: 2, Session ID: 1ipkldg21snrornqrn99ups43g, User ID: 1
+[12-May-2025 00:00:43 Europe/Berlin] Session status: 2, Session ID: 1ipkldg21snrornqrn99ups43g, User ID: 1
+[12-May-2025 00:00:50 Europe/Berlin] Session status: 2, Session ID: l1jlcobuevicgka48inoj32qan, User ID: not set
+[12-May-2025 00:01:27 Europe/Berlin] Session status: 2, Session ID: l1jlcobuevicgka48inoj32qan, User ID: not set
+[12-May-2025 00:01:27 Europe/Berlin] Login successful, user_id set to: 1
+[12-May-2025 00:01:27 Europe/Berlin] Session status: 2, Session ID: l1jlcobuevicgka48inoj32qan, User ID: 1
+[12-May-2025 00:05:15 Europe/Berlin] Session status: 2, Session ID: q868oamoaaedp4b1mgsjja9eih, User ID: not set
+[12-May-2025 00:05:26 Europe/Berlin] Session status: 2, Session ID: q868oamoaaedp4b1mgsjja9eih, User ID: not set
+[12-May-2025 00:05:26 Europe/Berlin] Login successful, user_id set to: 1
+[12-May-2025 00:05:26 Europe/Berlin] Session status: 2, Session ID: q868oamoaaedp4b1mgsjja9eih, User ID: 1
+[12-May-2025 00:06:01 Europe/Berlin] Session status: 2, Session ID: q868oamoaaedp4b1mgsjja9eih, User ID: 1
+[12-May-2025 00:06:08 Europe/Berlin] Session status: 2, Session ID: q868oamoaaedp4b1mgsjja9eih, User ID: 1
+[12-May-2025 00:06:08 Europe/Berlin] Session status: 2, Session ID: q868oamoaaedp4b1mgsjja9eih, User ID: 1
+[12-May-2025 00:06:12 Europe/Berlin] Session status: 2, Session ID: q868oamoaaedp4b1mgsjja9eih, User ID: 1
+[12-May-2025 00:06:19 Europe/Berlin] Session status: 2, Session ID: q868oamoaaedp4b1mgsjja9eih, User ID: 1
+[12-May-2025 00:06:19 Europe/Berlin] New student added: {
+    "id": "29",
+    "party": "PZ-24",
+    "name": "Yaroslav Milchenko",
+    "gender": "M",
+    "birthday": "2006-07-11",
+    "status": 0
+}
+[12-May-2025 00:06:19 Europe/Berlin] Session status: 2, Session ID: q868oamoaaedp4b1mgsjja9eih, User ID: 1
+[12-May-2025 00:06:27 Europe/Berlin] Session status: 2, Session ID: q868oamoaaedp4b1mgsjja9eih, User ID: 1
+[12-May-2025 00:06:27 Europe/Berlin] Student updated: {
+    "id": "29",
+    "party": "PZ-31",
+    "name": "Yaroslav Milchenko",
+    "gender": "M",
+    "birthday": "2006-07-11"
+}
+[12-May-2025 00:06:27 Europe/Berlin] Session status: 2, Session ID: q868oamoaaedp4b1mgsjja9eih, User ID: 1
+[12-May-2025 00:06:31 Europe/Berlin] Session status: 2, Session ID: q868oamoaaedp4b1mgsjja9eih, User ID: 1
+[12-May-2025 00:06:42 Europe/Berlin] Session status: 2, Session ID: q868oamoaaedp4b1mgsjja9eih, User ID: 1
+[12-May-2025 00:06:46 Europe/Berlin] Session status: 2, Session ID: q868oamoaaedp4b1mgsjja9eih, User ID: not set
+[12-May-2025 00:08:31 Europe/Berlin] Session status: 2, Session ID: q868oamoaaedp4b1mgsjja9eih, User ID: not set
+[12-May-2025 00:08:36 Europe/Berlin] Session status: 2, Session ID: jjii5j7br3t023uif2rknddglt, User ID: not set
+[12-May-2025 00:08:43 Europe/Berlin] Session status: 2, Session ID: jjii5j7br3t023uif2rknddglt, User ID: not set
+[12-May-2025 00:08:43 Europe/Berlin] Login successful, user_id set to: 1
+[12-May-2025 00:08:43 Europe/Berlin] Session status: 2, Session ID: jjii5j7br3t023uif2rknddglt, User ID: 1
+[12-May-2025 00:12:30 Europe/Berlin] Session status: 2, Session ID: jjii5j7br3t023uif2rknddglt, User ID: 1
+[12-May-2025 00:18:38 Europe/Berlin] Session status: 2, Session ID: jjii5j7br3t023uif2rknddglt, User ID: 1
+[12-May-2025 00:18:42 Europe/Berlin] Session status: 2, Session ID: jjii5j7br3t023uif2rknddglt, User ID: 1
+[12-May-2025 00:18:50 Europe/Berlin] Session status: 2, Session ID: jjii5j7br3t023uif2rknddglt, User ID: not set
+[12-May-2025 00:28:57 Europe/Berlin] Session status: 2, Session ID: 5lepb5pnpabivc2ta9e2dvt3ge, User ID: not set
+[12-May-2025 00:28:57 Europe/Berlin] Login successful, user_id set to: 1
+[12-May-2025 00:29:44 Europe/Berlin] Session status: 2, Session ID: 5lepb5pnpabivc2ta9e2dvt3ge, User ID: 1
+[12-May-2025 00:29:46 Europe/Berlin] Session status: 2, Session ID: 5lepb5pnpabivc2ta9e2dvt3ge, User ID: 1
+[12-May-2025 00:30:03 Europe/Berlin] Session status: 2, Session ID: 5lepb5pnpabivc2ta9e2dvt3ge, User ID: not set
+[12-May-2025 00:30:03 Europe/Berlin] Login successful, user_id set to: 1
+[12-May-2025 00:30:03 Europe/Berlin] Session status: 2, Session ID: 5lepb5pnpabivc2ta9e2dvt3ge, User ID: 1
+[12-May-2025 00:31:05 Europe/Berlin] Session status: 2, Session ID: 5lepb5pnpabivc2ta9e2dvt3ge, User ID: 1
+[12-May-2025 00:31:12 Europe/Berlin] Session status: 2, Session ID: 5lepb5pnpabivc2ta9e2dvt3ge, User ID: 1
+[12-May-2025 00:31:24 Europe/Berlin] Session status: 2, Session ID: 5lepb5pnpabivc2ta9e2dvt3ge, User ID: not set
+[12-May-2025 00:31:24 Europe/Berlin] Login successful, user_id set to: 1
+[12-May-2025 00:31:25 Europe/Berlin] Session status: 2, Session ID: 5lepb5pnpabivc2ta9e2dvt3ge, User ID: 1
+[12-May-2025 00:31:35 Europe/Berlin] Session status: 2, Session ID: 5lepb5pnpabivc2ta9e2dvt3ge, User ID: 1
+[12-May-2025 00:32:08 Europe/Berlin] Session status: 2, Session ID: 6toqlmh3j0jg9eeqhujkdjdbc8, User ID: not set
+[12-May-2025 00:32:08 Europe/Berlin] Login successful, user_id set to: 1
+[12-May-2025 00:32:09 Europe/Berlin] Session status: 2, Session ID: 6toqlmh3j0jg9eeqhujkdjdbc8, User ID: 1
+[12-May-2025 00:32:18 Europe/Berlin] Session status: 2, Session ID: 6toqlmh3j0jg9eeqhujkdjdbc8, User ID: 1
+[12-May-2025 00:32:18 Europe/Berlin] Student updated: {
+    "id": "29",
+    "party": "PZ-24",
+    "name": "Yaroslav Milchenko",
+    "gender": "M",
+    "birthday": "2006-07-11"
+}
+[12-May-2025 00:32:18 Europe/Berlin] Session status: 2, Session ID: 6toqlmh3j0jg9eeqhujkdjdbc8, User ID: 1
+[12-May-2025 00:32:21 Europe/Berlin] Session status: 2, Session ID: 6toqlmh3j0jg9eeqhujkdjdbc8, User ID: 1
+[12-May-2025 00:32:21 Europe/Berlin] Session status: 2, Session ID: 6toqlmh3j0jg9eeqhujkdjdbc8, User ID: 1
+[12-May-2025 00:32:29 Europe/Berlin] Session status: 2, Session ID: 6toqlmh3j0jg9eeqhujkdjdbc8, User ID: 1
+[12-May-2025 00:32:29 Europe/Berlin] New student added: {
+    "id": "30",
+    "party": "PZ-24",
+    "name": "Yaroslav Milchenko",
+    "gender": "M",
+    "birthday": "2006-07-11",
+    "status": 0
+}
+[12-May-2025 00:32:29 Europe/Berlin] Session status: 2, Session ID: 6toqlmh3j0jg9eeqhujkdjdbc8, User ID: 1
+[12-May-2025 11:06:56 Europe/Berlin] Session status: 2, Session ID: 6toqlmh3j0jg9eeqhujkdjdbc8, User ID: 1
+[12-May-2025 11:07:01 Europe/Berlin] Session status: 2, Session ID: 6toqlmh3j0jg9eeqhujkdjdbc8, User ID: 1
+[12-May-2025 11:07:14 Europe/Berlin] Session status: 2, Session ID: 6toqlmh3j0jg9eeqhujkdjdbc8, User ID: not set
+[12-May-2025 11:07:28 Europe/Berlin] Session status: 2, Session ID: 6toqlmh3j0jg9eeqhujkdjdbc8, User ID: not set
+[12-May-2025 11:07:28 Europe/Berlin] Login successful, user_id set to: 1
+[12-May-2025 11:07:28 Europe/Berlin] Session status: 2, Session ID: 6toqlmh3j0jg9eeqhujkdjdbc8, User ID: 1

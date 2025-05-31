@@ -1,0 +1,85 @@
+[12-May-2025 11:21:37 Europe/Berlin] Session status: 2, Session ID: 6toqlmh3j0jg9eeqhujkdjdbc8, User ID: 1
+[12-May-2025 11:39:19 Europe/Berlin] Session status: 2, Session ID: tnhl6ntts3bdegqp8m1ee16lis, User ID: not set
+[12-May-2025 11:41:42 Europe/Berlin] Session status: 2, Session ID: 98vmf775qetm0n3tttrl92vb15, User ID: not set
+[12-May-2025 11:41:42 Europe/Berlin] Login successful, user_id set to: 1
+[12-May-2025 11:41:42 Europe/Berlin] Session status: 2, Session ID: 98vmf775qetm0n3tttrl92vb15, User ID: 1
+[12-May-2025 11:45:08 Europe/Berlin] Session status: 2, Session ID: gjhfum315vaoe0t7scbl9dfiml, User ID: not set
+[12-May-2025 11:45:08 Europe/Berlin] Login successful, user_id set to: 1
+[12-May-2025 11:45:08 Europe/Berlin] Session status: 2, Session ID: gjhfum315vaoe0t7scbl9dfiml, User ID: 1
+[12-May-2025 11:45:15 Europe/Berlin] Session status: 2, Session ID: gjhfum315vaoe0t7scbl9dfiml, User ID: 1
+[12-May-2025 11:45:15 Europe/Berlin] Student updated: {
+    "id": "30",
+    "party": "PZ-31",
+    "name": "Yaroslav Milchenko",
+    "gender": "M",
+    "birthday": "2006-07-11"
+}
+[12-May-2025 11:45:15 Europe/Berlin] Session status: 2, Session ID: gjhfum315vaoe0t7scbl9dfiml, User ID: 1
+[12-May-2025 11:45:21 Europe/Berlin] Session status: 2, Session ID: gjhfum315vaoe0t7scbl9dfiml, User ID: 1
+[12-May-2025 11:45:21 Europe/Berlin] Student updated: {
+    "id": "30",
+    "party": "PZ-24",
+    "name": "Yaroslav Milchenko",
+    "gender": "M",
+    "birthday": "2006-07-11"
+}
+[12-May-2025 11:45:21 Europe/Berlin] Session status: 2, Session ID: gjhfum315vaoe0t7scbl9dfiml, User ID: 1
+[12-May-2025 11:45:24 Europe/Berlin] Session status: 2, Session ID: gjhfum315vaoe0t7scbl9dfiml, User ID: 1
+[12-May-2025 11:45:24 Europe/Berlin] Session status: 2, Session ID: gjhfum315vaoe0t7scbl9dfiml, User ID: 1
+[12-May-2025 11:45:47 Europe/Berlin] Session status: 2, Session ID: gjhfum315vaoe0t7scbl9dfiml, User ID: 1
+[12-May-2025 11:45:47 Europe/Berlin] New student added: {
+    "id": "31",
+    "party": "PZ-24",
+    "name": "Yaroslav Milchenko",
+    "gender": "M",
+    "birthday": "2006-07-11",
+    "status": 0
+}
+[12-May-2025 11:45:47 Europe/Berlin] Session status: 2, Session ID: gjhfum315vaoe0t7scbl9dfiml, User ID: 1
+[12-May-2025 11:46:54 Europe/Berlin] Session status: 2, Session ID: gjhfum315vaoe0t7scbl9dfiml, User ID: 1
+[12-May-2025 11:50:30 Europe/Berlin] Session status: 2, Session ID: gjhfum315vaoe0t7scbl9dfiml, User ID: 1
+[12-May-2025 11:50:37 Europe/Berlin] Session status: 2, Session ID: gjhfum315vaoe0t7scbl9dfiml, User ID: not set
+[12-May-2025 11:50:37 Europe/Berlin] Login successful, user_id set to: 1
+[12-May-2025 11:50:37 Europe/Berlin] Session status: 2, Session ID: gjhfum315vaoe0t7scbl9dfiml, User ID: 1
+[12-May-2025 11:50:57 Europe/Berlin] Session status: 2, Session ID: gjhfum315vaoe0t7scbl9dfiml, User ID: 1
+[12-May-2025 11:50:57 Europe/Berlin] New student added: {
+    "id": "32",
+    "party": "PZ-24",
+    "name": "Mariya Tarasyuk",
+    "gender": "F",
+    "birthday": "2006-02-21",
+    "status": 0
+}
+[12-May-2025 11:50:57 Europe/Berlin] Session status: 2, Session ID: gjhfum315vaoe0t7scbl9dfiml, User ID: 1
+[12-May-2025 11:51:04 Europe/Berlin] Session status: 2, Session ID: gjhfum315vaoe0t7scbl9dfiml, User ID: 1
+[12-May-2025 11:51:18 Europe/Berlin] Session status: 2, Session ID: gjhfum315vaoe0t7scbl9dfiml, User ID: 1
+[12-May-2025 11:51:18 Europe/Berlin] Student updated: {
+    "id": "31",
+    "party": "PZ-31",
+    "name": "Yaroslav Milchenko",
+    "gender": "M",
+    "birthday": "2006-07-11"
+}
+[12-May-2025 11:51:18 Europe/Berlin] Session status: 2, Session ID: gjhfum315vaoe0t7scbl9dfiml, User ID: 1
+[12-May-2025 11:51:45 Europe/Berlin] Session status: 2, Session ID: gjhfum315vaoe0t7scbl9dfiml, User ID: 1
+[12-May-2025 11:51:45 Europe/Berlin] New student added: {
+    "id": "33",
+    "party": "PZ-24",
+    "name": "Anna Ivanets",
+    "gender": "F",
+    "birthday": "2005-09-20",
+    "status": 0
+}
+[12-May-2025 11:51:45 Europe/Berlin] Session status: 2, Session ID: gjhfum315vaoe0t7scbl9dfiml, User ID: 1
+[12-May-2025 11:52:04 Europe/Berlin] Session status: 2, Session ID: gjhfum315vaoe0t7scbl9dfiml, User ID: 1
+[12-May-2025 11:52:04 Europe/Berlin] Student updated: {
+    "id": "33",
+    "party": "PZ-34",
+    "name": "Anna Ivanets",
+    "gender": "F",
+    "birthday": "2005-09-20"
+}
+[12-May-2025 11:52:04 Europe/Berlin] Session status: 2, Session ID: gjhfum315vaoe0t7scbl9dfiml, User ID: 1
+[12-May-2025 11:52:25 Europe/Berlin] Session status: 2, Session ID: gjhfum315vaoe0t7scbl9dfiml, User ID: 1
+[12-May-2025 11:52:25 Europe/Berlin] Session status: 2, Session ID: gjhfum315vaoe0t7scbl9dfiml, User ID: 1
+[12-May-2025 11:53:11 Europe/Berlin] Session status: 2, Session ID: gjhfum315vaoe0t7scbl9dfiml, User ID: 1
