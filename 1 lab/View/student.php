@@ -22,19 +22,10 @@ $isAuthorized = isset($_SESSION['user_id']);
                 <?php if ($isAuthorized): ?>
                     <div class="user-info">
                         <div class="notification-container">
-                            <i class="fa-solid fa-bell notification-icon" aria-label="Notifications"></i>
-                            <span class="notification-indicator"></span>
-                            <div class="notification-dropdown">
-                                <p><strong>New Messages:</strong></p>
-                                <p class="message unread">
-                                    <img src="../assets/images/avatar1.jpg" alt="Avatar of John Doe" class="notif-avatar"> 
-                                    John Doe: "Hey!" <span class="unread-indicator"></span>
-                                </p>
-                                <p class="message unread">
-                                    <img src="../assets/images/avatar2.jpg" alt="Avatar of Jane Smith" class="notif-avatar"> 
-                                    Jane Smith: "Meeting at 3?" <span class="unread-indicator"></span>
-                                </p>
-                            </div>
+                            <button id="open-messages-btn" class="notification-btn" title="Перейти до чату">
+                                <i class="fa-solid fa-bell notification-icon" aria-label="Messages"></i>
+                                <span class="notification-indicator"></span>
+                            </button>
                         </div>
                         <div class="profile-container">
                             <img src="../assets/images/Students.jpeg" alt="Profile picture of James Bond" id="profile-picture"/>
@@ -62,19 +53,10 @@ $isAuthorized = isset($_SESSION['user_id']);
                 <span class="close-btn" onclick="toggleMenu()" aria-label="Close mobile menu">×</span>
                 <div class="mobile-profile">
                     <div class="notification-container">
-                        <i class="fa-solid fa-bell notification-icon" aria-label="Notifications"></i>
-                        <span class="notification-indicator"></span>
-                        <div class="notification-dropdown">
-                            <p><strong>New Messages:</strong></p>
-                            <p class="message unread">
-                                <img src="../assets/images/avatar1.jpg" alt="Avatar of John Doe" class="notif-avatar"> 
-                                John Doe: "Hey!" <span class="unread-indicator"></span>
-                            </p>
-                            <p class="message unread">
-                                <img src="../assets/images/avatar2.jpg" alt="Avatar of Jane Smith" class="notif-avatar"> 
-                                Jane Smith: "Meeting at 3?" <span class="unread-indicator"></span>
-                            </p>
-                        </div>
+                        <button id="open-messages-btn" class="notification-btn" title="Перейти до чату">
+                            <i class="fa-solid fa-bell notification-icon" aria-label="Messages"></i>
+                            <span class="notification-indicator"></span>
+                        </button>
                     </div>
                     <img src="../assets/images/Students.jpeg" alt="Profile picture of James Bond" />
                     <p class="user-name"><?php echo htmlspecialchars($_SESSION['username']); ?></p>
@@ -213,6 +195,10 @@ $isAuthorized = isset($_SESSION['user_id']);
                 alert('An error occurred during logout.');
             });
         }
+
+        document.getElementById('open-messages-btn').onclick = function() {
+            window.location.href = 'messages.php';
+        };
     </script>
 </body>
 </html>

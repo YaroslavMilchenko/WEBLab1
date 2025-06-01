@@ -1,0 +1,72 @@
+Array
+(
+    [0] => Array
+        (
+            [id] => 31
+            [party] => PZ-24
+            [name] => Yaroslav Milchenko
+            [gender] => M
+            [birthday] => 2006-07-11
+            [status] => 0
+        )
+
+    [1] => Array
+        (
+            [id] => 34
+            [party] => PZ-24
+            [name] => Mariya Tarasyuk
+            [gender] => F
+            [birthday] => 2006-02-21
+            [status] => 0
+        )
+
+)
+
+Array
+(
+    [0] => Array
+        (
+            [id] => 31
+            [party] => PZ-24
+            [name] => Yaroslav Milchenko
+            [gender] => M
+            [birthday] => 2006-07-11
+            [status] => 0
+        )
+
+    [1] => Array
+        (
+            [id] => 34
+            [party] => PZ-24
+            [name] => Mariya Tarasyuk
+            [gender] => F
+            [birthday] => 2006-02-21
+            [status] => 0
+        )
+
+)
+
+Array
+(
+    [0] => Array
+        (
+            [id] => 31
+            [party] => PZ-24
+            [name] => Yaroslav Milchenko
+            [gender] => M
+            [birthday] => 2006-07-11
+            [status] => 0
+        )
+
+    [1] => Array
+        (
+            [id] => 34
+            [party] => PZ-24
+            [name] => Mariya Tarasyuk
+            [gender] => F
+            [birthday] => 2006-02-21
+            [status] => 0
+        )
+
+)
+

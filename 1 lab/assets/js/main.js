@@ -424,6 +424,13 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     }
 
+    document.querySelectorAll('.notification-dropdown .message').forEach(msg => {
+        msg.addEventListener('click', function() {
+            const chatId = this.dataset.chatid;
+            window.location.href = `messages.php?chat=${encodeURIComponent(chatId)}`;
+        });
+    });
+
     paginateTable();
     window.openModal = openModal;
 });
