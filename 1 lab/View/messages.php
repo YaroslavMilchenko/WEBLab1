@@ -15,7 +15,10 @@ if (!isset($_SESSION['user_id'])) {
 <body>
     <div id="chat-app">
         <aside id="chat-list">
-            <button id="new-chat-btn">Новий чат</button>
+            <div class="chat-sidebar-header">
+                <button id="back-btn" class="sidebar-btn">← На сайт</button>
+                <button id="new-chat-btn" class="sidebar-btn">+ Новий чат</button>
+            </div>
             <!-- ...список чатів... -->
         </aside>
         <main id="chat-main">

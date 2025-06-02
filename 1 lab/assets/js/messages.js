@@ -12,10 +12,12 @@ async function fetchMessages(chatId) {
 
 function renderChats(chats) {
     const chatList = document.getElementById('chat-list');
-    chatList.innerHTML = '';
+    // Залишаємо header з кнопками, очищаємо тільки список чатів
+    chatList.querySelectorAll('.chat-item').forEach(e => e.remove());
     chats.forEach(chat => {
         const div = document.createElement('div');
         div.textContent = chat.name;
+        div.className = 'chat-item';
         div.onclick = () => selectChat(chat);
         if (chat.users.includes(window.currentUserId)) div.classList.add('me');
         chatList.appendChild(div);
@@ -56,7 +58,8 @@ document.getElementById('message-form').onsubmit = e => {
 
 socket.on('message', msg => {
     if (msg.chatId === currentChatId) {
-        renderMessages([msg]);
+        // Довантажуємо всі повідомлення для чату (щоб історія була повною)
+        fetchMessages(currentChatId).then(renderMessages);
     } else {
         document.querySelector('.notification-indicator').classList.add('active');
         // Додати повідомлення у випадаючий список
@@ -102,6 +105,10 @@ document.getElementById('create-chat-confirm').onclick = () => {
     console.log('Створення чату:', {users: checked, name});
     socket.emit('create-chat', { users: checked, name });
     document.getElementById('new-chat-modal').classList.add('hidden');
+};
+
+document.getElementById('back-btn').onclick = () => {
+    window.location.href = 'student.php';
 };
 
 // Отримати chatId з URL
