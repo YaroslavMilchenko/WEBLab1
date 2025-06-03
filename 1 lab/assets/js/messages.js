@@ -1,5 +1,6 @@
 const socket = io('http://localhost:4000');
 let currentChatId = null;
+let unreadChats = new Set();
 
 async function fetchChats() {
     const res = await fetch('http://localhost:4000/api/chats/' + window.currentUserId);
@@ -29,6 +30,17 @@ function selectChat(chat) {
     document.getElementById('chat-title').textContent = chat.name;
     socket.emit('join', { chatId: currentChatId, userId: window.currentUserId });
     fetchMessages(currentChatId).then(renderMessages);
+
+    // Якщо цей чат був у непрочитаних — видаляємо
+    if (unreadChats.has(chat._id)) {
+        unreadChats.delete(chat._id);
+        // Якщо більше немає непрочитаних — гасимо індикатор
+        if (unreadChats.size === 0) {
+            document.querySelector('.notification-indicator').classList.remove('active');
+            // Синхронізуємо з іншими вкладками
+            localStorage.setItem('clear-notifications', '1');
+        }
+    }
 }
 
 function renderMessages(messages) {
@@ -58,11 +70,12 @@ document.getElementById('message-form').onsubmit = e => {
 
 socket.on('message', msg => {
     if (msg.chatId === currentChatId) {
-        // Довантажуємо всі повідомлення для чату (щоб історія була повною)
+        // Якщо користувач у чаті — одразу показуємо
         fetchMessages(currentChatId).then(renderMessages);
     } else {
+        // Додаємо чат до непрочитаних
+        unreadChats.add(msg.chatId);
         document.querySelector('.notification-indicator').classList.add('active');
-        // Додати повідомлення у випадаючий список
     }
 });
 

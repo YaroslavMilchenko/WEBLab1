@@ -431,6 +431,23 @@ document.addEventListener("DOMContentLoaded", async function () {
         });
     });
 
+    const socket = io('http://localhost:4000');
+    let unreadChats = new Set();
+
+    socket.on('message', msg => {
+        unreadChats.add(msg.chatId);
+        console.log("Workae");
+        document.querySelector('.notification-indicator').classList.add('active');
+    });
+
+    // Гасити індикатор при перегляді чату (через localStorage)
+    window.addEventListener('storage', () => {
+        if (localStorage.getItem('clear-notifications') === '1') {
+            document.querySelector('.notification-indicator').classList.remove('active');
+            localStorage.setItem('clear-notifications', '0');
+        }
+    });
+
     paginateTable();
     window.openModal = openModal;
 });

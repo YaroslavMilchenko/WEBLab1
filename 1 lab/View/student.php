@@ -12,6 +12,7 @@ $isAuthorized = isset($_SESSION['user_id']);
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
     <link rel="manifest" href="../manifest.json">
     <script src="https://kit.fontawesome.com/acdc2463b2.js" crossorigin="anonymous"></script>
+    <script src="http://localhost:4000/socket.io/socket.io.js"></script>
     <script defer src="../assets/js/main.js"></script>
 </head>
 <body>
