@@ -23,7 +23,7 @@ $isAuthorized = isset($_SESSION['user_id']);
                 <?php if ($isAuthorized): ?>
                     <div class="user-info">
                         <div class="notification-container">
-                            <button id="open-messages-btn" class="notification-btn" title="Перейти до чату">
+                            <button id="open-messages-btn" class="notification-btn" title="Перейти до чату" style="position: relative;">
                                 <i class="fa-solid fa-bell notification-icon" aria-label="Messages"></i>
                                 <span class="notification-indicator"></span>
                             </button>
@@ -54,7 +54,7 @@ $isAuthorized = isset($_SESSION['user_id']);
                 <span class="close-btn" onclick="toggleMenu()" aria-label="Close mobile menu">×</span>
                 <div class="mobile-profile">
                     <div class="notification-container">
-                        <button id="open-messages-btn" class="notification-btn" title="Перейти до чату">
+                        <button id="open-messages-btn" class="notification-btn" title="Перейти до чату" style="position: relative;">
                             <i class="fa-solid fa-bell notification-icon" aria-label="Messages"></i>
                             <span class="notification-indicator"></span>
                         </button>
@@ -200,6 +200,14 @@ $isAuthorized = isset($_SESSION['user_id']);
         document.getElementById('open-messages-btn').onclick = function() {
             window.location.href = 'messages.php';
         };
+
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'chat-read') {
+                // Гасимо індикатор, якщо цей чат був у непрочитаних
+                document.querySelector('.notification-indicator').classList.remove('active');
+                unreadChats.clear();
+            }
+        });
     </script>
 </body>
 </html>

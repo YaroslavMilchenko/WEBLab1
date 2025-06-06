@@ -72,6 +72,8 @@ socket.on('message', msg => {
     if (msg.chatId === currentChatId) {
         // Якщо користувач у чаті — одразу показуємо
         fetchMessages(currentChatId).then(renderMessages);
+        // Синхронізуємо прочитане для інших вкладок
+        localStorage.setItem('chat-read', msg.chatId + ':' + Date.now());
     } else {
         // Додаємо чат до непрочитаних
         unreadChats.add(msg.chatId);

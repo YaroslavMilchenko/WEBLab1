@@ -63,11 +63,20 @@ h1 {
   order: -1;
   position: relative;
   cursor: pointer;
+  display: inline-block;
+}
+
+.notification-btn {
+  position: relative;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
 }
 
 .notification-icon {
-  font-size: 26px;
-  color: #444;
+  font-size: 28px;
+  color: #222;
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
@@ -78,14 +87,19 @@ h1 {
 
 .notification-indicator {
   position: absolute;
-  top: -4px;
-  right: -4px;
-  width: 12px;
-  height: 12px;
+  top: 2px;
+  right: 2px;
+  width: 13px;
+  height: 13px;
   background: #ff3b3b;
   border-radius: 50%;
-  border: 2px solid #e0e0e0;
+  border: 2px solid #fff;
   display: none;
+  z-index: 2;
+}
+
+.notification-indicator.show {
+  display: block;
 }
 
 .notification-container.has-notifications .notification-indicator,
