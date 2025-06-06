@@ -12,6 +12,7 @@ $isAuthorized = isset($_SESSION['user_id']);
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
     <link rel="manifest" href="../manifest.json">
     <script src="https://kit.fontawesome.com/acdc2463b2.js" crossorigin="anonymous"></script>
+    <script src="http://localhost:4000/socket.io/socket.io.js"></script>
     <script defer src="../assets/js/main.js"></script>
 </head>
 <body>
@@ -22,19 +23,10 @@ $isAuthorized = isset($_SESSION['user_id']);
                 <?php if ($isAuthorized): ?>
                     <div class="user-info">
                         <div class="notification-container">
-                            <i class="fa-solid fa-bell notification-icon" aria-label="Notifications"></i>
-                            <span class="notification-indicator"></span>
-                            <div class="notification-dropdown">
-                                <p><strong>New Messages:</strong></p>
-                                <p class="message unread">
-                                    <img src="../assets/images/avatar1.jpg" alt="Avatar of John Doe" class="notif-avatar"> 
-                                    John Doe: "Hey!" <span class="unread-indicator"></span>
-                                </p>
-                                <p class="message unread">
-                                    <img src="../assets/images/avatar2.jpg" alt="Avatar of Jane Smith" class="notif-avatar"> 
-                                    Jane Smith: "Meeting at 3?" <span class="unread-indicator"></span>
-                                </p>
-                            </div>
+                            <button id="open-messages-btn" class="notification-btn" title="Перейти до чату" style="position: relative;">
+                                <i class="fa-solid fa-bell notification-icon" aria-label="Messages"></i>
+                                <span class="notification-indicator"></span>
+                            </button>
                         </div>
                         <div class="profile-container">
                             <img src="../assets/images/Students.jpeg" alt="Profile picture of James Bond" id="profile-picture"/>
@@ -62,19 +54,10 @@ $isAuthorized = isset($_SESSION['user_id']);
                 <span class="close-btn" onclick="toggleMenu()" aria-label="Close mobile menu">×</span>
                 <div class="mobile-profile">
                     <div class="notification-container">
-                        <i class="fa-solid fa-bell notification-icon" aria-label="Notifications"></i>
-                        <span class="notification-indicator"></span>
-                        <div class="notification-dropdown">
-                            <p><strong>New Messages:</strong></p>
-                            <p class="message unread">
-                                <img src="../assets/images/avatar1.jpg" alt="Avatar of John Doe" class="notif-avatar"> 
-                                John Doe: "Hey!" <span class="unread-indicator"></span>
-                            </p>
-                            <p class="message unread">
-                                <img src="../assets/images/avatar2.jpg" alt="Avatar of Jane Smith" class="notif-avatar"> 
-                                Jane Smith: "Meeting at 3?" <span class="unread-indicator"></span>
-                            </p>
-                        </div>
+                        <button id="open-messages-btn" class="notification-btn" title="Перейти до чату" style="position: relative;">
+                            <i class="fa-solid fa-bell notification-icon" aria-label="Messages"></i>
+                            <span class="notification-indicator"></span>
+                        </button>
                     </div>
                     <img src="../assets/images/Students.jpeg" alt="Profile picture of James Bond" />
                     <p class="user-name"><?php echo htmlspecialchars($_SESSION['username']); ?></p>
@@ -213,6 +196,18 @@ $isAuthorized = isset($_SESSION['user_id']);
                 alert('An error occurred during logout.');
             });
         }
+
+        document.getElementById('open-messages-btn').onclick = function() {
+            window.location.href = 'messages.php';
+        };
+
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'chat-read') {
+                // Гасимо індикатор, якщо цей чат був у непрочитаних
+                document.querySelector('.notification-indicator').classList.remove('active');
+                unreadChats.clear();
+            }
+        });
     </script>
 </body>
 </html>

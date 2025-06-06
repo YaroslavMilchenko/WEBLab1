@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", async function () {
     console.log("main.js loaded successfully");
-
+    const socket = io.connect("http://localhost:3000", {
+        withCredentials: true,
+        transports: ['websocket']
+    });
     const burger = document.querySelector(".burger");
     const mobileMenu = document.getElementById("mobile-menu");
     const addModal = document.getElementById("add-modal");
@@ -408,21 +411,30 @@ document.addEventListener("DOMContentLoaded", async function () {
     const messages = document.querySelectorAll(".message");
     const notificationIndicator = document.querySelector(".notification-indicator");
 
-    if (messages && notificationIndicator) {
-        messages.forEach((message) => {
-            message.addEventListener("click", () => {
-                if (message.classList.contains("unread")) {
-                    message.classList.remove("unread");
-                    message.classList.add("read");
-                    notificationIndicator.classList.remove("active");
-                }
-            });
-        });
 
-        if (document.querySelector(".unread")) {
-            notificationIndicator.classList.add("active");
+
+    document.querySelectorAll('.notification-dropdown .message').forEach(msg => {
+        msg.addEventListener('click', function() {
+            const chatId = this.dataset.chatid;
+            window.location.href = `messages.php?chat=${encodeURIComponent(chatId)}`;
+        });
+    });
+
+    let unreadChats = new Set();
+
+    socket.on('message', msg => {
+        unreadChats.add(msg.chatId);
+        document.querySelector('.notification-indicator').classList.add('show');
+    });
+
+    // Гасити індикатор при перегляді чату (через localStorage)
+    window.addEventListener('storage', () => {
+        if (localStorage.getItem('clear-notifications') === '1') {
+            document.querySelector('.notification-indicator').classList.remove('active');
+            localStorage.setItem('clear-notifications', '0');
+            unreadChats.clear();
         }
-    }
+    });
 
     paginateTable();
     window.openModal = openModal;

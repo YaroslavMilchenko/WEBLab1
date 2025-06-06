@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-require_once '../models/auth.php';
 
 // Встановлюємо заголовки для JSON-відповіді
 header('Content-Type: application/json');
@@ -294,6 +293,17 @@ switch ($action) {
             echo json_encode(['success' => count($students_array) < $initial_count]);
         }
         break;
+
+    case 'getAdmins':
+        if (!isset($_SESSION['user_id'])) {
+            echo json_encode(['success' => false, 'error' => 'Unauthorized']);
+            exit;
+        }
+        $stmt = $conn->prepare("SELECT id, username FROM users WHERE role = 'admin'");
+        $stmt->execute();
+        $admins = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode(['success' => true, 'admins' => $admins]);
+        exit;
 
     default:
         echo json_encode(['success' => false, 'error' => 'Invalid action']);
